@@ -113,9 +113,10 @@
           "legend": {
             "title": null,
             "orient": "top-left",
-            "labelExpr": "datum.label == 'AFL' ? 'AFL Grand Final' : 'NRL Grand Final'",
+            "labelExpr": "datum.label == 'AFL' ? 'AFL Grand Final (left circle)' : 'NRL Grand Final (right circle)'",
             "symbolSize": 160,
-            "labelFontSize": 12
+            "labelFontSize": 12,
+            "labelLimit": 240
           }
         },
         "opacity": {
@@ -203,6 +204,58 @@
         },
         "text": {
           "field": "city"
+        }
+      }
+    },
+    {
+      "data": {
+        "url": "data/grand_finals_by_city_2026.csv",
+        "format": {
+          "type": "csv",
+          "parse": {
+            "audience": "number",
+            "market_population_2026": "number",
+            "lat": "number",
+            "lon": "number"
+          }
+        }
+      },
+      "transform": [
+        {
+          "filter": "datum.audience >= 400000"
+        },
+        {
+          "calculate": "datum.code == 'AFL' ? datum.lon - 1.9 : datum.lon + 1.9",
+          "as": "lon_off"
+        },
+        {
+          "calculate": "format(datum.audience / 1e6, '.2f') + 'm'",
+          "as": "t"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "fontSize": 10,
+        "fontWeight": 700
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon_off",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "t"
+        },
+        "color": {
+          "condition": {
+            "test": "datum.code == 'NRL'",
+            "value": "white"
+          },
+          "value": "#26313d"
         }
       }
     }

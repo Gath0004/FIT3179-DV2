@@ -192,6 +192,13 @@
             "value": 1
           },
           "value": 0.2
+        },
+        "color": {
+          "condition": {
+            "test": "datum.colour_key == 'Free-to-air live'",
+            "value": "#00843D"
+          },
+          "value": "#8a6d00"
         }
       }
     },
@@ -228,6 +235,13 @@
             "value": 1
           },
           "value": 0.2
+        },
+        "color": {
+          "condition": {
+            "test": "datum.colour_key == 'Free-to-air live'",
+            "value": "#00843D"
+          },
+          "value": "#8a6d00"
         }
       }
     }

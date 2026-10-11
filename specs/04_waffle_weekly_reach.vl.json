@@ -46,6 +46,10 @@
     {
       "calculate": "floor((datum.idx - 1) / 10)",
       "as": "row"
+    },
+    {
+      "calculate": "format(datum.pct, '.0f') + '% watched only via apps'",
+      "as": "label"
     }
   ],
   "facet": {
@@ -66,70 +70,117 @@
   "spacing": 36,
   "spec": {
     "width": 160,
-    "height": 160,
-    "mark": {
-      "type": "rect",
-      "cornerRadius": 1.5,
-      "stroke": "#faf7f0",
-      "strokeWidth": 1.6
-    },
-    "encoding": {
-      "x": {
-        "field": "col",
-        "type": "ordinal",
-        "axis": null
-      },
-      "y": {
-        "field": "row",
-        "type": "ordinal",
-        "axis": null
-      },
-      "color": {
-        "field": "segment",
-        "type": "nominal",
-        "sort": {
-          "field": "segment_order"
+    "height": 178,
+    "layer": [
+      {
+        "mark": {
+          "type": "rect",
+          "cornerRadius": 1.5,
+          "stroke": "#faf7f0",
+          "strokeWidth": 1.6
         },
-        "scale": {
-          "domain": [
-            "Broadcast TV only",
-            "Both broadcast & apps",
-            "Streaming apps only",
-            "Didn't watch that week"
-          ],
-          "range": [
-            "#00843D",
-            "#9fd1b4",
-            "#FFCD00",
-            "#e9e4d6"
+        "encoding": {
+          "x": {
+            "field": "col",
+            "type": "ordinal",
+            "axis": null
+          },
+          "y": {
+            "field": "row",
+            "type": "ordinal",
+            "axis": null,
+            "scale": {
+              "domain": [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10
+              ]
+            }
+          },
+          "color": {
+            "field": "segment",
+            "type": "nominal",
+            "sort": {
+              "field": "segment_order"
+            },
+            "scale": {
+              "domain": [
+                "Broadcast TV only",
+                "Both broadcast & apps",
+                "Streaming apps only",
+                "Didn't watch that week"
+              ],
+              "range": [
+                "#00843D",
+                "#9fd1b4",
+                "#FFCD00",
+                "#e9e4d6"
+              ]
+            },
+            "legend": {
+              "title": null,
+              "orient": "bottom",
+              "direction": "horizontal",
+              "columns": 4,
+              "labelLimit": 200,
+              "symbolType": "square",
+              "labelFontSize": 12
+            }
+          },
+          "tooltip": [
+            {
+              "field": "group",
+              "title": "Group"
+            },
+            {
+              "field": "segment",
+              "title": "Viewing in an average week"
+            },
+            {
+              "field": "pct",
+              "title": "% of group",
+              "format": ".1f"
+            }
           ]
-        },
-        "legend": {
-          "title": null,
-          "orient": "bottom",
-          "direction": "horizontal",
-          "columns": 4,
-          "labelLimit": 200,
-          "symbolType": "square",
-          "labelFontSize": 12
         }
       },
-      "tooltip": [
-        {
-          "field": "group",
-          "title": "Group"
+      {
+        "transform": [
+          {
+            "filter": "datum.segment == 'Streaming apps only' && datum.cell == 0"
+          }
+        ],
+        "mark": {
+          "type": "text",
+          "align": "left",
+          "baseline": "middle",
+          "fontSize": 12,
+          "fontWeight": 600,
+          "color": "#8a6d00",
+          "dy": 4
         },
-        {
-          "field": "segment",
-          "title": "Viewing in an average week"
-        },
-        {
-          "field": "pct",
-          "title": "% of group",
-          "format": ".1f"
+        "encoding": {
+          "x": {
+            "value": 0
+          },
+          "y": {
+            "datum": 10,
+            "type": "ordinal"
+          },
+          "text": {
+            "field": "label"
+          }
         }
-      ]
-    }
+      }
+    ]
   },
   "config": {
     "view": {

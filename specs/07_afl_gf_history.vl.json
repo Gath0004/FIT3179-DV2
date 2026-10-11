@@ -152,7 +152,7 @@
         "dy": -8,
         "fontSize": 11,
         "fontWeight": 600,
-        "color": "#c49a00"
+        "color": "#8a6d00"
       },
       "encoding": {
         "y": {
@@ -176,6 +176,11 @@
             "year": 2022,
             "y": 1.35,
             "t": "% of audience streaming on 7plus →"
+          },
+          {
+            "year": 2019,
+            "y": 0.35,
+            "t": "Streaming figures not published before 2024"
           }
         ]
       },

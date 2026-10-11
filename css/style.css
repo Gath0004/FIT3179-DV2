@@ -181,7 +181,7 @@ body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(
 
 @media (max-width: 760px) { .banner { height: 110px; } }
 
-:root { --green: #00843D; --green-dark: #005c2b; --gold: #FFCD00; --gold-dark: #a67c00; }
+:root { --green: #00843D; --green-dark: #005c2b; --gold: #FFCD00; --gold-dark: #8a6d00; }
 .ch-no, .toc a::before { color: var(--green); }
 .kicker { color: var(--gold); }
 .hero h1 span { color: var(--gold); }
@@ -275,3 +275,24 @@ body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(
   *, *::before, *::after { animation: none !important; transition: none !important; }
   .reveal { opacity: 1 !important; transform: none !important; }
 }
+
+/* ===== accessibility & clarity (Data Visualization Handbook principles) ===== */
+/* stronger contrast for small text */
+.card figcaption { color: #5f656c; }
+.card .sub { color: #4f565e; }
+.about { color: #4f565e; }
+/* visible keyboard focus on charts, links and controls */
+.chart:focus-visible, a:focus-visible, summary:focus-visible, input:focus-visible { outline: 3px solid #FFCD00; outline-offset: 3px; border-radius: 4px; }
+/* show / hide data tables */
+.data-table { margin-top: 10px; font-size: 13px; }
+.data-table summary { cursor: pointer; color: #00843D; font-weight: 600; width: max-content; }
+.data-table summary::marker { color: #FFCD00; }
+.data-table table { border-collapse: collapse; margin-top: 8px; width: 100%; font-variant-numeric: tabular-nums; }
+.data-table th, .data-table td { text-align: left; padding: 4px 8px; border-bottom: 1px solid #ece7db; }
+.data-table th { background: #f4f1e8; font-weight: 600; color: var(--ink); }
+.data-table tbody { max-height: 240px; }
+.tv-card .data-table summary { color: #FFCD00; }
+.tv-card .data-table table { background: var(--paper); color: var(--ink); border-radius: 6px; }
+
+.tv-card .sub { color: #c9d1da; }
+.tv-card figcaption { color: #aab3bc; }

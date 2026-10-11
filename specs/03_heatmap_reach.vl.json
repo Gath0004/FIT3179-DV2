@@ -158,6 +158,21 @@
           "value": "#005c2b"
         }
       }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.group == 'Ages 25–54' && datum.platform != 'Any free-to-air TV'"
+        }
+      ],
+      "mark": {
+        "type": "rect",
+        "fill": null,
+        "stroke": "#FFCD00",
+        "strokeWidth": 3,
+        "cornerRadius": 3
+      },
+      "encoding": {}
     }
   ],
   "config": {

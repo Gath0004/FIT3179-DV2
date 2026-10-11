@@ -145,7 +145,7 @@
           },
           "axis": {
             "title": "Spent in Australia ($ million)",
-            "grid": true,
+            "grid": false,
             "gridColor": "#eee8db",
             "tickCount": 6,
             "titleColor": "#555",
@@ -165,12 +165,7 @@
               "#c49a00"
             ]
           },
-          "legend": {
-            "title": null,
-            "orient": "top-right",
-            "labelFontSize": 12,
-            "labelLimit": 260
-          }
+          "legend": null
         }
       },
       "layer": [
@@ -249,6 +244,44 @@
           "encoding": {
             "text": {
               "field": "year"
+            },
+            "color": {
+              "condition": {
+                "test": "datum.platform == 'Free-to-air TV'",
+                "value": "#00843D"
+              },
+              "value": "#8a6d00"
+            }
+          }
+        },
+        {
+          "transform": [
+            {
+              "filter": "(datum.platform == 'Free-to-air TV' && datum.step == 1) || (datum.platform != 'Free-to-air TV' && datum.step == 0)"
+            },
+            {
+              "calculate": "datum.platform == 'Free-to-air TV' ? 'Free-to-air TV' : 'Subscription & streaming'",
+              "as": "name"
+            }
+          ],
+          "mark": {
+            "type": "text",
+            "align": "center",
+            "dx": 0,
+            "dy": 26,
+            "fontSize": 13,
+            "fontWeight": 700
+          },
+          "encoding": {
+            "text": {
+              "field": "name"
+            },
+            "color": {
+              "condition": {
+                "test": "datum.platform == 'Free-to-air TV'",
+                "value": "#00843D"
+              },
+              "value": "#8a6d00"
             }
           }
         }
