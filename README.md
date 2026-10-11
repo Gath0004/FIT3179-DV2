@@ -34,10 +34,3 @@ A single scrolling data story about Australian television, built with **Vega-Lit
 | 11 | `11_treemap_drama_finance` | Treemap (Vega) | Screen Australia Drama Report 2024/25 |
 | 12 | `12_map_drama_spikes` | **Map: spike map** | Screen Australia Drama Report 2024/25 |
 
-## Publish on GitHub Pages
-1. Create a **public** repository (e.g. `fit3179-dv2`) and upload everything in this folder (keep the folder structure).
-2. Repository → Settings → Pages → *Deploy from a branch* → `main` / `(root)` → Save.
-3. After a minute the page is live at `https://<your-username>.github.io/<repo-name>/`. Test it in an incognito window.
-4. Upload your sketch PDF to `sketch/sketch.pdf`; its URL will be `https://<your-username>.github.io/<repo-name>/sketch/sketch.pdf`.
-
-To preview locally run `python3 -m http.server` in this folder and open http://localhost:8000 (opening the file directly will not load the data).
