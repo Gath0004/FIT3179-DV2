@@ -1,0 +1,263 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Connected scatterplot: hours of new Australian TV drama vs money spent making it, free-to-air vs subscription/streaming, 2023/24 → 2024/25 (Screen Australia Drama Report). Dashed guides show cost per hour.",
+  "width": 400,
+  "height": 330,
+  "layer": [
+    {
+      "data": {
+        "values": [
+          {
+            "c": 0.5,
+            "x": 0,
+            "y": 0,
+            "x2": 300,
+            "y2": 150,
+            "lab": "$0.5m per hour"
+          },
+          {
+            "c": 1,
+            "x": 0,
+            "y": 0,
+            "x2": 300,
+            "y2": 300,
+            "lab": "$1m per hour"
+          },
+          {
+            "c": 2,
+            "x": 0,
+            "y": 0,
+            "x2": 275,
+            "y2": 550,
+            "lab": "$2m per hour"
+          },
+          {
+            "c": 5,
+            "x": 0,
+            "y": 0,
+            "x2": 110,
+            "y2": 550,
+            "lab": "$5m per hour"
+          }
+        ]
+      },
+      "layer": [
+        {
+          "mark": {
+            "type": "rule",
+            "strokeDash": [
+              3,
+              4
+            ],
+            "color": "#c9c2b2"
+          },
+          "encoding": {
+            "x": {
+              "field": "x",
+              "type": "quantitative"
+            },
+            "y": {
+              "field": "y",
+              "type": "quantitative"
+            },
+            "x2": {
+              "field": "x2"
+            },
+            "y2": {
+              "field": "y2"
+            }
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "align": "right",
+            "dx": -3,
+            "dy": -6,
+            "fontSize": 10,
+            "color": "#9a927f",
+            "fontStyle": "italic"
+          },
+          "encoding": {
+            "x": {
+              "field": "x2",
+              "type": "quantitative"
+            },
+            "y": {
+              "field": "y2",
+              "type": "quantitative"
+            },
+            "text": {
+              "field": "lab"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "data": {
+        "url": "data/drama_fta_vs_streaming.csv",
+        "format": {
+          "type": "csv",
+          "parse": {
+            "spend_m": "number",
+            "hours": "number",
+            "titles": "number"
+          }
+        }
+      },
+      "transform": [
+        {
+          "calculate": "datum.spend_m / datum.hours",
+          "as": "per_hour"
+        },
+        {
+          "calculate": "datum.year == '2023/24' ? 0 : 1",
+          "as": "step"
+        }
+      ],
+      "encoding": {
+        "x": {
+          "field": "hours",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0,
+              300
+            ]
+          },
+          "axis": {
+            "title": "Hours of new drama made",
+            "grid": false,
+            "tickCount": 6,
+            "titleColor": "#555",
+            "titleFontWeight": 500
+          }
+        },
+        "y": {
+          "field": "spend_m",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0,
+              550
+            ]
+          },
+          "axis": {
+            "title": "Spent in Australia ($ million)",
+            "grid": true,
+            "gridColor": "#eee8db",
+            "tickCount": 6,
+            "titleColor": "#555",
+            "titleFontWeight": 500
+          }
+        },
+        "color": {
+          "field": "platform",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Free-to-air TV",
+              "Subscription TV & streaming"
+            ],
+            "range": [
+              "#00843D",
+              "#c49a00"
+            ]
+          },
+          "legend": {
+            "title": null,
+            "orient": "top-right",
+            "labelFontSize": 12,
+            "labelLimit": 260
+          }
+        }
+      },
+      "layer": [
+        {
+          "mark": {
+            "type": "line",
+            "strokeWidth": 2.5
+          },
+          "encoding": {
+            "order": {
+              "field": "step"
+            },
+            "detail": {
+              "field": "platform"
+            }
+          }
+        },
+        {
+          "mark": {
+            "type": "point",
+            "filled": true,
+            "size": 120,
+            "opacity": 1
+          },
+          "encoding": {
+            "shape": {
+              "condition": {
+                "test": "datum.step == 1",
+                "value": "triangle-left"
+              },
+              "value": "circle"
+            },
+            "opacity": {
+              "condition": {
+                "test": "datum.step == 1",
+                "value": 1
+              },
+              "value": 0.45
+            },
+            "tooltip": [
+              {
+                "field": "platform",
+                "title": "Platform"
+              },
+              {
+                "field": "year",
+                "title": "Financial year"
+              },
+              {
+                "field": "spend_m",
+                "title": "Spend ($m)"
+              },
+              {
+                "field": "hours",
+                "title": "Hours"
+              },
+              {
+                "field": "titles",
+                "title": "Titles"
+              },
+              {
+                "field": "per_hour",
+                "title": "Spend per hour ($m)",
+                "format": ".2f"
+              }
+            ]
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "dy": -14,
+            "fontSize": 11,
+            "fontWeight": 600
+          },
+          "encoding": {
+            "text": {
+              "field": "year"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null
+    }
+  }
+}

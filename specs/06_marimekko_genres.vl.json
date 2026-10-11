@@ -1,0 +1,259 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Marimekko (mosaic) chart: share of free-to-air TV minutes by platform (column width) and genre (segment height), Jan–Jun 2026 (OzTAM VOZ). The area of each block is its share of all free-to-air TV viewing time.",
+  "width": "container",
+  "height": 380,
+  "data": {
+    "url": "data/voz_genre_h1_2026.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "platform_share_of_minutes_pct": "number",
+        "genre_share_pct": "number"
+      }
+    }
+  },
+  "transform": [
+    {
+      "calculate": "indexof(['News & current affairs', 'Sport', 'Drama', 'Reality TV', 'Light entertainment', 'Infotainment & lifestyle', 'Children\\'s', 'Documentary', 'Movies & mini-series', 'Comedy'], datum.genre)",
+      "as": "genre_order"
+    },
+    {
+      "stack": "genre_share_pct",
+      "groupby": [
+        "platform"
+      ],
+      "sort": [
+        {
+          "field": "genre_order",
+          "order": "ascending"
+        }
+      ],
+      "as": [
+        "y0",
+        "y1"
+      ]
+    },
+    {
+      "calculate": "datum.platform == 'Broadcast TV' ? 0 : 80.9",
+      "as": "x0"
+    },
+    {
+      "calculate": "datum.x0 + datum.platform_share_of_minutes_pct",
+      "as": "x1"
+    },
+    {
+      "calculate": "datum.platform_share_of_minutes_pct * datum.genre_share_pct / 100",
+      "as": "share_of_all"
+    },
+    {
+      "calculate": "(datum.x0 + datum.x1) / 2",
+      "as": "xm"
+    },
+    {
+      "calculate": "(datum.y0 + datum.y1) / 2",
+      "as": "ym"
+    },
+    {
+      "calculate": "{'News & current affairs':'News','Sport':'Sport','Drama':'Drama','Reality TV':'Reality','Light entertainment':'Light ent.','Infotainment & lifestyle':'Lifestyle','Children\\'s':'Children\\'s','Documentary':'Docos','Movies & mini-series':'Movies','Comedy':'Comedy'}[datum.genre]",
+      "as": "short"
+    },
+    {
+      "calculate": "datum.genre + '  ' + format(datum.genre_share_pct, '.1f') + '%'",
+      "as": "label_long"
+    },
+    {
+      "calculate": "datum.short + ' ' + format(datum.genre_share_pct, '.1f') + '%'",
+      "as": "label_short"
+    }
+  ],
+  "encoding": {
+    "x": {
+      "field": "x0",
+      "type": "quantitative",
+      "scale": {
+        "domain": [
+          0,
+          100
+        ]
+      },
+      "axis": null
+    },
+    "y": {
+      "field": "y0",
+      "type": "quantitative",
+      "scale": {
+        "domain": [
+          0,
+          100
+        ],
+        "reverse": true
+      },
+      "axis": null
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "rect",
+        "stroke": "#faf7f0",
+        "strokeWidth": 2
+      },
+      "encoding": {
+        "x2": {
+          "field": "x1"
+        },
+        "y2": {
+          "field": "y1"
+        },
+        "color": {
+          "field": "genre",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "News & current affairs",
+              "Sport",
+              "Drama",
+              "Reality TV",
+              "Light entertainment",
+              "Infotainment & lifestyle",
+              "Children's",
+              "Documentary",
+              "Movies & mini-series",
+              "Comedy"
+            ],
+            "range": [
+              "#00843D",
+              "#FFCD00",
+              "#005c2b",
+              "#26313d",
+              "#c9cfc6",
+              "#d6dad2",
+              "#bfc6bd",
+              "#dfe2db",
+              "#cdd3ca",
+              "#e6e8e2"
+            ]
+          },
+          "legend": null
+        },
+        "opacity": {
+          "condition": {
+            "param": "genre_hover",
+            "empty": true,
+            "value": 1
+          },
+          "value": 0.35
+        },
+        "tooltip": [
+          {
+            "field": "platform",
+            "title": "Platform"
+          },
+          {
+            "field": "genre",
+            "title": "Genre"
+          },
+          {
+            "field": "genre_share_pct",
+            "title": "% of this platform's minutes",
+            "format": ".1f"
+          },
+          {
+            "field": "share_of_all",
+            "title": "% of ALL free-to-air TV minutes",
+            "format": ".1f"
+          }
+        ]
+      },
+      "params": [
+        {
+          "name": "genre_hover",
+          "select": {
+            "type": "point",
+            "fields": [
+              "genre"
+            ],
+            "on": "mouseover",
+            "clear": "mouseout"
+          }
+        }
+      ]
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.platform == 'Broadcast TV' && datum.genre_share_pct >= 4"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "fontSize": 12,
+        "fontWeight": 600,
+        "align": "center"
+      },
+      "encoding": {
+        "x": {
+          "field": "xm",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "ym",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "label_long"
+        },
+        "color": {
+          "condition": {
+            "test": "indexof(['News & current affairs', 'Drama', 'Reality TV'], datum.genre) >= 0",
+            "value": "white"
+          },
+          "value": "#26313d"
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.platform != 'Broadcast TV' && datum.genre_share_pct >= 4"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "fontSize": 10.5,
+        "fontWeight": 600,
+        "align": "center"
+      },
+      "encoding": {
+        "x": {
+          "field": "xm",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "ym",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "label_short"
+        },
+        "color": {
+          "condition": {
+            "test": "indexof(['News & current affairs', 'Drama', 'Reality TV'], datum.genre) >= 0",
+            "value": "white"
+          },
+          "value": "#26313d"
+        }
+      }
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null
+    }
+  },
+  "autosize": {
+    "type": "fit-x",
+    "contains": "padding"
+  }
+}

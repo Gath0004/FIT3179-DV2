@@ -1,0 +1,139 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Small-multiple waffle charts: how each age group watched free-to-air TV in an average week, Jan–Jun 2026 (OzTAM VOZ). Each square = 1% of the group.",
+  "data": {
+    "url": "data/voz_weekly_reach_h1_2026.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "group_order": "number",
+        "segment_order": "number",
+        "pct": "number",
+        "cells": "number"
+      }
+    }
+  },
+  "transform": [
+    {
+      "calculate": "sequence(0, datum.cells)",
+      "as": "cell"
+    },
+    {
+      "flatten": [
+        "cell"
+      ]
+    },
+    {
+      "window": [
+        {
+          "op": "row_number",
+          "as": "idx"
+        }
+      ],
+      "groupby": [
+        "group"
+      ],
+      "sort": [
+        {
+          "field": "segment_order"
+        }
+      ]
+    },
+    {
+      "calculate": "(datum.idx - 1) % 10",
+      "as": "col"
+    },
+    {
+      "calculate": "floor((datum.idx - 1) / 10)",
+      "as": "row"
+    }
+  ],
+  "facet": {
+    "column": {
+      "field": "group",
+      "type": "nominal",
+      "sort": {
+        "field": "group_order"
+      },
+      "header": {
+        "title": null,
+        "labelFontSize": 14,
+        "labelFontWeight": 600,
+        "labelPadding": 6
+      }
+    }
+  },
+  "spacing": 36,
+  "spec": {
+    "width": 160,
+    "height": 160,
+    "mark": {
+      "type": "rect",
+      "cornerRadius": 1.5,
+      "stroke": "#faf7f0",
+      "strokeWidth": 1.6
+    },
+    "encoding": {
+      "x": {
+        "field": "col",
+        "type": "ordinal",
+        "axis": null
+      },
+      "y": {
+        "field": "row",
+        "type": "ordinal",
+        "axis": null
+      },
+      "color": {
+        "field": "segment",
+        "type": "nominal",
+        "sort": {
+          "field": "segment_order"
+        },
+        "scale": {
+          "domain": [
+            "Broadcast TV only",
+            "Both broadcast & apps",
+            "Streaming apps only",
+            "Didn't watch that week"
+          ],
+          "range": [
+            "#00843D",
+            "#9fd1b4",
+            "#FFCD00",
+            "#e9e4d6"
+          ]
+        },
+        "legend": {
+          "title": null,
+          "orient": "bottom",
+          "direction": "horizontal",
+          "columns": 4,
+          "labelLimit": 200,
+          "symbolType": "square",
+          "labelFontSize": 12
+        }
+      },
+      "tooltip": [
+        {
+          "field": "group",
+          "title": "Group"
+        },
+        {
+          "field": "segment",
+          "title": "Viewing in an average week"
+        },
+        {
+          "field": "pct",
+          "title": "% of group",
+          "format": ".1f"
+        }
+      ]
+    }
+  },
+  "config": {
+    "view": {
+      "stroke": null
+    }
+  }
+}

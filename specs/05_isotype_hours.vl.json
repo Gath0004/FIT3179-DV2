@@ -1,0 +1,167 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Isotype (pictogram) chart: average monthly hours of free-to-air TV per person by group, Jan–Jun 2026 (OzTAM VOZ). Each TV icon = about 5 hours a month.",
+  "width": 440,
+  "height": 240,
+  "data": {
+    "url": "data/voz_monthly_h1_2026.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "group_order": "number",
+        "total_reach_pct": "number",
+        "broadcast_reach_pct": "number",
+        "bvod_reach_pct": "number"
+      }
+    }
+  },
+  "transform": [
+    {
+      "calculate": "toNumber(split(datum.total_time, ':')[0]) + toNumber(split(datum.total_time, ':')[1]) / 60",
+      "as": "total_h"
+    },
+    {
+      "calculate": "toNumber(split(datum.broadcast_time, ':')[0]) + toNumber(split(datum.broadcast_time, ':')[1]) / 60",
+      "as": "broadcast_h"
+    },
+    {
+      "calculate": "toNumber(split(datum.bvod_time, ':')[0]) + toNumber(split(datum.bvod_time, ':')[1]) / 60",
+      "as": "bvod_h"
+    },
+    {
+      "calculate": "round(datum.total_h / 5)",
+      "as": "icons"
+    },
+    {
+      "calculate": "datum.icons - round(datum.bvod_h / 5)",
+      "as": "broadcast_icons"
+    },
+    {
+      "calculate": "round(datum.total_h) + ' hrs (' + (datum.total_h / 30.4 >= 1 ? format(datum.total_h / 30.4, '.1f') + ' a day)' : round(datum.total_h * 60 / 30.4) + ' min a day)')",
+      "as": "label"
+    },
+    {
+      "calculate": "sequence(0, datum.icons)",
+      "as": "i"
+    },
+    {
+      "flatten": [
+        "i"
+      ]
+    },
+    {
+      "calculate": "datum.i < datum.broadcast_icons ? 'Broadcast (antenna)' : 'Streaming apps (BVOD)'",
+      "as": "platform"
+    }
+  ],
+  "encoding": {
+    "y": {
+      "field": "group",
+      "type": "nominal",
+      "sort": {
+        "field": "group_order"
+      },
+      "axis": {
+        "title": null,
+        "domain": false,
+        "ticks": false,
+        "labelFontSize": 12,
+        "labelPadding": 10
+      }
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "shape": "M-1,-0.62 L1,-0.62 L1,0.42 L-1,0.42 Z M-0.42,0.52 L0.42,0.52 L0.42,0.66 L-0.42,0.66 Z",
+        "size": 150,
+        "strokeWidth": 0,
+        "opacity": 1
+      },
+      "encoding": {
+        "x": {
+          "field": "i",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              -0.6,
+              25.5
+            ]
+          },
+          "axis": null
+        },
+        "color": {
+          "field": "platform",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Broadcast (antenna)",
+              "Streaming apps (BVOD)"
+            ],
+            "range": [
+              "#00843D",
+              "#FFCD00"
+            ]
+          },
+          "legend": {
+            "title": null,
+            "orient": "top",
+            "direction": "horizontal",
+            "symbolType": "square",
+            "labelFontSize": 12,
+            "labelLimit": 220
+          }
+        },
+        "tooltip": [
+          {
+            "field": "group",
+            "title": "Group"
+          },
+          {
+            "field": "total_time",
+            "title": "Total per month (hh:mm)"
+          },
+          {
+            "field": "broadcast_time",
+            "title": "…on broadcast"
+          },
+          {
+            "field": "bvod_time",
+            "title": "…on streaming apps"
+          }
+        ]
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.i == datum.icons - 1"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 12,
+        "fontSize": 12,
+        "fontWeight": 500,
+        "color": "#3b3b3b"
+      },
+      "encoding": {
+        "x": {
+          "field": "i",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "label"
+        }
+      }
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null
+    }
+  }
+}

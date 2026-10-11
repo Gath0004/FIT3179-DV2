@@ -1,0 +1,17 @@
+group,group_order,segment,segment_order,pct,cells,total_weekly_reach_pct
+All people,1,Broadcast TV only,1,36.3,36,70.7
+All people,1,Both broadcast & apps,2,22.3,23,70.7
+All people,1,Streaming apps only,3,12.1,12,70.7
+All people,1,Didn't watch that week,4,29.3,29,70.7
+Ages 16–39,2,Broadcast TV only,1,26.3,26,56.9
+Ages 16–39,2,Both broadcast & apps,2,13.4,14,56.9
+Ages 16–39,2,Streaming apps only,3,17.2,17,56.9
+Ages 16–39,2,Didn't watch that week,4,43.1,43,56.9
+Ages 25–54,3,Broadcast TV only,1,29.2,29,71.5
+Ages 25–54,3,Both broadcast & apps,2,24.3,24,71.5
+Ages 25–54,3,Streaming apps only,3,18.0,18,71.5
+Ages 25–54,3,Didn't watch that week,4,28.5,29,71.5
+Ages 55+,4,Broadcast TV only,1,46.5,47,90.0
+Ages 55+,4,Both broadcast & apps,2,36.2,36,90.0
+Ages 55+,4,Streaming apps only,3,7.2,7,90.0
+Ages 55+,4,Didn't watch that week,4,10.0,10,90.0

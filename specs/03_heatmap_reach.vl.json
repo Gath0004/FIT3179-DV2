@@ -1,0 +1,168 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Heatmap: average monthly reach of free-to-air TV by audience group and platform, Jan–Jun 2026 (OzTAM VOZ).",
+  "data": {
+    "url": "data/voz_monthly_h1_2026.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "group_order": "number",
+        "total_reach_pct": "number",
+        "broadcast_reach_pct": "number",
+        "bvod_reach_pct": "number"
+      }
+    }
+  },
+  "transform": [
+    {
+      "fold": [
+        "total_reach_pct",
+        "broadcast_reach_pct",
+        "bvod_reach_pct"
+      ],
+      "as": [
+        "measure",
+        "reach"
+      ]
+    },
+    {
+      "calculate": "datum.measure == 'total_reach_pct' ? 'Any free-to-air TV' : datum.measure == 'broadcast_reach_pct' ? 'Broadcast (antenna)' : 'Streaming apps (BVOD)'",
+      "as": "platform"
+    },
+    {
+      "calculate": "toNumber(datum.reach)",
+      "as": "reach"
+    }
+  ],
+  "width": 330,
+  "height": 260,
+  "encoding": {
+    "x": {
+      "field": "platform",
+      "type": "nominal",
+      "sort": [
+        "Any free-to-air TV",
+        "Broadcast (antenna)",
+        "Streaming apps (BVOD)"
+      ],
+      "axis": {
+        "title": null,
+        "orient": "top",
+        "labelAngle": 0,
+        "labelLimit": 110,
+        "labelFontSize": 11,
+        "labelFontWeight": 600,
+        "domain": false,
+        "ticks": false,
+        "labelPadding": 8
+      }
+    },
+    "y": {
+      "field": "group",
+      "type": "nominal",
+      "sort": {
+        "field": "group_order"
+      },
+      "axis": {
+        "title": null,
+        "domain": false,
+        "ticks": false,
+        "labelFontSize": 12,
+        "labelPadding": 8
+      }
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "rect",
+        "cornerRadius": 3,
+        "stroke": "#faf7f0",
+        "strokeWidth": 3
+      },
+      "encoding": {
+        "color": {
+          "field": "reach",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              50,
+              100
+            ],
+            "range": [
+              "#eef6f0",
+              "#005c2b"
+            ]
+          },
+          "legend": {
+            "title": "% of group reached in an average month",
+            "orient": "bottom",
+            "direction": "horizontal",
+            "gradientLength": 220,
+            "titleLimit": 300,
+            "format": "d"
+          }
+        },
+        "strokeWidth": {
+          "condition": {
+            "param": "cell",
+            "empty": false,
+            "value": 0
+          },
+          "value": 3
+        },
+        "tooltip": [
+          {
+            "field": "group",
+            "title": "Group"
+          },
+          {
+            "field": "platform",
+            "title": "Platform"
+          },
+          {
+            "field": "reach",
+            "title": "Monthly reach (%)",
+            "format": ".1f"
+          }
+        ]
+      },
+      "params": [
+        {
+          "name": "cell",
+          "select": {
+            "type": "point",
+            "on": "mouseover",
+            "clear": "mouseout"
+          }
+        }
+      ]
+    },
+    {
+      "mark": {
+        "type": "text",
+        "fontSize": 13,
+        "fontWeight": 600
+      },
+      "encoding": {
+        "text": {
+          "field": "reach",
+          "type": "quantitative",
+          "format": ".0f"
+        },
+        "color": {
+          "condition": {
+            "test": "datum.reach > 72",
+            "value": "white"
+          },
+          "value": "#005c2b"
+        }
+      }
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null
+    }
+  }
+}

@@ -1,0 +1,13 @@
+service,year,pct,group
+Any online video,2017,37,online
+Any online video,2025,91,online
+Paid streaming services,2017,29,online
+Paid streaming services,2025,68,online
+YouTube,2017,6,online
+YouTube,2025,56,online
+Netflix,2017,28,online
+Netflix,2025,51,online
+Free-to-air TV (live),2017,71,fta
+Free-to-air TV (live),2025,52,fta
+Free-to-air TV apps,2017,18,fta
+Free-to-air TV apps,2025,44,fta

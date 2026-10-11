@@ -1,0 +1,322 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Spike map: each state's share of all screen drama production spending in Australia, 2023/24 vs 2024/25 (Screen Australia Drama Report). Spike height is proportional to share. ACT, NT and Tasmania are reported together and drawn at Hobart.",
+  "width": 520,
+  "height": 440,
+  "projection": {
+    "type": "conicEqualArea",
+    "parallels": [
+      -18,
+      -36
+    ],
+    "rotate": [
+      -132,
+      0
+    ]
+  },
+  "params": [
+    {
+      "name": "show_prev",
+      "value": true,
+      "bind": {
+        "input": "checkbox",
+        "name": "Compare with 2023/24 (grey spikes) "
+      }
+    }
+  ],
+  "layer": [
+    {
+      "data": {
+        "url": "data/aus_states.topojson",
+        "format": {
+          "type": "topojson",
+          "feature": "states"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#ece6d8",
+        "stroke": "#faf7f0",
+        "strokeWidth": 1.2
+      }
+    },
+    {
+      "data": {
+        "url": "data/drama_spend_by_state.csv",
+        "format": {
+          "type": "csv",
+          "parse": {
+            "share_2023_24_pct": "number",
+            "share_2024_25_pct": "number",
+            "spend_2024_25_m": "number",
+            "lat": "number",
+            "lon": "number"
+          }
+        }
+      },
+      "transform": [
+        {
+          "fold": [
+            "share_2023_24_pct",
+            "share_2024_25_pct"
+          ],
+          "as": [
+            "year_key",
+            "share"
+          ]
+        },
+        {
+          "calculate": "toNumber(datum.share)",
+          "as": "share"
+        },
+        {
+          "calculate": "datum.year_key == 'share_2023_24_pct' ? '2023/24' : '2024/25'",
+          "as": "year"
+        },
+        {
+          "filter": "show_prev || datum.year == '2024/25'"
+        },
+        {
+          "calculate": "datum.year == '2023/24' ? datum.lon - 1.0 : (show_prev ? datum.lon + 1.0 : datum.lon)",
+          "as": "slon"
+        },
+        {
+          "calculate": "datum.region + '-' + datum.year",
+          "as": "spike_id"
+        },
+        {
+          "calculate": "[0, 1]",
+          "as": "pt"
+        },
+        {
+          "flatten": [
+            "pt"
+          ]
+        },
+        {
+          "calculate": "datum.pt == 0 ? datum.lat : datum.lat + datum.share * 0.3",
+          "as": "plat"
+        },
+        {
+          "calculate": "datum.pt == 0 ? 12 : 0.5",
+          "as": "w"
+        }
+      ],
+      "mark": {
+        "type": "trail"
+      },
+      "encoding": {
+        "longitude": {
+          "field": "slon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "plat",
+          "type": "quantitative"
+        },
+        "detail": {
+          "field": "spike_id"
+        },
+        "order": {
+          "field": "pt"
+        },
+        "size": {
+          "field": "w",
+          "type": "quantitative",
+          "scale": null,
+          "legend": null
+        },
+        "color": {
+          "field": "year",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "2023/24",
+              "2024/25"
+            ],
+            "range": [
+              "#c9c2b2",
+              "#00843D"
+            ]
+          },
+          "legend": {
+            "title": "Share of drama spend",
+            "orient": "bottom-left",
+            "symbolType": "triangle-up",
+            "labelFontSize": 12
+          }
+        },
+        "tooltip": [
+          {
+            "field": "label",
+            "title": "State/territory"
+          },
+          {
+            "field": "year",
+            "title": "Financial year"
+          },
+          {
+            "field": "share",
+            "title": "Share of national spend (%)"
+          },
+          {
+            "field": "spend_2024_25_m",
+            "title": "2024/25 spend ($m)"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "url": "data/drama_spend_by_state.csv",
+        "format": {
+          "type": "csv",
+          "parse": {
+            "share_2023_24_pct": "number",
+            "share_2024_25_pct": "number",
+            "spend_2024_25_m": "number",
+            "lat": "number",
+            "lon": "number"
+          }
+        }
+      },
+      "transform": [
+        {
+          "calculate": "show_prev ? datum.lon + 1.0 : datum.lon",
+          "as": "slon"
+        },
+        {
+          "calculate": "datum.lat + datum.share_2024_25_pct * 0.3 + 1.1",
+          "as": "tlat"
+        },
+        {
+          "calculate": "datum.share_2024_25_pct + '%'",
+          "as": "t"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "fontSize": 12,
+        "fontWeight": 700,
+        "color": "#005c2b"
+      },
+      "encoding": {
+        "longitude": {
+          "field": "slon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "tlat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "t"
+        }
+      }
+    },
+    {
+      "data": {
+        "url": "data/drama_spend_by_state.csv",
+        "format": {
+          "type": "csv",
+          "parse": {
+            "share_2023_24_pct": "number",
+            "share_2024_25_pct": "number",
+            "spend_2024_25_m": "number",
+            "lat": "number",
+            "lon": "number"
+          }
+        }
+      },
+      "transform": [
+        {
+          "filter": "show_prev"
+        },
+        {
+          "calculate": "datum.lon - 1.0",
+          "as": "slon"
+        },
+        {
+          "calculate": "datum.lat + datum.share_2023_24_pct * 0.3 + 1.1",
+          "as": "tlat"
+        },
+        {
+          "calculate": "datum.share_2023_24_pct + '%'",
+          "as": "t"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "fontSize": 11,
+        "fontWeight": 600,
+        "color": "#8a826f"
+      },
+      "encoding": {
+        "longitude": {
+          "field": "slon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "tlat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "t"
+        }
+      }
+    },
+    {
+      "data": {
+        "url": "data/drama_spend_by_state.csv",
+        "format": {
+          "type": "csv",
+          "parse": {
+            "share_2023_24_pct": "number",
+            "share_2024_25_pct": "number",
+            "spend_2024_25_m": "number",
+            "lat": "number",
+            "lon": "number"
+          }
+        }
+      },
+      "transform": [
+        {
+          "calculate": "datum.region == 'OTHER' ? 'ACT, NT & Tas' : datum.region == 'QLD' ? 'QLD $925m' : datum.region == 'NSW' ? 'NSW $832m' : datum.region == 'VIC' ? 'VIC $731m' : datum.region + ' $' + datum.spend_2024_25_m + 'm'",
+          "as": "t"
+        },
+        {
+          "calculate": "datum.region == 'OTHER' ? datum.lat - 1.6 : datum.region == 'QLD' ? datum.lat - 1.4 : datum.region == 'NSW' ? datum.lat - 1.0 : datum.region == 'VIC' ? datum.lat - 1.2 : datum.lat - 1.6",
+          "as": "tlat"
+        },
+        {
+          "calculate": "datum.region == 'QLD' || datum.region == 'NSW' ? datum.lon + 3.6 : datum.region == 'VIC' ? datum.lon - 3.8 : datum.lon",
+          "as": "tlon"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "fontSize": 11,
+        "fontWeight": 600,
+        "color": "#26313d"
+      },
+      "encoding": {
+        "longitude": {
+          "field": "tlon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "tlat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "t"
+        }
+      }
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null
+    }
+  }
+}

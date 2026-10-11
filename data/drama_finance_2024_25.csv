@@ -1,0 +1,10 @@
+id,parent,name,value_m
+root,,All finance for Australian TV & streaming drama 2024/25,
+industry,root,Australian screen industry,342
+gov,root,Government,
+offset,gov,Producer Offset tax rebate,180
+state,gov,State screen agencies,44
+sa,gov,Screen Australia,19
+othergov,gov,Other government,5
+intl,root,International investment,155
+private,root,Australian private investors,1

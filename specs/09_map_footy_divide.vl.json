@@ -1,0 +1,273 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Diverging choropleth map: of all capital-city viewers who watched either 2026 Grand Final, the share who watched the AFL rather than the NRL decider. Each state is shaded by its capital-city TV market.",
+  "width": 460,
+  "height": 400,
+  "projection": {
+    "type": "conicEqualArea",
+    "parallels": [
+      -18,
+      -36
+    ],
+    "rotate": [
+      -132,
+      0
+    ]
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "data/aus_states.topojson",
+        "format": {
+          "type": "topojson",
+          "feature": "states"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#ece6d8",
+        "stroke": "#faf7f0",
+        "strokeWidth": 1.2
+      },
+      "encoding": {
+        "tooltip": [
+          {
+            "field": "properties.name",
+            "title": "State/territory"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "url": "data/grand_finals_by_city_2026.csv",
+        "format": {
+          "type": "csv",
+          "parse": {
+            "audience": "number",
+            "market_population_2026": "number",
+            "lat": "number",
+            "lon": "number"
+          }
+        }
+      },
+      "transform": [
+        {
+          "pivot": "code",
+          "value": "audience",
+          "groupby": [
+            "city",
+            "state",
+            "market_population_2026"
+          ]
+        },
+        {
+          "calculate": "datum.AFL / (datum.AFL + datum.NRL)",
+          "as": "afl_share"
+        },
+        {
+          "calculate": "round(datum.AFL / datum.market_population_2026 * 100)",
+          "as": "afl_per100"
+        },
+        {
+          "calculate": "round(datum.NRL / datum.market_population_2026 * 100)",
+          "as": "nrl_per100"
+        },
+        {
+          "lookup": "state",
+          "from": {
+            "data": {
+              "url": "data/aus_states.topojson",
+              "format": {
+                "type": "topojson",
+                "feature": "states"
+              }
+            },
+            "key": "properties.state"
+          },
+          "as": "geo"
+        }
+      ],
+      "mark": {
+        "type": "geoshape",
+        "stroke": "#faf7f0",
+        "strokeWidth": 1.2
+      },
+      "encoding": {
+        "shape": {
+          "field": "geo",
+          "type": "geojson"
+        },
+        "color": {
+          "field": "afl_share",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0.2,
+              0.5,
+              0.8
+            ],
+            "range": [
+              "#005c2b",
+              "#f4f1e6",
+              "#e0b000"
+            ],
+            "clamp": true
+          },
+          "legend": {
+            "title": "AFL share of viewers",
+            "format": ".0%",
+            "orient": "bottom-left",
+            "direction": "horizontal",
+            "gradientLength": 180,
+            "titleLimit": 260,
+            "values": [
+              0.2,
+              0.35,
+              0.5,
+              0.65,
+              0.8
+            ]
+          }
+        },
+        "tooltip": [
+          {
+            "field": "city",
+            "title": "Capital-city TV market"
+          },
+          {
+            "field": "afl_share",
+            "title": "AFL share of GF viewers",
+            "format": ".0%"
+          },
+          {
+            "field": "AFL",
+            "title": "AFL Grand Final audience",
+            "format": ","
+          },
+          {
+            "field": "NRL",
+            "title": "NRL Grand Final audience",
+            "format": ","
+          },
+          {
+            "field": "afl_per100",
+            "title": "AFL viewers per 100 residents"
+          },
+          {
+            "field": "nrl_per100",
+            "title": "NRL viewers per 100 residents"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "url": "data/grand_finals_by_city_2026.csv",
+        "format": {
+          "type": "csv",
+          "parse": {
+            "audience": "number",
+            "market_population_2026": "number",
+            "lat": "number",
+            "lon": "number"
+          }
+        }
+      },
+      "transform": [
+        {
+          "pivot": "code",
+          "value": "audience",
+          "groupby": [
+            "city",
+            "state",
+            "lat",
+            "lon"
+          ]
+        },
+        {
+          "calculate": "format(datum.AFL / (datum.AFL + datum.NRL), '.0%') + ' AFL'",
+          "as": "label"
+        },
+        {
+          "calculate": "{'WA': [-26.5, 121.5], 'SA': [-30.0, 135.5], 'VIC': [-36.9, 144.2], 'NSW': [-32.2, 146.8], 'QLD': [-23.0, 145.0]}[datum.state]",
+          "as": "pos"
+        },
+        {
+          "calculate": "datum.pos[0]",
+          "as": "lab_lat"
+        },
+        {
+          "calculate": "datum.pos[1]",
+          "as": "lab_lon"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "fontSize": 13,
+        "fontWeight": 700
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lab_lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lab_lat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "label"
+        },
+        "color": {
+          "value": "#1d1d1d"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "lat": -17.8,
+            "lon": 133.6,
+            "t": "NT, Tas & ACT:"
+          },
+          {
+            "lat": -19.2,
+            "lon": 133.6,
+            "t": "no capital-city"
+          },
+          {
+            "lat": -20.6,
+            "lon": 133.6,
+            "t": "figures published"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "fontSize": 9.5,
+        "fontStyle": "italic",
+        "color": "#6b6b6b"
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "t"
+        }
+      }
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null
+    }
+  }
+}

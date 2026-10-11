@@ -1,0 +1,215 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Proportional symbol map: average TV audience of the 2026 AFL and NRL Grand Finals in each capital-city TV market. Circle area is proportional to audience.",
+  "width": 460,
+  "height": 400,
+  "projection": {
+    "type": "conicEqualArea",
+    "parallels": [
+      -18,
+      -36
+    ],
+    "rotate": [
+      -132,
+      0
+    ]
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "data/aus_states.topojson",
+        "format": {
+          "type": "topojson",
+          "feature": "states"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#ece6d8",
+        "stroke": "#faf7f0",
+        "strokeWidth": 1.2
+      }
+    },
+    {
+      "data": {
+        "url": "data/grand_finals_by_city_2026.csv",
+        "format": {
+          "type": "csv",
+          "parse": {
+            "audience": "number",
+            "market_population_2026": "number",
+            "lat": "number",
+            "lon": "number"
+          }
+        }
+      },
+      "transform": [
+        {
+          "calculate": "datum.code == 'AFL' ? datum.lon - 1.9 : datum.lon + 1.9",
+          "as": "lon_off"
+        },
+        {
+          "calculate": "round(datum.audience / datum.market_population_2026 * 100)",
+          "as": "per100"
+        }
+      ],
+      "mark": {
+        "type": "circle",
+        "stroke": "white",
+        "strokeWidth": 1.2
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon_off",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "size": {
+          "field": "audience",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0,
+              1300000
+            ],
+            "range": [
+              0,
+              3000
+            ]
+          },
+          "legend": {
+            "title": "Average audience",
+            "format": ".2s",
+            "values": [
+              250000,
+              1000000
+            ],
+            "symbolFillColor": "#cfc8b8",
+            "symbolStrokeColor": "#9a927f",
+            "orient": "none",
+            "legendX": 95,
+            "legendY": 335,
+            "direction": "horizontal",
+            "titleFontSize": 11,
+            "labelFontSize": 11
+          }
+        },
+        "color": {
+          "field": "code",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "AFL",
+              "NRL"
+            ],
+            "range": [
+              "#FFCD00",
+              "#00843D"
+            ]
+          },
+          "legend": {
+            "title": null,
+            "orient": "top-left",
+            "labelExpr": "datum.label == 'AFL' ? 'AFL Grand Final' : 'NRL Grand Final'",
+            "symbolSize": 160,
+            "labelFontSize": 12
+          }
+        },
+        "opacity": {
+          "condition": {
+            "param": "city_hover",
+            "empty": true,
+            "value": 0.9
+          },
+          "value": 0.25
+        },
+        "tooltip": [
+          {
+            "field": "city",
+            "title": "TV market"
+          },
+          {
+            "field": "code",
+            "title": "Grand Final"
+          },
+          {
+            "field": "match",
+            "title": "Match"
+          },
+          {
+            "field": "audience",
+            "title": "Average audience",
+            "format": ","
+          },
+          {
+            "field": "per100",
+            "title": "Viewers per 100 residents"
+          }
+        ]
+      },
+      "params": [
+        {
+          "name": "city_hover",
+          "select": {
+            "type": "point",
+            "fields": [
+              "city"
+            ],
+            "on": "mouseover",
+            "clear": "mouseout"
+          }
+        }
+      ]
+    },
+    {
+      "data": {
+        "url": "data/grand_finals_by_city_2026.csv",
+        "format": {
+          "type": "csv",
+          "parse": {
+            "audience": "number",
+            "market_population_2026": "number",
+            "lat": "number",
+            "lon": "number"
+          }
+        }
+      },
+      "transform": [
+        {
+          "filter": "datum.code == 'AFL'"
+        },
+        {
+          "calculate": "datum.city == 'Brisbane' ? datum.lat + 2.6 : datum.lat - 2.9",
+          "as": "lab_lat"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "fontSize": 12,
+        "fontWeight": 600,
+        "color": "#26313d"
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lab_lat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "city"
+        }
+      }
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null
+    }
+  }
+}

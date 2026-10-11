@@ -1,0 +1,302 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "description": "Treemap (built in Vega): who paid for Australian TV and streaming drama in 2024/25 (Screen Australia Drama Report). Rectangle area is proportional to dollars invested.",
+  "width": 470,
+  "height": 310,
+  "padding": 4,
+  "autosize": "none",
+  "data": [
+    {
+      "name": "tree",
+      "url": "data/drama_finance_2024_25.csv",
+      "format": {
+        "type": "csv",
+        "parse": {
+          "value_m": "number"
+        }
+      },
+      "transform": [
+        {
+          "type": "stratify",
+          "key": "id",
+          "parentKey": "parent"
+        },
+        {
+          "type": "treemap",
+          "field": "value_m",
+          "sort": {
+            "field": "value",
+            "order": "descending"
+          },
+          "round": true,
+          "method": "squarify",
+          "ratio": 1.4,
+          "paddingInner": 3,
+          "paddingOuter": 0,
+          "paddingTop": {
+            "signal": "0"
+          },
+          "size": [
+            {
+              "signal": "width"
+            },
+            {
+              "signal": "height"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "leaves",
+      "source": "tree",
+      "transform": [
+        {
+          "type": "filter",
+          "expr": "!datum.children"
+        },
+        {
+          "type": "formula",
+          "as": "group",
+          "expr": "datum.parent == 'gov' ? 'Government' : datum.id == 'industry' ? 'Industry' : datum.id == 'intl' ? 'International' : 'Private'"
+        },
+        {
+          "type": "formula",
+          "as": "share",
+          "expr": "datum.value_m / 749"
+        },
+        {
+          "type": "formula",
+          "as": "w",
+          "expr": "datum.x1 - datum.x0"
+        },
+        {
+          "type": "formula",
+          "as": "h",
+          "expr": "datum.y1 - datum.y0"
+        }
+      ]
+    },
+    {
+      "name": "govbox",
+      "source": "tree",
+      "transform": [
+        {
+          "type": "filter",
+          "expr": "datum.id == 'gov'"
+        }
+      ]
+    }
+  ],
+  "scales": [
+    {
+      "name": "colour",
+      "type": "ordinal",
+      "domain": [
+        "offset",
+        "state",
+        "sa",
+        "othergov",
+        "industry",
+        "intl",
+        "private"
+      ],
+      "range": [
+        "#FFCD00",
+        "#ffd94d",
+        "#ffe680",
+        "#fff0b3",
+        "#00843D",
+        "#26313d",
+        "#b9b2a3"
+      ]
+    }
+  ],
+  "marks": [
+    {
+      "type": "rect",
+      "from": {
+        "data": "leaves"
+      },
+      "encode": {
+        "enter": {
+          "x": {
+            "field": "x0"
+          },
+          "y": {
+            "field": "y0"
+          },
+          "x2": {
+            "field": "x1"
+          },
+          "y2": {
+            "field": "y1"
+          },
+          "fill": {
+            "scale": "colour",
+            "field": "id"
+          },
+          "stroke": {
+            "value": "#faf7f0"
+          },
+          "strokeWidth": {
+            "value": 1.5
+          },
+          "cornerRadius": {
+            "value": 2
+          },
+          "tooltip": {
+            "signal": "{'Source': datum.name, 'Group': datum.group, 'Amount': '$' + datum.value_m + 'm', 'Share of $749m total': format(datum.share, '.0%')}"
+          }
+        },
+        "update": {
+          "opacity": {
+            "value": 1
+          }
+        },
+        "hover": {
+          "opacity": {
+            "value": 0.8
+          }
+        }
+      }
+    },
+    {
+      "type": "rect",
+      "from": {
+        "data": "govbox"
+      },
+      "interactive": false,
+      "encode": {
+        "enter": {
+          "x": {
+            "field": "x0"
+          },
+          "y": {
+            "field": "y0"
+          },
+          "x2": {
+            "field": "x1"
+          },
+          "y2": {
+            "field": "y1"
+          },
+          "fill": {
+            "value": "transparent"
+          },
+          "stroke": {
+            "value": "#005c2b"
+          },
+          "strokeWidth": {
+            "value": 1.5
+          },
+          "strokeDash": {
+            "value": [
+              4,
+              3
+            ]
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "from": {
+        "data": "leaves"
+      },
+      "interactive": false,
+      "encode": {
+        "enter": {
+          "x": {
+            "signal": "datum.x0 + 8"
+          },
+          "y": {
+            "signal": "datum.y0 + 20"
+          },
+          "text": {
+            "signal": "datum.w > 120 && datum.h > 50 ? ('$' + datum.value_m + 'm  ·  ' + format(datum.share, '.0%')) : datum.w > 38 && datum.h > 24 ? '$' + datum.value_m + 'm' : ''"
+          },
+          "fill": {
+            "signal": "datum.id == 'industry' || datum.id == 'intl' ? 'white' : '#26313d'"
+          },
+          "font": {
+            "value": "IBM Plex Sans Condensed, Arial Narrow, sans-serif"
+          },
+          "fontSize": {
+            "signal": "datum.w > 120 ? 16 : 12"
+          },
+          "fontWeight": {
+            "value": 600
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "from": {
+        "data": "leaves"
+      },
+      "interactive": false,
+      "encode": {
+        "enter": {
+          "x": {
+            "signal": "datum.x0 + 8"
+          },
+          "y": {
+            "signal": "datum.y0 + 38"
+          },
+          "text": {
+            "signal": "datum.w > 80 && datum.h > 50 ? datum.name : ''"
+          },
+          "limit": {
+            "signal": "datum.w - 14"
+          },
+          "fill": {
+            "signal": "datum.id == 'industry' || datum.id == 'intl' ? 'white' : '#26313d'"
+          },
+          "font": {
+            "value": "IBM Plex Sans Condensed, Arial Narrow, sans-serif"
+          },
+          "fontSize": {
+            "value": 12
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "from": {
+        "data": "govbox"
+      },
+      "interactive": false,
+      "encode": {
+        "enter": {
+          "x": {
+            "signal": "datum.x0 + 8"
+          },
+          "y": {
+            "signal": "datum.y1 - 10"
+          },
+          "align": {
+            "value": "left"
+          },
+          "text": {
+            "value": "GOVERNMENT  $251m  ·  34%"
+          },
+          "fill": {
+            "value": "#26313d"
+          },
+          "font": {
+            "value": "IBM Plex Sans Condensed, Arial Narrow, sans-serif"
+          },
+          "fontSize": {
+            "value": 12
+          },
+          "fontWeight": {
+            "value": 600
+          }
+        }
+      }
+    }
+  ]
+}

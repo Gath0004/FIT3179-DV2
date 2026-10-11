@@ -1,0 +1,277 @@
+/* Switched On: How Australia watches TV (FIT3179 DV2, Gathika Athuruliya)
+   Fonts (self-hosted, SIL OFL): Bebas Neue for headings (TV title-card feel),
+   Source Serif 4 for short reading text, IBM Plex Sans Condensed for charts and labels. */
+
+@font-face { font-family: "Bebas Neue"; src: url("../fonts/bebas-neue-latin-400-normal.woff2") format("woff2"); font-display: swap; }
+@font-face { font-family: "Source Serif 4"; src: url("../fonts/source-serif-4-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Source Serif 4"; src: url("../fonts/source-serif-4-latin-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: "Source Serif 4"; src: url("../fonts/source-serif-4-latin-600-normal.woff2") format("woff2"); font-weight: 600; font-display: swap; }
+@font-face { font-family: "IBM Plex Sans Condensed"; src: url("../fonts/ibm-plex-sans-condensed-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "IBM Plex Sans Condensed"; src: url("../fonts/ibm-plex-sans-condensed-latin-500-normal.woff2") format("woff2"); font-weight: 500; font-display: swap; }
+@font-face { font-family: "IBM Plex Sans Condensed"; src: url("../fonts/ibm-plex-sans-condensed-latin-600-normal.woff2") format("woff2"); font-weight: 600; font-display: swap; }
+
+:root {
+  --paper: #faf7f0;
+  --paper-2: #f1ece0;
+  --card: #ffffff;
+  --ink: #0c2416;
+  --ink-soft: #59616b;
+  --rule: #e2dccd;
+  --screen: #06140c;
+  --broadcast: #00843D;
+  --bvod: #FFCD00;
+  --serif: "Source Serif 4", Georgia, serif;
+  --display: "Bebas Neue", Impact, "Arial Narrow", sans-serif;
+  --sans: "IBM Plex Sans Condensed", "Arial Narrow", Arial, sans-serif;
+  --gap: 24px;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); font-size: 16px; line-height: 1.5; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 32px; }
+
+/* ---------- hero ---------- */
+.hero { background: radial-gradient(ellipse at 75% 35%, #0d2a1a 0%, var(--screen) 70%); color: #f2efe8; padding: 64px 0 40px; border-bottom: 5px solid var(--bvod); }
+.hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 48px; align-items: center; }
+.kicker { font-weight: 600; letter-spacing: .16em; text-transform: uppercase; font-size: 13px; color: var(--bvod); margin: 0 0 10px; }
+.hero h1 { font-family: var(--display); font-weight: 400; font-size: 120px; line-height: .88; margin: 0 0 20px; }
+.hero h1 span { color: var(--bvod); }
+.dek { font-family: var(--serif); font-size: 24px; line-height: 1.4; color: #dcd8cf; margin: 0 0 24px; max-width: 22em; }
+.byline { font-size: 14px; color: #a9b1bb; margin: 0; }
+.byline strong { color: #fff; font-weight: 600; }
+
+.tv { margin: 0; background: #103020; border-radius: 20px; padding: 18px 18px 14px; box-shadow: 0 24px 50px rgba(0,0,0,.45), inset 0 0 0 2px #1d4a31; position: relative; }
+.tv::after { content: ""; position: absolute; left: 50%; bottom: -22px; width: 110px; height: 12px; transform: translateX(-50%); background: #103020; border-radius: 0 0 10px 10px; }
+.tv .screen { background: var(--screen); border-radius: 8px; padding: 14px; display: flex; justify-content: center; }
+.key { list-style: none; padding: 0; margin: 12px 0 6px; font-size: 13px; color: #e5e2db; display: grid; gap: 3px; }
+.key i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 8px; }
+.tv figcaption { font-size: 12px; color: #9aa3ad; line-height: 1.4; }
+
+.stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--gap); margin-top: 48px; padding-top: 24px; border-top: 1px solid #1d4a31; }
+.stats b { display: block; font-family: var(--display); font-weight: 400; font-size: 52px; line-height: 1; color: #fff; }
+.stats span { display: block; font-size: 14px; color: #b8c0ca; margin-top: 4px; }
+
+/* ---------- nav ---------- */
+.toc { position: sticky; top: 0; z-index: 10; background: rgba(250,247,240,.96); border-bottom: 1px solid var(--rule); }
+.toc ol { list-style: none; display: flex; gap: 28px; margin: 0 auto; padding-top: 10px; padding-bottom: 10px; font-size: 14px; counter-reset: ch; overflow-x: auto; }
+.toc li { counter-increment: ch; white-space: nowrap; }
+.toc a { color: var(--ink-soft); text-decoration: none; }
+.toc a::before { content: counter(ch, decimal-leading-zero) " "; color: var(--bvod); font-weight: 600; }
+.toc a:hover { color: var(--ink); }
+
+/* ---------- chapters ---------- */
+.chapter { padding: 72px 0; }
+.chapter.alt { background: var(--paper-2); }
+.ch-head { margin-bottom: 28px; max-width: 760px; }
+.ch-no { font-family: var(--display); font-size: 22px; color: var(--bvod); letter-spacing: .06em; }
+.ch-head h2 { font-family: var(--display); font-weight: 400; font-size: 56px; line-height: .95; margin: 2px 0 10px; }
+.ch-head p { font-family: var(--serif); font-size: 20px; line-height: 1.45; color: var(--ink-soft); margin: 0; }
+
+/* ---------- grid + cards ---------- */
+.grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--gap); align-items: stretch; }
+.grid-2 + .card, .card + .grid-2, .wrap > .card + .card, .grid-2 + .grid-2 { margin-top: var(--gap); }
+.card { margin: 0; background: var(--card); border: 1px solid var(--rule); border-radius: 8px; padding: 22px 22px 16px; display: flex; flex-direction: column; min-width: 0; }
+.card h3 { font-size: 19px; font-weight: 600; line-height: 1.25; margin: 0 0 4px; }
+.card .sub { font-size: 14px; color: var(--ink-soft); margin: 0 0 14px; }
+.card .chart { flex: 1; min-width: 0; display: flex; justify-content: center; align-items: flex-start; }
+.card .chart > .vega-embed { width: auto; }
+#vis-mekko > .vega-embed, #vis-gf > .vega-embed { width: 100%; }
+.card .chart.center { display: flex; justify-content: center; }
+.card figcaption { font-size: 12px; color: #8a8f95; margin-top: 12px; padding-top: 10px; border-top: 1px solid #f0ece3; }
+.card figcaption a { color: inherit; }
+.c-b { color: var(--broadcast); font-weight: 600; }
+.c-v { color: #a67c00; font-weight: 600; }
+
+/* big-number fact panels */
+.facts { justify-content: flex-start; }
+.fact { padding: 16px 0; border-top: 1px solid var(--rule); }
+.fact:first-of-type { border-top: 0; }
+.fact b { display: block; font-family: var(--display); font-weight: 400; font-size: 46px; line-height: 1; color: var(--broadcast); }
+.fact span { display: block; font-size: 15px; color: var(--ink-soft); margin-top: 4px; }
+.facts figcaption { margin-top: auto; }
+
+/* spike-map card: map + side facts */
+.card.split { display: grid; grid-template-columns: minmax(0, 1fr) 260px; gap: 32px; align-items: center; }
+.facts.side .fact:first-child { border-top: 0; }
+
+/* Marimekko column labels aligned to the plot */
+.mekko-head { display: flex; gap: 0; font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--ink); margin: 0 0 6px; }
+.mekko-head span { padding-left: 2px; }
+
+/* vega-embed */
+.vega-embed { max-width: 100%; }
+.vega-embed summary { opacity: .3; }
+.vega-embed .vega-bindings { font-size: 13px; margin-top: 4px; }
+.vega-embed .vega-bindings input { accent-color: #00843D; }
+
+/* ---------- ending ---------- */
+.ending { background: var(--screen); color: #eae6dd; padding: 64px 0; }
+.ending h2 { font-family: var(--display); font-weight: 400; font-size: 64px; line-height: 1; margin: 0 0 28px; color: #fff; }
+.takeaways { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gap); }
+.takeaways div { border-top: 3px solid var(--bvod); padding-top: 12px; font-size: 16px; color: #c9ced6; }
+.takeaways b { display: block; color: #fff; font-size: 18px; margin-bottom: 4px; }
+
+/* ---------- about ---------- */
+.about { padding: 56px 0 72px; font-size: 14px; color: var(--ink-soft); }
+.meta-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px; }
+.about h2 { font-family: var(--display); font-weight: 400; font-size: 36px; color: var(--ink); margin: 0 0 10px; }
+.about h3 { font-size: 13px; text-transform: uppercase; letter-spacing: .12em; color: var(--ink); margin: 12px 0 8px; }
+.about p { margin: 0 0 10px; }
+.about b { color: var(--ink); }
+.about ol { margin: 0; padding-left: 18px; }
+.about li { margin-bottom: 6px; }
+.about a { color: #00843D; }
+
+/* ---------- smaller laptops ---------- */
+@media (max-width: 1100px) {
+  .grid-2, .meta-grid { grid-template-columns: minmax(0, 1fr); }
+  .card.split { grid-template-columns: minmax(0, 1fr); }
+  .hero-grid { grid-template-columns: minmax(0, 1fr) 320px; gap: 32px; }
+  .hero h1 { font-size: 96px; }
+}
+@media (max-width: 760px) {
+  .wrap { padding: 0 16px; }
+  .hero-grid { grid-template-columns: minmax(0, 1fr); }
+  .hero h1 { font-size: 72px; }
+  .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .takeaways { grid-template-columns: minmax(0, 1fr); }
+  .ch-head h2 { font-size: 42px; }
+  .card { overflow-x: auto; }
+}
+
+/* ================= illustrations & creative backgrounds ================= */
+/* original SVG artwork in /img, drawn for this page */
+.banner { height: 150px; border-radius: 10px; margin-bottom: 28px; background-size: cover; background-position: center bottom; background-repeat: no-repeat; border: 1px solid var(--rule); }
+.banner.dark { border-color: #0b1018; }
+
+/* hero: CRT scanlines on the TV screen + a broadcast "colour bars" strip */
+.tv .screen { position: relative; overflow: hidden; }
+.tv .screen::after { content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: repeating-linear-gradient(to bottom, rgba(255,255,255,.05) 0 1px, transparent 1px 3px),
+              radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,.35) 100%); }
+.hero { border-bottom: 0; position: relative; }
+.hero::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 8px;
+  background: repeating-linear-gradient(to right, #00843D 0 40px, #FFCD00 40px 80px); }
+
+/* Marimekko presented on a TV set */
+.tv-card { background: #103020; border: 0; border-radius: 22px; padding: 22px 26px 18px; box-shadow: 0 18px 40px rgba(6,20,12,.25); position: relative; margin-bottom: 26px; }
+.tv-card::after { content: ""; position: absolute; left: 50%; bottom: -20px; width: 160px; height: 14px; transform: translateX(-50%); background: #103020; border-radius: 0 0 12px 12px; }
+.tv-card h3 { color: #fff; }
+.tv-card .sub, .tv-card .mekko-head { color: #c9d1da; }
+.tv-card #vis-mekko { background: var(--paper); border-radius: 8px; padding: 10px; }
+.tv-card figcaption { color: #9aa3ad; border-top-color: #1d4a31; }
+.tv-card .mekko-head { padding: 0 10px; }
+
+/* AFL chart sits on faint oval field markings */
+.field-bg { background: #fff url(../img/bg-oval.svg) center / cover no-repeat; }
+
+/* spike-map card edged like a strip of film */
+.filmstrip { position: relative; padding-top: 34px; padding-bottom: 30px; border-color: #0c2416; }
+.filmstrip::before, .filmstrip::after { content: ""; position: absolute; left: 0; right: 0; height: 18px; background: #0c2416;
+  -webkit-mask: none; }
+.filmstrip::before { top: 0; border-radius: 8px 8px 0 0; background: radial-gradient(circle at 50% 50%, var(--paper) 0 3.5px, transparent 4px) 0 0 / 18px 18px repeat-x, #0c2416; }
+.filmstrip::after { bottom: 0; border-radius: 0 0 8px 8px; background: radial-gradient(circle at 50% 50%, var(--paper) 0 3.5px, transparent 4px) 0 0 / 18px 18px repeat-x, #0c2416; }
+
+/* ending: the TV "switching off" glow */
+.ending { position: relative; overflow: hidden; }
+.crt-off { position: absolute; left: 50%; top: 34px; width: 70%; height: 2px; transform: translateX(-50%);
+  background: radial-gradient(ellipse at center, #ffffff 0%, #ffe680 30%, rgba(255,205,0,0) 70%); box-shadow: 0 0 22px 6px rgba(255,205,0,.4); }
+.crt-off::after { content: ""; position: absolute; left: 50%; top: -4px; width: 10px; height: 10px; margin-left: -5px; border-radius: 50%; background: #fff; box-shadow: 0 0 18px 8px rgba(255,255,255,.7); }
+
+@media (max-width: 760px) { .banner { height: 110px; } }
+
+:root { --green: #00843D; --green-dark: #005c2b; --gold: #FFCD00; --gold-dark: #a67c00; }
+.ch-no, .toc a::before { color: var(--green); }
+.kicker { color: var(--gold); }
+.hero h1 span { color: var(--gold); }
+.fact b { color: var(--green-dark); }
+.takeaways div { border-top-color: var(--gold); }
+.c-b { color: var(--green); } .c-v { color: var(--gold-dark); }
+
+/* ===== hero backdrop: real TV static (Wikimedia Commons) with a local noise fallback ===== */
+.hero {
+  background:
+    linear-gradient(100deg, rgba(6,20,12,.94) 0%, rgba(6,20,12,.86) 45%, rgba(6,20,12,.72) 100%),
+    url("https://commons.wikimedia.org/wiki/Special:FilePath/Television_static.gif?width=800") center / cover,
+    url("../img/static-fallback.svg") 0 0 / 300px 300px,
+    #06140c;
+}
+.hero-credit { position: absolute; right: 16px; bottom: 14px; font-size: 11px; color: rgba(255,255,255,.55); }
+.hero-credit a { color: inherit; }
+
+/* ===== AFL / NRL photos, duotoned in the page's gold and green ===== */
+.photo-pair { display: grid; grid-template-columns: 1.4fr 1fr; gap: var(--gap); margin-bottom: 28px; }
+.photo { margin: 0; position: relative; height: 210px; border-radius: 10px; overflow: hidden; background: #0c2416; }
+.photo img { width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(1) contrast(1.15) brightness(.95); }
+.photo::after { content: ""; position: absolute; inset: 0; mix-blend-mode: multiply; pointer-events: none; }
+.duo-gold::after { background: linear-gradient(160deg, #FFCD00 0%, #c49a00 100%); }
+.duo-green::after { background: linear-gradient(160deg, #3fbf7a 0%, #00843D 100%); }
+.photo figcaption { position: absolute; left: 0; right: 0; bottom: 0; z-index: 2; padding: 26px 16px 12px; color: #fff; font-size: 15px;
+  background: linear-gradient(to top, rgba(4,16,10,.85), rgba(4,16,10,0)); display: flex; justify-content: space-between; align-items: flex-end; gap: 12px; }
+.photo figcaption b { font-family: var(--display); font-weight: 400; font-size: 26px; letter-spacing: .04em; margin-right: 6px; }
+.photo figcaption span { font-size: 11px; opacity: .8; white-space: nowrap; }
+.photo figcaption a { color: inherit; }
+@media (max-width: 760px) { .photo-pair { grid-template-columns: 1fr; } }
+
+/* ================= motion (js/fx.js); all disabled for reduced-motion users ================= */
+/* 1. live static canvas in the header */
+.static-canvas { position: absolute; inset: 0; width: 100%; height: 100%; image-rendering: pixelated; opacity: .13; mix-blend-mode: screen; pointer-events: none; z-index: 0; }
+.hero > .wrap { position: relative; z-index: 1; }
+.hero > .hero-credit { z-index: 1; }
+/* rolling scan bar like a badly tuned set */
+.motion .hero::before { content: ""; position: absolute; left: 0; right: 0; top: -20%; height: 18%; z-index: 0; pointer-events: none;
+  background: linear-gradient(to bottom, transparent, rgba(255,255,255,.05), transparent); animation: roll 6s linear infinite; }
+@keyframes roll { to { top: 110%; } }
+
+/* 2. power-on: the TV screen and title open from a bright horizontal line */
+.motion .hero .tv .screen, .motion .hero h1 { animation: power-on 1.1s cubic-bezier(.2,.8,.2,1) both; transform-origin: center; }
+.motion .hero h1 { animation-delay: .15s; }
+@keyframes power-on {
+  0%   { transform: scale(0, .004); filter: brightness(6); opacity: 0; }
+  35%  { transform: scale(1, .004); filter: brightness(6); opacity: 1; }
+  70%  { transform: scale(1, 1.04); filter: brightness(1.6); }
+  100% { transform: none; filter: none; }
+}
+.motion .hero h1 span { animation: flicker 4.5s 1.4s infinite; }
+@keyframes flicker { 0%, 92%, 100% { opacity: 1; } 93% { opacity: .35; } 94% { opacity: 1; } 96% { opacity: .6; } 97% { opacity: 1; } }
+.motion .tv .screen::before { content: ""; position: absolute; left: 0; right: 0; height: 30%; top: -30%; z-index: 2; pointer-events: none;
+  background: linear-gradient(to bottom, transparent, rgba(255,255,255,.08), transparent); animation: roll 3.5s linear infinite; }
+
+/* 3. scroll reveal + "tuning in" static burst on each card */
+.reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.8,.2,1); }
+.reveal.in { opacity: 1; transform: none; }
+.card { position: relative; }
+.card.tuning::before { content: ""; position: absolute; inset: 0; z-index: 5; border-radius: inherit; pointer-events: none;
+  background: url("../img/static-fallback.svg") 0 0 / 220px 220px, #3a3a3a; mix-blend-mode: normal;
+  animation: tune .7s steps(1) forwards, snow .12s steps(4) infinite; }
+@keyframes tune { 0% { opacity: .95; } 30% { opacity: .75; } 55% { opacity: .4; } 80% { opacity: .12; } 100% { opacity: 0; } }
+@keyframes snow { 0% { background-position: 0 0; } 25% { background-position: -57px 33px; } 50% { background-position: 91px -40px; } 75% { background-position: -23px -88px; } }
+.photo img { transition: transform 6s ease; }
+.photo.in img { transform: scale(1.06); }
+.banner { background-position: center bottom; }
+
+/* 4. progress bar and active chapter */
+.progress { position: fixed; left: 0; top: 0; height: 4px; width: 100%; z-index: 50; transform-origin: 0 50%; transform: scaleX(0);
+  background: linear-gradient(to right, #00843D, #FFCD00); }
+.toc a { transition: color .2s; position: relative; }
+.toc a.active { color: var(--ink); font-weight: 600; }
+.toc a.active::after { content: ""; position: absolute; left: 0; right: 0; bottom: -11px; height: 3px; background: var(--gold); border-radius: 2px; }
+
+/* 5. ending: the set switches off, then the headline glitches back on */
+.motion .ending.switch-off .crt-off { animation: crt-off 1.6s ease-in forwards; }
+@keyframes crt-off { 0% { width: 70%; opacity: 1; } 60% { width: 2%; opacity: 1; } 100% { width: 0; opacity: .25; } }
+.motion .ending.switch-off h2 { animation: glitch 2.6s .9s steps(1) both; }
+@keyframes glitch {
+  0% { opacity: 0; }
+  10% { opacity: 1; text-shadow: 3px 0 #FFCD00, -3px 0 #00843D; transform: translateX(2px); }
+  14% { text-shadow: -4px 0 #FFCD00, 4px 0 #00843D; transform: translateX(-3px); }
+  18% { text-shadow: none; transform: none; }
+  60% { text-shadow: 2px 0 #FFCD00, -2px 0 #00843D; }
+  62%, 100% { text-shadow: none; opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .reveal { opacity: 1 !important; transform: none !important; }
+}

@@ -1,0 +1,11 @@
+city,state,code,match,audience,market_population_2026,lat,lon
+Sydney,NSW,AFL,Brisbane Lions v Fremantle (Sept 2026),468000,5739000,-33.87,151.21
+Melbourne,VIC,AFL,Brisbane Lions v Fremantle (Sept 2026),1259000,6006000,-37.81,144.96
+Brisbane,QLD,AFL,Brisbane Lions v Fremantle (Sept 2026),581000,3959000,-27.47,153.03
+Adelaide,SA,AFL,Brisbane Lions v Fremantle (Sept 2026),352000,1655000,-34.93,138.60
+Perth,WA,AFL,Brisbane Lions v Fremantle (Sept 2026),635000,2477000,-31.95,115.86
+Sydney,NSW,NRL,Sydney Roosters v Newcastle Knights (Oct 2026),1157000,5739000,-33.87,151.21
+Melbourne,VIC,NRL,Sydney Roosters v Newcastle Knights (Oct 2026),441000,6006000,-37.81,144.96
+Brisbane,QLD,NRL,Sydney Roosters v Newcastle Knights (Oct 2026),737000,3959000,-27.47,153.03
+Adelaide,SA,NRL,Sydney Roosters v Newcastle Knights (Oct 2026),130000,1655000,-34.93,138.60
+Perth,WA,NRL,Sydney Roosters v Newcastle Knights (Oct 2026),164000,2477000,-31.95,115.86

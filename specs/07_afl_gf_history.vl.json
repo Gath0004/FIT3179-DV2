@@ -1,0 +1,212 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Line + bar chart: national TV audience of the AFL Grand Final 2016–2026, with the number watching via the 7plus streaming app (2024–2026).",
+  "width": "container",
+  "height": 270,
+  "data": {
+    "url": "data/afl_grand_final_audiences.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "year": "number",
+        "national_audience": "number",
+        "streaming_7plus": "number"
+      }
+    }
+  },
+  "transform": [
+    {
+      "calculate": "datum.national_audience / 1e6",
+      "as": "aud_m"
+    },
+    {
+      "calculate": "datum.streaming_7plus ? datum.streaming_7plus / 1e6 : null",
+      "as": "stream_m"
+    },
+    {
+      "calculate": "datum.streaming_7plus ? format(datum.streaming_7plus / datum.national_audience, '.0%') : 'not reported'",
+      "as": "stream_share"
+    }
+  ],
+  "encoding": {
+    "x": {
+      "field": "year",
+      "type": "ordinal",
+      "axis": {
+        "title": null,
+        "labelAngle": 0,
+        "domain": false,
+        "ticks": false,
+        "labelFontSize": 12
+      }
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "bar",
+        "color": "#FFCD00",
+        "width": 26,
+        "cornerRadiusTopLeft": 2,
+        "cornerRadiusTopRight": 2
+      },
+      "encoding": {
+        "y": {
+          "field": "stream_m",
+          "type": "quantitative"
+        },
+        "tooltip": [
+          {
+            "field": "year",
+            "title": "Year"
+          },
+          {
+            "field": "streaming_7plus",
+            "title": "Watched on 7plus streaming",
+            "format": ","
+          },
+          {
+            "field": "stream_share",
+            "title": "Share of total audience"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "line",
+        "color": "#00843D",
+        "strokeWidth": 3,
+        "point": {
+          "filled": true,
+          "size": 70,
+          "color": "#00843D"
+        }
+      },
+      "encoding": {
+        "y": {
+          "field": "aud_m",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0,
+              5
+            ]
+          },
+          "axis": {
+            "title": "Average national audience (millions)",
+            "grid": true,
+            "gridColor": "#e8e3d7",
+            "domain": false,
+            "ticks": false,
+            "tickCount": 5,
+            "titleFontWeight": 500,
+            "titleColor": "#555"
+          }
+        },
+        "tooltip": [
+          {
+            "field": "year",
+            "title": "Year"
+          },
+          {
+            "field": "match",
+            "title": "Match"
+          },
+          {
+            "field": "national_audience",
+            "title": "National audience",
+            "format": ","
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "dy": -14,
+        "fontSize": 11,
+        "fontWeight": 600,
+        "color": "#005c2b"
+      },
+      "encoding": {
+        "y": {
+          "field": "aud_m",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "aud_m",
+          "type": "quantitative",
+          "format": ".2f"
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.stream_m"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "dy": -8,
+        "fontSize": 11,
+        "fontWeight": 600,
+        "color": "#c49a00"
+      },
+      "encoding": {
+        "y": {
+          "field": "stream_m",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "stream_share"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "year": 2019,
+            "y": 2.55,
+            "t": "Lowest in a decade"
+          },
+          {
+            "year": 2022,
+            "y": 1.35,
+            "t": "% of audience streaming on 7plus →"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "fontSize": 11,
+        "fontStyle": "italic",
+        "color": "#555"
+      },
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "ordinal"
+        },
+        "y": {
+          "field": "y",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "t"
+        }
+      }
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null
+    }
+  },
+  "autosize": {
+    "type": "fit-x",
+    "contains": "padding"
+  }
+}
