@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Isotype (pictogram) chart: average monthly hours of free-to-air TV per person by group, Jan–Jun 2026 (OzTAM VOZ). Each TV icon = about 5 hours a month.",
-  "width": 430,
+  "width": "container",
   "height": 240,
   "data": {
     "url": "data/voz_monthly_h1_2026.csv",
@@ -80,7 +80,9 @@
         "type": "point",
         "filled": true,
         "shape": "M-1,-0.62 L1,-0.62 L1,0.42 L-1,0.42 Z M-0.42,0.52 L0.42,0.52 L0.42,0.66 L-0.42,0.66 Z",
-        "size": 150,
+        "size": {
+          "expr": "min(150*pow(width/430,2),260)"
+        },
         "strokeWidth": 0,
         "opacity": 1
       },
@@ -91,7 +93,7 @@
           "scale": {
             "domain": [
               0,
-              130
+              110
             ]
           },
           "axis": {
@@ -206,5 +208,9 @@
       "name": "sel_group",
       "value": ""
     }
-  ]
+  ],
+  "autosize": {
+    "type": "fit-x",
+    "contains": "padding"
+  }
 }

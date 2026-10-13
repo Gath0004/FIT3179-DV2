@@ -1,7 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega/v5.json",
   "description": "Treemap (built in Vega): who paid for Australian TV and streaming drama in 2024/25 (Screen Australia Drama Report). Rectangle area is proportional to dollars invested.",
-  "width": 470,
   "height": 310,
   "padding": 4,
   "autosize": "none",
@@ -297,6 +296,18 @@
           }
         }
       }
+    }
+  ],
+  "signals": [
+    {
+      "name": "width",
+      "init": "max(300, containerSize()[0] - 8)",
+      "on": [
+        {
+          "events": "window:resize",
+          "update": "max(300, containerSize()[0] - 8)"
+        }
+      ]
     }
   ]
 }

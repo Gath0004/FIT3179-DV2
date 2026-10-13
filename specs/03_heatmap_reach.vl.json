@@ -34,7 +34,7 @@
       "as": "reach"
     }
   ],
-  "width": 330,
+  "width": "container",
   "height": 260,
   "encoding": {
     "x": {
@@ -175,5 +175,9 @@
       "name": "sel_group",
       "value": ""
     }
-  ]
+  ],
+  "autosize": {
+    "type": "fit-x",
+    "contains": "padding"
+  }
 }

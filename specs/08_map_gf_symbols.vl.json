@@ -1,8 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Proportional symbol map: average TV audience of the 2026 AFL and NRL Grand Finals in each capital-city TV market. Circle area is proportional to audience.",
-  "width": 460,
-  "height": 400,
+  "width": "container",
+  "height": 470,
   "projection": {
     "type": "conicEqualArea",
     "parallels": [
@@ -89,12 +89,11 @@
             ],
             "symbolFillColor": "#cfc8b8",
             "symbolStrokeColor": "#9a927f",
-            "orient": "none",
-            "legendX": 95,
-            "legendY": 335,
+            "orient": "bottom-left",
             "direction": "horizontal",
             "titleFontSize": 11,
-            "labelFontSize": 11
+            "labelFontSize": 11,
+            "offset": 4
           }
         },
         "color": {
@@ -273,5 +272,9 @@
       "name": "sel_city",
       "value": ""
     }
-  ]
+  ],
+  "autosize": {
+    "type": "fit-x",
+    "contains": "padding"
+  }
 }

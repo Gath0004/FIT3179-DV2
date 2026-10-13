@@ -47,7 +47,7 @@
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); font-size: 16px; line-height: 1.5; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
-.wrap { max-width: 1120px; margin: 0 auto; padding: 0 32px; }
+.wrap { max-width: 1360px; margin: 0 auto; padding: 0 28px; }
 
 /* colour words used in running text: same colours as the charts */
 .k-broad { color: var(--broadcast); font-weight: 600; }

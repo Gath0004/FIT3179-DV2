@@ -32,7 +32,7 @@ const charts = [
   { id: "vis-map-spikes",     spec: "specs/12_map_drama_spikes.vl.json" }
 ];
 
-const VERSION = "20261013c";  // bump to force browsers to fetch fresh chart specs
+const VERSION = "20261013d";  // bump to force browsers to fetch fresh chart specs
 const views = {};
 const embedOptions = { renderer: "svg", actions: false, tooltip: { theme: "light" } };
 

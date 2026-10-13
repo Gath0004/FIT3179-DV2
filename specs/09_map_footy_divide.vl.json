@@ -1,8 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Diverging choropleth map: of all capital-city viewers who watched either 2026 Grand Final, the share who watched the AFL rather than the NRL decider. Each state is shaded by its capital-city TV market.",
-  "width": 460,
-  "height": 400,
+  "width": "container",
+  "height": 470,
   "projection": {
     "type": "conicEqualArea",
     "parallels": [
@@ -291,5 +291,9 @@
       "name": "sel_city",
       "value": ""
     }
-  ]
+  ],
+  "autosize": {
+    "type": "fit-x",
+    "contains": "padding"
+  }
 }
