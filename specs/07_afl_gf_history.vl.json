@@ -2,7 +2,7 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Line + bar chart: national TV audience of the AFL Grand Final 2016–2026, with the number watching via the 7plus streaming app (2024–2026).",
   "width": "container",
-  "height": 270,
+  "height": 230,
   "data": {
     "url": "data/afl_grand_final_audiences.csv",
     "format": {

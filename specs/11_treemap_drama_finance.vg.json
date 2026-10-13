@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega/v5.json",
   "description": "Treemap (built in Vega): who paid for Australian TV and streaming drama in 2024/25 (Screen Australia Drama Report). Rectangle area is proportional to dollars invested.",
-  "height": 310,
+  "height": 260,
   "padding": 4,
   "autosize": "none",
   "data": [
@@ -265,7 +265,7 @@
     {
       "type": "text",
       "from": {
-        "data": "govbox"
+        "data": "leaves"
       },
       "interactive": false,
       "encode": {
@@ -280,7 +280,7 @@
             "value": "left"
           },
           "text": {
-            "value": "GOVERNMENT  $251m  ·  34%"
+            "signal": "datum.id == 'offset' ? 'GOVERNMENT  $251m  ·  34%' : ''"
           },
           "fill": {
             "value": "white"

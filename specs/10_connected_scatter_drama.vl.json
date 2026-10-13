@@ -2,7 +2,7 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Connected scatterplot: hours of new Australian TV drama vs money spent making it, free-to-air vs subscription/streaming, 2023/24 → 2024/25 (Screen Australia Drama Report). Dashed guides show cost per hour.",
   "width": "container",
-  "height": 330,
+  "height": 280,
   "layer": [
     {
       "data": {

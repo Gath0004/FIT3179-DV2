@@ -312,53 +312,7 @@ body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(
 .hero .stats b { font-size: 50px; }
 .hero h1 { font-size: 124px; }
 
-/* ===== filling empty space: icon tiles, pull-stats, ending photos ===== */
-.ico { width: 26px; height: 26px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
-
-/* full-width intro paragraphs share their row with a visual instead of leaving it blank */
-.lede-row { display: grid; grid-template-columns: minmax(0, 1fr) 380px; gap: 40px; align-items: center; }
-.lede-row .prose.wide p { max-width: none; }
-.icon-tiles { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
-.icon-tiles li { display: flex; gap: 14px; align-items: center; background: #fff; border: 1px solid var(--rule); border-left: 4px solid var(--apps); border-radius: 8px; padding: 12px 16px; }
-.icon-tiles .ico { width: 34px; height: 34px; color: var(--broadcast); }
-.icon-tiles b { display: block; font-family: var(--display); font-weight: 400; font-size: 28px; line-height: 1; letter-spacing: .02em; }
-.icon-tiles span { font-size: 15px; color: var(--ink-soft); }
-.icon-tiles em { font-style: normal; font-family: var(--osd); font-size: 17px; color: var(--apps-text); margin-left: 4px; }
-
-.divide-card { background: var(--screen); color: #e9e7f2; border-radius: 10px; padding: 18px 20px; display: grid; grid-template-columns: 1fr auto 1fr; gap: 6px 14px; align-items: stretch; }
-.divide-card .side { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 4px; }
-.divide-card .ball { width: 52px; height: 34px; stroke-width: 1.6; }
-.divide-card .afl .ball { fill: var(--afl); stroke: #bff0e9; }
-.divide-card .nrl .ball { fill: var(--nrl); stroke: #e6d6fa; }
-.divide-card .side b { font-family: var(--osd); font-weight: 400; font-size: 54px; line-height: .9; }
-.divide-card .afl b { color: #5fd6c7; } .divide-card .nrl b { color: #c4a3ec; }
-.divide-card .side span { font-size: 14px; color: #c9cbe0; line-height: 1.3; }
-.divide-card .side strong { color: #fff; }
-.divide-card .line { display: flex; flex-direction: column; align-items: center; gap: 4px; }
-.divide-card .line i { flex: 1; width: 0; border-left: 2px dashed #e9b44c; }
-.divide-card .line small { font-family: var(--osd); font-size: 14px; color: #e9b44c; writing-mode: vertical-rl; transform: rotate(180deg); letter-spacing: .08em; }
-.divide-card .swing { grid-column: 1 / -1; margin: 8px 0 0; padding-top: 10px; border-top: 1px dashed #3b4170; font-family: var(--serif); font-size: 16px; text-align: center; color: #dcdae6; }
-.divide-card .swing b { color: #fff; }
-
-/* pull-stats that finish short text columns beside tall charts */
-.pull { display: flex; gap: 14px; align-items: flex-start; margin-top: 22px; padding: 16px 18px; background: #fff; border: 1px solid var(--rule); border-radius: 8px; border-left: 4px solid var(--apps); max-width: 36em; }
-.pull .ico { width: 38px; height: 38px; }
-.pull b { display: block; font-family: var(--osd); font-weight: 400; font-size: 44px; line-height: .95; }
-.pull span { display: block; font-size: 15px; color: var(--ink-soft); margin-top: 4px; }
-.pull.online { border-left-color: var(--online); } .pull.online .ico, .pull.online b { color: var(--online-text); }
-.pull.apps .ico, .pull.apps b { color: var(--apps-text); }
-.pull.cost { display: block; border-left-color: var(--online); }
-.cost-title { display: flex; gap: 8px; align-items: center; font-family: var(--osd); font-size: 19px; letter-spacing: .05em; color: var(--ink); margin-bottom: 8px; }
-.cost-title .ico { width: 22px; height: 22px; color: var(--ink-soft); }
-.cost-row { display: grid; grid-template-columns: 78px 1fr 64px; gap: 10px; align-items: center; margin-top: 6px; }
-.cost-row small { font-size: 13px; color: var(--ink-soft); }
-.cost-row i { display: block; height: 16px; border-radius: 3px; }
-.cost-row b { font-family: var(--osd); font-weight: 400; font-size: 26px; line-height: 1; color: var(--ink); }
-.money-list { list-style: none; padding: 0; margin: 22px 0 0; display: grid; gap: 10px; max-width: 36em; }
-.money-list li { display: grid; grid-template-columns: 34px auto 1fr; gap: 12px; align-items: center; background: #fff; border: 1px solid var(--rule); border-radius: 8px; padding: 10px 16px; }
-.money-list .ico { width: 30px; height: 30px; color: var(--drama-text); }
-.money-list b { font-family: var(--osd); font-weight: 400; font-size: 36px; line-height: 1; }
-.money-list span { font-size: 15px; color: var(--ink-soft); }
+/* ===== ending photos ===== */
 
 /* ending: text left, photos right */
 .ending-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 44px; align-items: center; }
@@ -373,14 +327,18 @@ body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(
 .ph::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: repeating-linear-gradient(to bottom, rgba(255,255,255,.04) 0 1px, transparent 1px 3px); }
 .ph-credit { grid-column: 1 / -1; margin: 2px 0 0; font-size: 11px; color: #8f93ab; }
 .ph-credit a { color: inherit; }
-.takeaways div { position: relative; }
-.takeaways .ico { display: block; width: 30px; height: 30px; color: var(--apps); margin-bottom: 8px; }
 
-@media (max-width: 1100px) {
-  .lede-row, .ending-grid { grid-template-columns: minmax(0, 1fr); gap: 24px; }
-  .lede-row > .icon-tiles { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .divide-card { max-width: 520px; }
-}
-@media (max-width: 760px) { .lede-row > .icon-tiles { grid-template-columns: minmax(0, 1fr); } }
-.pull.cost .cost-title .ico { width: 22px; height: 22px; margin-right: 4px; }
-.divide-card .swing { font-size: 15px; }
+@media (max-width: 1100px) { .ending-grid { grid-template-columns: minmax(0, 1fr); gap: 24px; } }
+
+/* ===== text containers sized to their text (no padding out with extras) ===== */
+/* rows that pair text with a chart: the chart gets more width, the text column runs taller */
+.story:has(> .card) { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 36px; }
+.story.flip:has(> .card:first-child) { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); }
+.story:has(> .card) > .prose p { max-width: none; }
+/* full-width intro text uses the full width, so it is fewer lines tall */
+.prose.wide p { max-width: none; }
+/* the text-only facts card: facts side by side instead of stacked */
+.card.facts .fact { padding: 10px 0; }
+@media (max-width: 1100px) { .story:has(> .card), .story.flip:has(> .card:first-child) { grid-template-columns: minmax(0, 1fr); } }
+.story:has(> .card) { align-items: center; }
+.story:has(> .card) > .prose p { font-size: 19.5px; }
