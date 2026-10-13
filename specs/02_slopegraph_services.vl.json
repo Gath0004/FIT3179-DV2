@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Slopegraph: share of Australian adults using each way of watching in the previous 7 days, 2017 vs 2025 (ACMA).",
-  "width": 455,
+  "width": "container",
   "height": 420,
   "data": {
     "url": "data/acma_services_2017_2025.csv",
@@ -39,8 +39,10 @@
       "scale": {
         "type": "point",
         "range": [
-          60,
-          250
+          55,
+          {
+            "expr": "width - 168"
+          }
         ],
         "padding": 0
       }
@@ -244,7 +246,7 @@
         "dx": 10,
         "fontSize": 12,
         "fontWeight": 600,
-        "limit": 200
+        "limit": 165
       },
       "encoding": {
         "y": {
@@ -282,5 +284,9 @@
     "view": {
       "stroke": null
     }
+  },
+  "autosize": {
+    "type": "fit-x",
+    "contains": "padding"
   }
 }

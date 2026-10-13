@@ -108,7 +108,7 @@ body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(
 
 /* ================= INTRO / KEY ================= */
 .intro { padding: 72px 0 24px; }
-.intro-grid { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 48px; align-items: start; }
+.intro-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 48px; align-items: start; }
 .prose p { font-family: var(--serif); font-size: 19px; line-height: 1.62; margin: 0 0 1em; max-width: 36em; }
 .prose p.lead::first-letter { font-family: var(--display); float: left; font-size: 78px; line-height: .8; padding: 6px 10px 0 0; color: var(--apps); }
 .questions { list-style: none; counter-reset: q; padding: 0; margin: 18px 0 0; }
@@ -134,8 +134,7 @@ body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(
 .ch-head p.standfirst { font-family: var(--serif); font-size: 21px; line-height: 1.5; color: var(--ink-soft); margin: 0; }
 
 /* text + chart rows */
-.story { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 40px; align-items: start; }
-.story.flip { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); }
+.story, .story.flip { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 40px; align-items: start; }
 .story + .story, .story + .card, .card + .story, .grid-2 + .story, .story + .grid-2, .grid-2 + .card, .card + .grid-2, .wrap > .card + .card, .picker + .grid-2, .grid-2 + .grid-2 { margin-top: 36px; }
 .story .prose h3 { font-family: var(--osd); font-weight: 400; font-size: 22px; letter-spacing: .05em; color: var(--apps-text); margin: 0 0 6px; }
 .story .prose p { font-size: 18px; }
@@ -281,3 +280,11 @@ body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(
 .linked > .grid-2 { margin-top: 24px; }
 .picker .readout { font-size: 17px; }
 @media (max-width: 760px) { .linked > .picker { position: static; } }
+
+/* plain-language "what am I looking at" line under each chart title */
+.reads { display: flex; gap: 8px; align-items: baseline; font-size: 14px; color: var(--ink); background: #f3f2f8; border-left: 3px solid var(--apps); border-radius: 0 4px 4px 0; padding: 6px 10px; margin: -4px 0 14px; }
+.reads b { font-family: var(--osd); font-weight: 400; font-size: 18px; letter-spacing: .05em; color: var(--apps-text); }
+.tv-card .reads, .tv .reads { background: #1b1e3a; color: #e5e3ee; }
+.tv-card .reads b, .tv .reads b { color: #ff9a82; }
+
+#vis-slope > .vega-embed, #vis-scatter > .vega-embed { width: 100%; }
