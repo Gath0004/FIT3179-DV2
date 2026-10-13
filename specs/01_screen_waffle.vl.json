@@ -1,8 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Waffle chart: share of video viewing on Australian TV sets, Q2 2026 (OzTAM Streamscape). Each square = 1% of viewing time.",
-  "width": 260,
-  "height": 260,
+  "width": 318,
+  "height": 318,
   "data": {
     "url": "data/streamscape_q2_2026.csv",
     "format": {

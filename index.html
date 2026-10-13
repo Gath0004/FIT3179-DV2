@@ -7,7 +7,7 @@
   <meta name="description" content="A data story about how Australians watch television in 2025–26: who still watches, how they tune in, what they watch, the footy divide and who pays for Australian drama.">
   <meta name="author" content="Gathika Athuruliya">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect x=%222%22 y=%225%22 width=%2228%22 height=%2219%22 rx=%223%22 fill=%22%233A4E8C%22/%3E%3Crect x=%2210%22 y=%2226%22 width=%2212%22 height=%223%22 fill=%22%23E86A4F%22/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=20261013c">
   <script src="js/lib/vega.min.js"></script>
   <script src="js/lib/vega-lite.min.js"></script>
   <script src="js/lib/vega-embed.min.js"></script>
@@ -22,6 +22,12 @@
       <h1><span class="w1">Switched</span> <span class="w2">on</span></h1>
       <p class="dek">Streaming was meant to kill the telly. It didn't. <em>The way we watch has changed, but Australia hasn't switched off.</em></p>
       <p class="byline">By <strong>Gathika Athuruliya</strong> (33890714) · FIT3179 Data Visualisation 2 · October 2026</p>
+      <div class="stats">
+    <div><b>19.8m</b><span>Australians watch free-to-air TV in an average week</span></div>
+    <div><b>52%</b><span>of adults watched live TV each week in 2025, up from 46%</span></div>
+    <div><b>1 in 5</b><span>free-to-air minutes is now watched through an app</span></div>
+    <div><b>4.52m</b><span>watched the 2026 AFL Grand Final, a ten-year high</span></div>
+  </div>
     </div>
     <figure class="tv">
       <div class="screen"><div id="vis-screen" role="img" tabindex="0" aria-label="Waffle chart: of all video watched on home TV sets in April to June 2026, 60% was free-to-air TV and its apps, 11% YouTube and 28% other online video."></div></div>
@@ -33,12 +39,6 @@
       </ul>
       <figcaption>What was on Australian TV screens at home, Apr–Jun 2026. 1 square = 1% of viewing time. Source: OzTAM Streamscape.</figcaption>
     </figure>
-  </div>
-  <div class="wrap stats">
-    <div><b>19.8m</b><span>Australians watch free-to-air TV in an average week</span></div>
-    <div><b>52%</b><span>of adults watched live TV each week in 2025, up from 46%</span></div>
-    <div><b>1 in 5</b><span>free-to-air minutes is now watched through an app</span></div>
-    <div><b>4.52m</b><span>watched the 2026 AFL Grand Final, a ten-year high</span></div>
   </div>
   <p class="hero-credit">Backdrop: TV static, <a href="https://commons.wikimedia.org/wiki/File:Television_static.gif">Wikimedia Commons</a></p>
 </header>
@@ -58,18 +58,22 @@
 
 <!-- ================= INTRO ================= -->
 <section class="intro">
-  <div class="wrap intro-grid">
-    <div class="prose">
+  <div class="wrap">
+    <div class="prose intro-text">
       <p class="lead">Every few years someone announces the death of television. Netflix arrived in Australia in 2015, YouTube moved onto the big screen, and the antenna on the roof began to look like a relic. Yet the free-to-air networks still report audiences of millions, and the biggest nights of the year still happen on Seven, Nine, 10, the ABC and SBS.</p>
       <p>So which is it? This story uses the newest data available, from the national media regulator (ACMA), the official TV ratings (OzTAM), the networks and Screen Australia, to answer four questions:</p>
-      <ol class="questions">
+    </div>
+    <div class="intro-cards">
+      <div class="legend-card q-card">
+        <h3>THIS STORY ANSWERS</h3>
+        <ol class="questions">
         <li>Are Australians still watching TV, and how do they tune in?</li>
         <li>Who is watching: does age change everything?</li>
         <li>What do we watch live, and what do we stream?</li>
         <li>Who pays for the shows, and where are they made?</li>
       </ol>
-    </div>
-    <aside class="legend-card" aria-label="Colour key">
+      </div>
+      <aside class="legend-card" aria-label="Colour key">
       <h3>HOW TO READ THE COLOURS</h3>
       <p>Each colour has one meaning on every chart in this story.</p>
       <dl>
@@ -83,6 +87,7 @@
       </dl>
       <p style="margin:12px 0 0">Age groups, genders and states are labelled, never colour-coded.</p>
     </aside>
+    </div>
   </div>
 </section>
 
@@ -419,8 +424,8 @@
   </div>
 </footer>
 
-<script src="js/main.js"></script>
-<script src="js/fx.js"></script>
-<script src="js/a11y.js"></script>
+<script src="js/main.js?v=20261013c"></script>
+<script src="js/fx.js?v=20261013c"></script>
+<script src="js/a11y.js?v=20261013c"></script>
 </body>
 </html>

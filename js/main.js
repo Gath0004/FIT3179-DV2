@@ -32,13 +32,14 @@ const charts = [
   { id: "vis-map-spikes",     spec: "specs/12_map_drama_spikes.vl.json" }
 ];
 
+const VERSION = "20261013c";  // bump to force browsers to fetch fresh chart specs
 const views = {};
 const embedOptions = { renderer: "svg", actions: false, tooltip: { theme: "light" } };
 
 const ready = Promise.all(charts.map(c => {
   const opts = Object.assign({}, embedOptions, { config: c.config || sharedConfig });
   if (c.mode) opts.mode = c.mode;
-  return vegaEmbed("#" + c.id, c.spec, opts)
+  return vegaEmbed("#" + c.id, c.spec + "?v=" + VERSION, opts)
     .then(res => { views[c.id] = res.view; })
     .catch(err => {
       console.error("Could not draw " + c.spec, err);
