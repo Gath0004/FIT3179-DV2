@@ -89,9 +89,7 @@
         }
       ],
       "mark": {
-        "type": "geoshape",
-        "stroke": "#faf7f0",
-        "strokeWidth": 1.2
+        "type": "geoshape"
       },
       "encoding": {
         "shape": {
@@ -108,9 +106,9 @@
               0.8
             ],
             "range": [
-              "#005c2b",
-              "#f4f1e6",
-              "#e0b000"
+              "#8B5FBF",
+              "#F1EFF5",
+              "#1B998B"
             ],
             "clamp": true
           },
@@ -158,7 +156,21 @@
             "field": "nrl_per100",
             "title": "NRL viewers per 100 residents"
           }
-        ]
+        ],
+        "stroke": {
+          "condition": {
+            "test": "datum.city == sel_city",
+            "value": "#23263f"
+          },
+          "value": "#faf8f4"
+        },
+        "strokeWidth": {
+          "condition": {
+            "test": "datum.city == sel_city",
+            "value": 3
+          },
+          "value": 1.2
+        }
       }
     },
     {
@@ -220,7 +232,11 @@
           "field": "label"
         },
         "color": {
-          "value": "#1d1d1d"
+          "condition": {
+            "test": "datum.state != 'QLD'",
+            "value": "white"
+          },
+          "value": "#23263f"
         }
       }
     },
@@ -269,5 +285,11 @@
     "view": {
       "stroke": null
     }
-  }
+  },
+  "params": [
+    {
+      "name": "sel_city",
+      "value": ""
+    }
+  ]
 }

@@ -130,8 +130,22 @@
             "title": "Hours of new drama made",
             "grid": false,
             "tickCount": 6,
-            "titleColor": "#555",
-            "titleFontWeight": 500
+            "titleColor": "#4f5563",
+            "titleFontWeight": 500,
+            "labelColor": "#4f5563",
+            "domainColor": "#b9bbc7",
+            "tickColor": "#b9bbc7",
+            "format": "d",
+            "values": [
+              0,
+              50,
+              100,
+              150,
+              200,
+              250,
+              300
+            ],
+            "domain": true
           }
         },
         "y": {
@@ -148,8 +162,20 @@
             "grid": false,
             "gridColor": "#eee8db",
             "tickCount": 6,
-            "titleColor": "#555",
-            "titleFontWeight": 500
+            "titleColor": "#4f5563",
+            "titleFontWeight": 500,
+            "labelColor": "#4f5563",
+            "domainColor": "#b9bbc7",
+            "tickColor": "#b9bbc7",
+            "format": "d",
+            "values": [
+              0,
+              100,
+              200,
+              300,
+              400,
+              500
+            ]
           }
         },
         "color": {
@@ -161,8 +187,8 @@
               "Subscription TV & streaming"
             ],
             "range": [
-              "#00843D",
-              "#c49a00"
+              "#3A4E8C",
+              "#E9B44C"
             ]
           },
           "legend": null
@@ -248,9 +274,9 @@
             "color": {
               "condition": {
                 "test": "datum.platform == 'Free-to-air TV'",
-                "value": "#00843D"
+                "value": "#3A4E8C"
               },
-              "value": "#8a6d00"
+              "value": "#8C6418"
             }
           }
         },
@@ -279,9 +305,9 @@
             "color": {
               "condition": {
                 "test": "datum.platform == 'Free-to-air TV'",
-                "value": "#00843D"
+                "value": "#3A4E8C"
               },
-              "value": "#8a6d00"
+              "value": "#8C6418"
             }
           }
         }

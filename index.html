@@ -4,9 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Switched On: How Australia Watches TV in 2025–26</title>
-  <meta name="description" content="A data story about how Australians watch television in 2025–26.">
+  <meta name="description" content="A data story about how Australians watch television in 2025–26: who still watches, how they tune in, what they watch, the footy divide and who pays for Australian drama.">
   <meta name="author" content="Gathika Athuruliya">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect x=%222%22 y=%225%22 width=%2228%22 height=%2219%22 rx=%223%22 fill=%22%2300843D%22/%3E%3Crect x=%2210%22 y=%2226%22 width=%2212%22 height=%223%22 fill=%22%23FFCD00%22/%3E%3C/svg%3E">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect x=%222%22 y=%225%22 width=%2228%22 height=%2219%22 rx=%223%22 fill=%22%233A4E8C%22/%3E%3Crect x=%2210%22 y=%2226%22 width=%2212%22 height=%223%22 fill=%22%23E86A4F%22/%3E%3C/svg%3E">
   <link rel="stylesheet" href="css/style.css">
   <script src="js/lib/vega.min.js"></script>
   <script src="js/lib/vega-lite.min.js"></script>
@@ -17,29 +17,29 @@
 <!-- ================= HERO ================= -->
 <header class="hero">
   <div class="wrap hero-grid">
-    <div class="hero-text">
-      <p class="kicker">Australian television · 2025–26</p>
-      <h1>Switched <span>on</span></h1>
-      <p class="dek">Streaming was meant to kill the telly. It didn't. Here is how Australia really watches TV now.</p>
+    <div>
+      <p class="osd"><span class="rec">●</span> CH 26 &nbsp;AUSTRALIAN TELEVISION 2025–26</p>
+      <h1><span class="w1">Switched</span> <span class="w2">on</span></h1>
+      <p class="dek">Streaming was meant to kill the telly. It didn't. <em>The way we watch has changed, but Australia hasn't switched off.</em></p>
       <p class="byline">By <strong>Gathika Athuruliya</strong> (33890714) · FIT3179 Data Visualisation 2 · October 2026</p>
     </div>
     <figure class="tv">
       <div class="screen"><div id="vis-screen" role="img" tabindex="0" aria-label="Waffle chart: of all video watched on home TV sets in April to June 2026, 60% was free-to-air TV and its apps, 11% YouTube and 28% other online video."></div></div>
       <ul class="key">
-        <li><i style="background:#00843D"></i>60% free-to-air TV and its apps</li>
-        <li><i style="background:#FFCD00"></i>11% YouTube</li>
-        <li><i style="background:#6b7a8c"></i>28% other online video</li>
+        <li><i style="background:#3A4E8C"></i>60% free-to-air TV and its apps</li>
+        <li><i style="background:#C98E1B"></i>11% YouTube</li>
+        <li><i style="background:#F1D08A"></i>28% other online video</li>
       </ul>
-      <figcaption>Share of video watched on home TV sets, Apr–Jun 2026. 1 square = 1%. Source: OzTAM Streamscape.</figcaption>
+      <figcaption>What was on Australian TV screens at home, Apr–Jun 2026. 1 square = 1% of viewing time. Source: OzTAM Streamscape.</figcaption>
     </figure>
   </div>
-  <p class="hero-credit">Backdrop: TV static, <a href="https://commons.wikimedia.org/wiki/File:Television_static.gif">Wikimedia Commons</a></p>
   <div class="wrap stats">
-    <div><b>19.8m</b><span>watch free-to-air TV in an average week</span></div>
-    <div><b>52%</b><span>of adults watched live TV weekly in 2025, up from 46%</span></div>
-    <div><b>1 in 5</b><span>free-to-air minutes is now streamed through an app</span></div>
+    <div><b>19.8m</b><span>Australians watch free-to-air TV in an average week</span></div>
+    <div><b>52%</b><span>of adults watched live TV each week in 2025, up from 46%</span></div>
+    <div><b>1 in 5</b><span>free-to-air minutes is now watched through an app</span></div>
     <div><b>4.52m</b><span>watched the 2026 AFL Grand Final, a ten-year high</span></div>
   </div>
+  <p class="hero-credit">Backdrop: TV static, <a href="https://commons.wikimedia.org/wiki/File:Television_static.gif">Wikimedia Commons</a></p>
 </header>
 
 <nav class="toc" aria-label="Chapters">
@@ -55,63 +55,145 @@
 
 <main>
 
+<!-- ================= INTRO ================= -->
+<section class="intro">
+  <div class="wrap intro-grid">
+    <div class="prose">
+      <p class="lead">Every few years someone announces the death of television. Netflix arrived in Australia in 2015, YouTube moved onto the big screen, and the antenna on the roof began to look like a relic. Yet the free-to-air networks still report audiences of millions, and the biggest nights of the year still happen on Seven, Nine, 10, the ABC and SBS.</p>
+      <p>So which is it? This story uses the newest data available, from the national media regulator (ACMA), the official TV ratings (OzTAM), the networks and Screen Australia, to answer four questions:</p>
+      <ol class="questions">
+        <li>Are Australians still watching TV, and how do they tune in?</li>
+        <li>Who is watching: does age change everything?</li>
+        <li>What do we watch live, and what do we stream?</li>
+        <li>Who pays for the shows, and where are they made?</li>
+      </ol>
+    </div>
+    <aside class="legend-card" aria-label="Colour key">
+      <h3>HOW TO READ THE COLOURS</h3>
+      <p>Each colour has one meaning on every chart in this story.</p>
+      <dl>
+        <dt style="background:#3A4E8C"></dt><dd><b>Broadcast</b> <small>watched live through an antenna</small></dd>
+        <dt style="background:#E86A4F"></dt><dd><b>Free-to-air apps</b> <small>7plus, 9Now, 10 play, ABC iview, SBS On Demand</small></dd>
+        <dt style="background:#E9B44C"></dt><dd><b>Other online video</b> <small>Netflix, Stan, YouTube and similar</small></dd>
+        <dt style="background:#1B998B"></dt><dd><b>AFL</b></dd>
+        <dt style="background:#8B5FBF"></dt><dd><b>NRL</b></dd>
+        <dt style="background:#B56576"></dt><dd><b>Drama production</b> <small>latest year</small></dd>
+        <dt style="background:#B9BBC7"></dt><dd><b>Earlier year</b> <small>for comparison</small></dd>
+      </dl>
+      <p style="margin:12px 0 0">Age groups, genders and states are labelled, never colour-coded.</p>
+    </aside>
+  </div>
+</section>
+
 <!-- ================= 01 ================= -->
 <section class="chapter" id="ch1">
   <div class="wrap">
-    <div class="banner" role="img" aria-label="Illustration: suburban rooftops where TV antennas give way to wifi signals" style="background-image:url(img/banner-rooftops.svg)"></div>
     <header class="ch-head">
-      <span class="ch-no">01</span>
-      <h2>The box is still in the corner</h2>
-      <p>Australians moved online, but live TV just had its first comeback in years.</p>
+      <span class="ch-osd"><b>CH 01</b> HOW WE WATCH</span>
+      <h2>The box is still <span class="outline">in the</span> <span class="accent">corner</span></h2>
+      <p class="standfirst">In eight years, Australians went from watching mostly through an antenna to watching mostly through the internet. Then, in 2025, live TV did something nobody expected.</p>
     </header>
-    <div class="grid-2">
+
+    <div class="story">
+      <div class="prose">
+        <h3>THE GREAT SWITCH</h3>
+        <p>Each year ACMA asks Australian adults how they watched video in the previous seven days. In 2017, <span class="k-broad">71% watched live free-to-air TV</span>. By 2024 only 46% did.</p>
+        <p>Over the same years, <span class="k-online">online video</span> went from a minority habit (37%) to almost universal (91%). Paid streaming services like Netflix and Stan more than doubled their reach, and YouTube jumped from 6% to 56% of adults.</p>
+        <p>The networks did not stand still. Their own <span class="k-apps">free-to-air apps</span> were used by 44% of adults each week in 2025, up from 18% in 2017. Follow the coral line on the chart: it is the networks following their viewers online.</p>
+      </div>
       <figure class="card">
-        <h3>Live TV is the only service that has shrunk since 2017</h3>
-        <p class="sub">% of adults who used each service in the past 7 days · hover a line</p>
+        <h3>Live TV is the only way of watching that has shrunk since 2017</h3>
+        <p class="sub">% of Australian adults who used each service in the past 7 days</p>
+        <p class="how-to">Hover over a line to isolate it</p>
         <div id="vis-slope" class="chart" role="img" tabindex="0" aria-label="Slopegraph, 2017 to 2025: live free-to-air TV fell from 71% to 52% of adults; any online video rose from 37% to 91%, paid streaming 29% to 68%, YouTube 6% to 56%, Netflix 28% to 51%, free-to-air TV apps 18% to 44%."></div>
-        <figcaption>Source: ACMA, How we watch and listen to content (2026)</figcaption>
+        <figcaption>Source: ACMA, How we watch and listen to content; Trends and developments in viewing and listening 2024–25 (March 2026). Adults 18+.</figcaption>
       </figure>
+    </div>
+
+    <div class="story flip">
       <figure class="card facts">
         <h3>But 2025 brought a rebound</h3>
         <p class="sub">ACMA survey of Australian adults, 2024 vs 2025</p>
         <div class="fact"><b>46% → 52%</b><span>adults watching live free-to-air TV each week</span></div>
-        <div class="fact"><b>19% → 34%</b><span>18–24-year-olds watching live free-to-air TV</span></div>
-        <div class="fact"><b>84%</b><span>of adults now own a smart TV, so TV and the internet share one screen</span></div>
+        <div class="fact"><b>19% → 34%</b><span>18–24-year-olds watching live free-to-air TV each week</span></div>
+        <div class="fact"><b>84%</b><span>of adults now own a smart TV, so the antenna and the internet share one screen</span></div>
         <figcaption>Source: ACMA, How we watch and listen to content (2026)</figcaption>
       </figure>
+      <div class="prose">
+        <h3>THE COMEBACK</h3>
+        <p>For the first time in years, the share of adults watching live TV went <em>up</em>, from 46% to 52%. The biggest jump came from the people most likely to have given up on it: 18–24-year-olds, whose weekly live viewing rose from 19% to 34% in a single year.</p>
+        <p>Part of the reason sits in the lounge room. 84% of adults now have a smart TV, and on those sets the free-to-air channels, their apps and Netflix sit side by side on the same home screen. The hero chart at the top of this page shows the result: free-to-air TV still fills 60% of the time Australians spend watching video on their TV sets.</p>
+      </div>
     </div>
+
+    <div class="takeaway"><span class="tag">TAKEAWAY</span><p>Television wasn't replaced; it was joined. The same screen now carries the antenna, the networks' apps and the internet.</p></div>
+    <p class="transition">But "Australians" is not one audience. Split the country by age, and two very different viewers appear.</p>
   </div>
 </section>
 
 <!-- ================= 02 ================= -->
 <section class="chapter alt" id="ch2">
   <div class="wrap">
-    <div class="banner" role="img" aria-label="Illustration: an older lounge room with an antenna TV beside a younger setup with a laptop and phone" style="background-image:url(img/banner-lounge.svg)"></div>
     <header class="ch-head">
-      <span class="ch-no">02</span>
-      <h2>Two Australias on the couch</h2>
-      <p>Almost everyone still tunes in. Older viewers use the antenna; younger viewers use the apps.</p>
+      <span class="ch-osd"><b>CH 02</b> YOUNG VS OLD</span>
+      <h2>Two Australias <span class="outline">on the</span> <span class="accent">couch</span></h2>
+      <p class="standfirst">Almost everyone still watches free-to-air TV at some point in a month. What separates the generations is how they tune in, and how long they stay.</p>
     </header>
-    <div class="grid-2">
+
+    <div class="prose wide">
+        <h3>THREE WAYS TO MEASURE A VIEWER</h3>
+        <p>The official ratings, OzTAM's VOZ, count everyone who watches the free-to-air networks: through an antenna (<span class="k-broad">broadcast</span>) or through the networks' <span class="k-apps">apps</span>, also called BVOD. The three charts below look at the same people three ways: <b>reach</b> (did they watch at all this month?), <b>time</b> (how many hours?) and <b>habit</b> (how did they watch this week?).</p>
+        <p>Use the selector to follow one group through all three charts.</p>
+      </div>
+
+    <div class="linked">
+      <div class="picker" id="group-picker">
+        <span class="label">CHOOSE A GROUP ▸</span>
+        <div class="buttons" role="group" aria-label="Choose a group">
+          <button type="button" data-group="All people" aria-pressed="false">All people</button>
+          <button type="button" data-group="Men" aria-pressed="false">Men</button>
+          <button type="button" data-group="Women" aria-pressed="false">Women</button>
+          <button type="button" data-group="Ages 16–39" aria-pressed="false">Ages 16–39</button>
+          <button type="button" data-group="Ages 25–54" aria-pressed="false">Ages 25–54</button>
+          <button type="button" data-group="Ages 55+" aria-pressed="false">Ages 55+</button>
+        </div>
+        <p class="readout" id="group-readout" aria-live="polite">Pick a group to highlight it in the heatmap, the TV-icon chart and the waffles, and see its numbers here.</p>
+      </div>
+<div class="grid-2" style="margin-top:28px">
       <figure class="card">
-        <h3>Free-to-air TV reaches most people every month</h3>
-        <p class="sub">% of each group reached in an average month, Jan–Jun 2026 · <span class="c-v">gold outline</span>: for 25–54s, apps now reach almost as many as the antenna</p>
+        <h3>Free-to-air TV still reaches most people every month</h3>
+        <p class="sub">% of each group who watched at least once in an average month, Jan–Jun 2026. Darker = higher reach.</p>
         <div id="vis-heatmap" class="chart" role="img" tabindex="0" aria-label="Heatmap of monthly reach, January to June 2026: free-to-air TV reached 96% of people 55 and over and 79% of 16 to 39 year olds. For ages 25 to 54, apps reached 69% and the antenna 70%."></div>
-        <figcaption>Source: OzTAM VOZ Total TV Report H1 2026</figcaption>
+        <figcaption>Source: OzTAM, VOZ Total TV Viewing Report H1 2026 (August 2026)</figcaption>
       </figure>
       <figure class="card">
         <h3>Over-55s watch six times as much as under-40s</h3>
-        <p class="sub">Hours of free-to-air TV per person per month, Jan–Jun 2026 · 1 icon ≈ 5 hours</p>
+        <p class="sub">Hours of free-to-air TV per person per month, Jan–Jun 2026</p>
         <div id="vis-isotype" class="chart" role="img" tabindex="0" aria-label="Pictogram of monthly viewing hours: people 55 and over watch about 91 hours a month, people 16 to 39 about 16 hours, about six times less."></div>
-        <figcaption>Source: OzTAM VOZ Total TV Report H1 2026</figcaption>
+        <figcaption>Source: OzTAM, VOZ Total TV Viewing Report H1 2026. Icons rounded to the nearest 5 hours; labels show exact totals.</figcaption>
       </figure>
     </div>
-    <figure class="card full">
-      <h3>Under-40s are more likely than over-55s to watch free-to-air TV only through apps</h3>
-      <p class="sub">How each age group watched free-to-air TV in an average week, Jan–Jun 2026 · 1 square = 1% of the group</p>
-      <div id="vis-waffle" class="chart center" role="img" tabindex="0" aria-label="Four waffle charts of weekly viewing: 17% of 16 to 39 year olds watched free-to-air TV only through apps, compared with 7% of people 55 and over."></div>
-      <figcaption>Source: OzTAM VOZ Total TV Report H1 2026. Apps = 7plus, 9Now, 10 play, ABC iview, SBS On Demand (BVOD).</figcaption>
+
+    <figure class="card" style="margin-top:24px">
+      <h3>Under-40s are the most likely to watch free-to-air TV only through apps</h3>
+      <p class="sub">How each age group watched free-to-air TV in an average week, Jan–Jun 2026. 1 square = 1% of the group.</p>
+      <div id="vis-waffle" class="chart" role="img" tabindex="0" aria-label="Four waffle charts of weekly viewing: 17% of 16 to 39 year olds watched free-to-air TV only through apps, compared with 7% of people 55 and over."></div>
+      <figcaption>Source: OzTAM, VOZ Total TV Viewing Report H1 2026. Squares rounded to whole percentages.</figcaption>
     </figure>
+    </div>
+
+    <div class="story" style="margin-top:36px">
+      <div class="prose">
+        <h3>WHAT THE THREE CHARTS SAY TOGETHER</h3>
+        <p><b>Reach is high for everyone.</b> Even among 16–39-year-olds, 79% watched some free-to-air TV in an average month. For 25–54-year-olds, the apps now reach almost exactly as many people as the antenna (69% vs 70%).</p>
+      </div>
+      <div class="prose">
+        <p><b>Time is where the generations split.</b> Australians aged 55+ spend about 91 hours a month with free-to-air TV, roughly three hours a day. 16–39-year-olds spend about 16 hours, half an hour a day, and <span class="k-apps">two in every five of those minutes</span> come through an app. In a typical week, 43% of them don't watch free-to-air TV at all, against just 10% of over-55s.</p>
+      </div>
+    </div>
+
+    <div class="takeaway"><span class="tag">TAKEAWAY</span><p>For older Australians, TV is a daily habit through the antenna. For younger Australians, it is something they dip into, increasingly through an app.</p></div>
+    <p class="transition">So when we do tune in, what are we watching, and does it depend on how we watch?</p>
   </div>
 </section>
 
@@ -119,97 +201,158 @@
 <section class="chapter" id="ch3">
   <div class="wrap">
     <header class="ch-head">
-      <span class="ch-no">03</span>
-      <h2>News on the box, drama on demand</h2>
-      <p>Broadcast and streaming apps are used for different kinds of shows.</p>
+      <span class="ch-osd"><b>CH 03</b> WHAT'S ON</span>
+      <h2>News <span class="outline">on the</span> box, drama <span class="accent">on demand</span></h2>
+      <p class="standfirst">Broadcast and apps are not just two pipes for the same shows. Australians use each one for different things.</p>
     </header>
-    <figure class="card full tv-card">
+
+    <div class="story">
+      <div class="prose">
+        <h3>READING THE CHART</h3>
+        <p>The chart below is drawn like a TV screen split in two. The wide column is <span class="k-broad">broadcast</span>, which still carries 80.9% of all free-to-air viewing minutes. The narrow column is the <span class="k-apps">apps</span>, with 19.1% (up from 16.2% six months earlier). Each block's <b>area</b> is its share of all viewing time.</p>
+      </div>
+      <div class="prose">
+        <h3>LIVE VS ON DEMAND</h3>
+        <p><b>News</b> is what we watch live: almost a third of broadcast time (31.3%), and nearly all of it as it airs. <b>Drama</b> is what we stream: 20.7% of app minutes, more than double its share on broadcast. Reality TV such as <em>Married at First Sight</em> follows the same pattern (13.3% on apps vs 7.4% on broadcast).</p>
+      </div>
+    </div>
+
+    <figure class="card tv-card" style="margin-top:28px">
       <h3>News fills a third of broadcast time; drama leads on the apps</h3>
-      <p class="sub">Block area = share of all free-to-air viewing minutes, Jan–Jun 2026 · hover a block to compare genres</p>
-      <div class="mekko-head"><span style="flex:80.9">Broadcast TV · 80.9% of minutes</span><span style="flex:19.1">Apps · 19.1%</span></div>
+      <p class="sub">Block area = share of all free-to-air viewing minutes, Jan–Jun 2026. Hover a block to compare the same genre on both platforms.</p>
+      <div class="mekko-head"><span style="flex:80.9">Broadcast · 80.9% of minutes</span><span style="flex:19.1">Apps · 19.1%</span></div>
       <div id="vis-mekko" class="chart" role="img" tabindex="0" aria-label="Marimekko chart: broadcast is 80.9% of free-to-air viewing minutes and apps 19.1%. News is 31.3% of broadcast time; drama is the biggest app genre at 20.7%."></div>
-      <figcaption>Source: OzTAM VOZ Total TV Report H1 2026 (genre share of broadcast and BVOD minutes)</figcaption>
+      <figcaption>Source: OzTAM, VOZ Total TV Viewing Report H1 2026 (genre share of broadcast and BVOD minutes)</figcaption>
     </figure>
+
+    <div class="takeaway"><span class="tag">TAKEAWAY</span><p>We tune in live for news and sport, and stream drama and reality when it suits us. Sport is the one genre that grew on both: from 9.6% to 13.0% of broadcast time, and from 9.1% to 16.1% of app time, reaching 18 million Australians a month.</p></div>
+    <p class="transition">Which brings us to the one event that still stops the country: the footy grand final.</p>
   </div>
 </section>
 
 <!-- ================= 04 ================= -->
 <section class="chapter alt" id="ch4">
   <div class="wrap">
-    <div class="photo-pair">
-      <figure class="photo duo-gold">
-        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/2017_AFL_Grand_Final_panorama_during_national_anthem.jpg?width=1200" alt="Panorama of the packed Melbourne Cricket Ground during the national anthem at the 2017 AFL Grand Final" loading="lazy">
-        <figcaption><div><b>AFL</b> Grand Final day at the MCG, Melbourne</div><span>Photo: <a href="https://commons.wikimedia.org/wiki/File:2017_AFL_Grand_Final_panorama_during_national_anthem.jpg">Wikimedia Commons</a></span></figcaption>
-      </figure>
-      <figure class="photo duo-green">
-        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Australia_Stadium.jpg?width=1000" alt="Stadium Australia in Sydney, home of the NRL Grand Final" loading="lazy">
-        <figcaption><div><b>NRL</b> Stadium Australia, Sydney</div><span>Photo: <a href="https://commons.wikimedia.org/wiki/File:Australia_Stadium.jpg">Wikimedia Commons</a></span></figcaption>
+    <header class="ch-head">
+      <span class="ch-osd"><b>CH 04</b> THE FOOTY</span>
+      <h2>Footy, <span class="outline">the last</span> <span class="accent">campfire</span></h2>
+      <p class="standfirst">Live sport is the one thing that still gets millions of Australians watching the same screen at the same moment. But which code you watch depends on where you live.</p>
+    </header>
+
+    <div class="story">
+      <div class="prose">
+        <h3>A TEN-YEAR HIGH</h3>
+        <p>In 2026 the <span class="k-afl">AFL Grand Final</span> between Brisbane and Fremantle drew an average of <b>4.52 million</b> viewers on Seven, the biggest audience in the decade shown, and well above the 2019 low of 2.94 million.</p>
+        <p>Streaming is no longer a sideshow. <span class="k-apps">1.42 million people watched on the 7plus app</span>, 31% of the audience, nearly double the share of 2024. A week later the <span class="k-nrl">NRL Grand Final</span>, a one-point win for the Roosters over Newcastle, averaged 4.29 million on Nine and reached 6.05 million people.</p>
+      </div>
+      <figure class="card">
+        <h3>The AFL Grand Final hit a ten-year high, and almost a third streamed it</h3>
+        <p class="sub">Average national audience (millions): <span class="k-afl">total</span> and <span class="k-apps">watched on the 7plus app</span></p>
+        <div id="vis-gf" class="chart" role="img" tabindex="0" aria-label="Line chart of AFL Grand Final audiences 2016 to 2026: lowest 2.94 million in 2019, highest 4.52 million in 2026. Streaming on 7plus rose from 16% of the audience in 2024 to 31% in 2026."></div>
+        <figcaption>Sources: Seven Network via TV Blackbox (2026); Mediaweek (2025). Measurement methods changed over the decade.</figcaption>
       </figure>
     </div>
-    <header class="ch-head">
-      <span class="ch-no">04</span>
-      <h2>Footy, the last campfire</h2>
-      <p>Grand finals still bring millions to one screen, but which code you watch depends on where you live.</p>
-    </header>
-    <figure class="card full field-bg">
-      <h3>The AFL Grand Final hit a ten-year high in 2026, and almost a third of viewers streamed it</h3>
-      <p class="sub">Average national audience (millions): <span class="c-b">total</span> and <span class="c-v">streamed on 7plus</span></p>
-      <div id="vis-gf" class="chart" role="img" tabindex="0" aria-label="Line chart of AFL Grand Final audiences 2016 to 2026: lowest 2.94 million in 2019, highest 4.52 million in 2026. Streaming on 7plus rose from 16% of the audience in 2024 to 31% in 2026."></div>
-      <figcaption>Sources: Seven Network via TV Blackbox (2026); Mediaweek (2025). Measurement methods changed over the decade.</figcaption>
-    </figure>
-    <div class="grid-2">
+
+    <div style="margin-top:44px"><div class="prose wide">
+        <h3>THE FOOTY DIVIDE</h3>
+        <p>Australians joke about the <b>Barassi Line</b>, an imaginary border between rugby-league country in New South Wales and Queensland and Aussie-rules country everywhere else. Grand final audiences in the five capital-city TV markets show it is very real.</p>
+        <p>The left map shows how many people watched each final. The right map turns that into a ratio, so cities of different sizes can be compared fairly.</p>
+      </div>
+</div>
+    <div class="linked">
+      <div class="picker" id="city-picker">
+        <span class="label">CHOOSE A CITY ▸</span>
+        <div class="buttons" role="group" aria-label="Choose a city">
+          <button type="button" data-city="Sydney" aria-pressed="false">Sydney</button>
+          <button type="button" data-city="Melbourne" aria-pressed="false">Melbourne</button>
+          <button type="button" data-city="Brisbane" aria-pressed="false">Brisbane</button>
+          <button type="button" data-city="Adelaide" aria-pressed="false">Adelaide</button>
+          <button type="button" data-city="Perth" aria-pressed="false">Perth</button>
+        </div>
+        <p class="readout" id="city-readout" aria-live="polite">Pick a city to highlight it on both maps and compare its audiences.</p>
+      </div>
+<div class="grid-2" style="margin-top:28px">
       <figure class="card">
         <h3>Melbourne watched the AFL; Sydney watched the NRL</h3>
-        <p class="sub">Average audience per capital-city market, 2026 Grand Finals · circle area = viewers</p>
+        <p class="sub">Average audience per capital-city market, 2026 Grand Finals. Circle area = viewers.</p>
         <div id="vis-map-symbols" class="chart" role="img" tabindex="0" aria-label="Proportional symbol map of 2026 Grand Final audiences: Melbourne 1.26 million AFL vs 441 thousand NRL; Sydney 1.16 million NRL vs 468 thousand AFL; Brisbane 737 thousand NRL vs 581 thousand AFL."></div>
         <figcaption>Sources: TV Blackbox (AFL); Nine Network (NRL), 2026</figcaption>
       </figure>
       <figure class="card">
         <h3>Brisbane is the swing city</h3>
-        <p class="sub">AFL share of capital-city Grand Final viewers, 2026 · each state shaded by its capital</p>
+        <p class="sub">Of capital-city viewers who watched either final, the share who watched the AFL. Each state is shaded by its capital.</p>
         <div id="vis-map-choropleth" class="chart" role="img" tabindex="0" aria-label="Choropleth: share of capital-city Grand Final viewers who watched the AFL. Perth 79%, Melbourne 74%, Adelaide 73%, Brisbane 44%, Sydney 29%."></div>
-        <figcaption>Sources: as left. Projection: Albers equal-area conic. Boundaries: Natural Earth.</figcaption>
+        <figcaption>Market populations: OzTAM universe estimates 2026. Projection: Albers equal-area conic. Boundaries: Natural Earth.</figcaption>
       </figure>
     </div>
+    </div>
+
+    <div class="story" style="margin-top:36px">
+      <div class="prose">
+        <p><span class="k-afl">Melbourne</span> (1.26 million) and <span class="k-nrl">Sydney</span> (1.16 million) each delivered the biggest audience for "their" code, and largely ignored the other. Perth and Adelaide preferred the AFL by three or four to one.</p>
+      </div>
+      <div class="prose">
+        <p>Brisbane is the exception. Even with the Brisbane Lions playing in the AFL decider, more Brisbane viewers watched the NRL (737,000 vs 581,000). Hometown teams matter: the Dockers lifted Perth to 26 viewers per 100 residents, the highest rate of any city, and the Knights drew 480,000 viewers in the Northern NSW market alone.</p>
+      </div>
+    </div>
+
+    <div class="takeaway"><span class="tag">TAKEAWAY</span><p>Live sport is free-to-air TV's strongest card, and more of it is now streamed. But Australia doesn't share one grand final: it shares two, split along a line on the map.</p></div>
+    <p class="transition">Sport is made live. Drama has to be paid for in advance. So who is paying?</p>
   </div>
 </section>
 
 <!-- ================= 05 ================= -->
 <section class="chapter" id="ch5">
   <div class="wrap">
-    <div class="banner" role="img" aria-label="Illustration: a film strip of Australian filming locations" style="background-image:url(img/banner-film.svg)"></div>
     <header class="ch-head">
-      <span class="ch-no">05</span>
-      <h2>Made here: who pays for Aussie TV drama?</h2>
-      <p>Streaming services now fund most new Australian drama, and production has moved north.</p>
+      <span class="ch-osd"><b>CH 05</b> MADE HERE</span>
+      <h2>Who pays <span class="outline">for</span> <span class="accent">Aussie drama?</span></h2>
+      <p class="standfirst">When we stream drama, we are often watching Australian stories. Making them is changing fast: fewer hours, bigger budgets, and a new centre of production.</p>
     </header>
-    <div class="grid-2">
+
+    <div class="story">
+      <div class="prose">
+        <h3>FEWER HOURS, BIGGER BUDGETS</h3>
+        <p>Screen Australia counts every Australian drama made each year. In 2024/25, <span class="k-broad">free-to-air networks</span> made fewer hours of new drama (191, down from 276) and spent less ($162 million).</p>
+        <p><span class="k-online">Subscription and streaming services</span> also made fewer hours (105) but spent <em>more</em>: $492 million, about <b>$4.7 million for every hour</b> of screen time, against about $0.85 million on free-to-air. The dashed lines on the chart mark cost per hour, so the steeper the line a point sits on, the more expensive each hour.</p>
+      </div>
       <figure class="card">
-        <h3>Streaming makes fewer hours, at 5× the cost per hour</h3>
-        <p class="sub">Australian TV drama: hours made vs $ spent, 2023/24 → 2024/25</p>
+        <h3>Streaming makes fewer hours, at five times the cost per hour</h3>
+        <p class="sub">Australian TV drama: hours made vs $ spent, 2023/24 → 2024/25 (arrow shows the change)</p>
         <div id="vis-scatter" class="chart" role="img" tabindex="0" aria-label="Connected scatterplot: free-to-air drama fell from 276 to 191 hours and 189 to 162 million dollars; streaming drama fell from 135 to 105 hours but rose from 471 to 492 million dollars."></div>
-        <figcaption>Source: Screen Australia, Drama Report 2024/25</figcaption>
-      </figure>
-      <figure class="card">
-        <h3>Industry pays almost half; government a third</h3>
-        <p class="sub">Sources of the $749m that financed Australian TV drama, 2024/25</p>
-        <div id="vis-treemap" class="chart" role="img" tabindex="0" aria-label="Treemap of 749 million dollars in drama finance, 2024/25: Australian industry 342 million (46%), government 251 million (34%) including the Producer Offset 180 million, international 155 million (21%)."></div>
-        <figcaption>Source: Screen Australia, Drama Report 2024/25. Government parts sum to $248m due to rounding.</figcaption>
+        <figcaption>Source: Screen Australia, Drama Report 2024/25. Excludes children's drama. Financial years run July–June.</figcaption>
       </figure>
     </div>
-    <figure class="card full split filmstrip">
+
+    <div class="story flip">
+      <figure class="card">
+        <h3>Industry pays almost half; government a third</h3>
+        <p class="sub">Where the $749m that financed Australian TV and streaming drama in 2024/25 came from</p>
+        <div id="vis-treemap" class="chart" role="img" tabindex="0" aria-label="Treemap of 749 million dollars in drama finance, 2024/25: Australian industry 342 million (46%), government 251 million (34%) including the Producer Offset 180 million, international 155 million (21%)."></div>
+        <figcaption>Source: Screen Australia, Drama Report 2024/25. Government parts sum to $248m because of rounding.</figcaption>
+      </figure>
+      <div class="prose">
+        <h3>FOLLOWING THE MONEY</h3>
+        <p>Of the $749 million invested in Australian TV and streaming dramas in 2024/25, <b>46%</b> came from the Australian screen industry itself: broadcasters, streamers and production companies.</p>
+        <p><b>Government</b> provided 34%, mostly through the <b>Producer Offset</b>, a federal tax rebate ($180m), with state screen agencies adding $44m and Screen Australia $19m. A further 21% came from overseas investors.</p>
+      </div>
+    </div>
+
+    <figure class="card split" style="margin-top:36px">
       <div>
         <h3>Queensland overtook New South Wales as the production capital</h3>
-        <p class="sub">Each state's share of screen-drama production spending (TV and film) · untick to hide 2023/24</p>
+        <p class="sub">Each state's share of all screen-drama production spending (TV and film). Untick the box to show 2024/25 on its own.</p>
         <div id="vis-map-spikes" class="chart" role="img" tabindex="0" aria-label="Spike map of drama production spending share: Queensland rose from 16% to 34%, New South Wales fell from 51% to 31%, Victoria rose from 18% to 27%."></div>
-        <figcaption>Source: Screen Australia, Drama Report 2024/25. ACT, NT and Tasmania are reported together (drawn at Hobart).</figcaption>
+        <figcaption>Source: Screen Australia, Drama Report 2024/25. ACT, NT and Tasmania are only reported together (drawn at Hobart).</figcaption>
       </div>
-      <div class="facts side">
-        <div class="fact"><b>$2.7b</b><span>record drama spend in Australia, 2024/25</span></div>
-        <div class="fact"><b style="color:#8a6d00">16% → 34%</b><span>Queensland's share in one year</span></div>
+      <div class="facts">
+        <div class="fact"><b>$2.7b</b><span>record drama spend in Australia, 2024/25, boosted by big international shoots</span></div>
+        <div class="fact"><b style="color:#8E3F57">16% → 34%</b><span>Queensland's share in one year</span></div>
         <div class="fact"><b>51% → 31%</b><span>New South Wales' share</span></div>
       </div>
     </figure>
+
+    <div class="takeaway"><span class="tag">TAKEAWAY</span><p>Streaming services now account for three-quarters of the money spent making Australian TV drama, and more of it is being made in Queensland.</p></div>
   </div>
 </section>
 
@@ -217,11 +360,16 @@
 <section class="ending">
   <div class="crt-off" aria-hidden="true"></div>
   <div class="wrap">
-    <h2>Not dead. Re-wired.</h2>
+    <p class="osd">END OF TRANSMISSION</p>
+    <h2>Not dead. <span class="outline">Re-wired.</span></h2>
+    <div class="prose">
+      <p>So, is television dead? The data says no. Free-to-air TV still reaches 87% of Australians in an average month, live viewing rose in 2025, and the biggest sporting nights are getting bigger. What has changed is the route in: the same programs now arrive through an antenna, an app or a streaming service, and younger Australians increasingly choose the app.</p>
+      <p>The money has moved with them. Streaming services now pay for most new Australian drama, and the stories we watch are increasingly made in Queensland. The next time you switch on, notice which way you came in.</p>
+    </div>
     <div class="takeaways">
-      <div><b>We still watch together</b>87% of Australians watch free-to-air TV each month.</div>
-      <div><b>The way in is changing</b>1 in 5 free-to-air minutes is streamed; 2 in 5 for under-40s.</div>
-      <div><b>Streaming pays the bills</b>$492m on Australian drama, three times free-to-air.</div>
+      <div><b>We still watch together</b>87% of Australians watch free-to-air TV each month, and 4.52 million watched the AFL Grand Final.</div>
+      <div><b>The way in is changing</b>1 in 5 free-to-air minutes is streamed; for under-40s it is 2 in 5.</div>
+      <div><b>Streaming pays the bills</b>$492m on Australian drama in 2024/25, three times free-to-air.</div>
     </div>
   </div>
 </section>
@@ -235,11 +383,11 @@
       <h2>About</h2>
       <p><b>Why and who:</b> a plain-language look at how everyday Australians watch TV, for a general audience with no statistics background.</p>
       <p><b>Author:</b> Gathika Athuruliya (33890714), Monash University, FIT3179 S2 2026. Created October 2026.</p>
-      <p><b>Terms:</b> <i>Free-to-air</i> = Seven, Nine, 10, ABC, SBS. <i>BVOD/apps</i> = the networks' streaming apps. <i>Reach</i> = % who watched at least once. <i>Average audience</i> = average number watching across a program.</p>
+      <p><b>Terms:</b> <i>Free-to-air</i> = Seven, Nine, 10, ABC, SBS. <i>Broadcast</i> = watched through an antenna. <i>BVOD/apps</i> = the networks' own streaming apps. <i>Reach</i> = % who watched at least once. <i>Average audience</i> = average number watching across a program.</p>
       <p><b>AI use:</b> Claude (Anthropic) helped find sources, draft code and proof-read. All figures were checked against the sources.</p>
     </div>
     <div>
-      <h3>Data sources</h3>
+      <h3>DATA SOURCES</h3>
       <ol>
         <li>ACMA (2026). <a href="https://www.acma.gov.au/publications/2026-03/report/communications-and-media-australia-how-we-watch-and-listen-content">How we watch and listen to content</a>; <a href="https://www.acma.gov.au/sites/default/files/2026-03/Trends%20and%20developments%20in%20viewing%20and%20listening%202024-25.pdf">Trends and developments 2024–25</a>. CC BY 4.0.</li>
         <li>OzTAM (2026). <a href="https://virtualoz.com.au/insight/voz-total-tv-viewing-report-h1-2026/">VOZ Total TV Viewing Report H1 2026</a> and <a href="https://virtualoz.com.au/insight/voz-total-tv-viewing-report-h2-2025/">H2 2025</a>.</li>
@@ -247,19 +395,14 @@
         <li>Mediaweek (2025). <a href="https://www.mediaweek.com.au/tv-ratings-26-28-september-2025-in-a-football-heavy-weekend-to-no-surprise-brisbane-and-afl-won-the-weekend/">TV Ratings 26–28 Sept 2025</a>.</li>
         <li>Screen Australia (2026). <a href="https://www.screenaustralia.gov.au/fact-finders/reports-and-key-issues/reports-and-discussion-papers/drama-report-2024-25">Drama Report 2024/25</a>.</li>
         <li><a href="https://www.naturalearthdata.com/">Natural Earth</a> state boundaries (public domain).</li>
-      </ol>
-      <h3>Photos (Wikimedia Commons, free licences; author and licence on each file page)</h3>
-      <ol>
-        <li>Header backdrop: <a href="https://commons.wikimedia.org/wiki/File:Television_static.gif">Television static.gif</a></li>
-        <li>AFL: <a href="https://commons.wikimedia.org/wiki/File:2017_AFL_Grand_Final_panorama_during_national_anthem.jpg">2017 AFL Grand Final panorama during national anthem.jpg</a></li>
-        <li>NRL: <a href="https://commons.wikimedia.org/wiki/File:Australia_Stadium.jpg">Australia Stadium.jpg</a></li>
+        <li>Header backdrop: <a href="https://commons.wikimedia.org/wiki/File:Television_static.gif">Television static.gif</a>, Wikimedia Commons (free licence; author and licence on the file page).</li>
       </ol>
     </div>
     <div>
-      <h3>How it was made</h3>
-      <p>Built with Vega-Lite (treemap in Vega). Chart specs are in <code>specs/</code> and data in <code>data/</code> of the GitHub repository.</p>
-      <h3>Licence</h3>
-      <p>© Gathika Athuruliya 2026, CC BY-SA 4.0. Illustrations are original SVG artwork made for this page; photos as credited. Fonts: Bebas Neue, Source Serif 4, IBM Plex Sans Condensed (OFL).</p>
+      <h3>HOW IT WAS MADE</h3>
+      <p>Built with Vega-Lite (treemap in Vega). Chart specs are in <code>specs/</code> and data in <code>data/</code> of the GitHub repository. Every chart has a "View the data" table and a text description for screen readers.</p>
+      <h3>LICENCE</h3>
+      <p>© Gathika Athuruliya 2026, CC BY-SA 4.0. Fonts: Bebas Neue, VT323, Source Serif 4, IBM Plex Sans Condensed (OFL).</p>
     </div>
   </div>
 </footer>

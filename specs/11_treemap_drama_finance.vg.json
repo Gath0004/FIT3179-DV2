@@ -102,13 +102,13 @@
         "private"
       ],
       "range": [
-        "#FFCD00",
-        "#ffd94d",
-        "#ffe680",
-        "#fff0b3",
-        "#00843D",
-        "#26313d",
-        "#b9b2a3"
+        "#6E7191",
+        "#8D90AE",
+        "#ACAFC8",
+        "#CBCDE0",
+        "#23263f",
+        "#C7A27C",
+        "#E6E2DA"
       ]
     }
   ],
@@ -185,7 +185,7 @@
             "value": "transparent"
           },
           "stroke": {
-            "value": "#005c2b"
+            "value": "#23263f"
           },
           "strokeWidth": {
             "value": 1.5
@@ -217,7 +217,7 @@
             "signal": "datum.w > 120 && datum.h > 50 ? ('$' + datum.value_m + 'm  ·  ' + format(datum.share, '.0%')) : datum.w > 38 && datum.h > 24 ? '$' + datum.value_m + 'm' : ''"
           },
           "fill": {
-            "signal": "datum.id == 'industry' || datum.id == 'intl' ? 'white' : '#26313d'"
+            "signal": "datum.id == 'industry' || datum.id == 'offset' ? 'white' : '#23263f'"
           },
           "font": {
             "value": "IBM Plex Sans Condensed, Arial Narrow, sans-serif"
@@ -252,7 +252,7 @@
             "signal": "datum.w - 14"
           },
           "fill": {
-            "signal": "datum.id == 'industry' || datum.id == 'intl' ? 'white' : '#26313d'"
+            "signal": "datum.id == 'industry' || datum.id == 'offset' ? 'white' : '#23263f'"
           },
           "font": {
             "value": "IBM Plex Sans Condensed, Arial Narrow, sans-serif"
@@ -284,7 +284,7 @@
             "value": "GOVERNMENT  $251m  ·  34%"
           },
           "fill": {
-            "value": "#26313d"
+            "value": "white"
           },
           "font": {
             "value": "IBM Plex Sans Condensed, Arial Narrow, sans-serif"

@@ -135,8 +135,8 @@
               "2024/25"
             ],
             "range": [
-              "#c9c2b2",
-              "#00843D"
+              "#B9BBC7",
+              "#B56576"
             ]
           },
           "legend": {
@@ -198,7 +198,7 @@
         "type": "text",
         "fontSize": 12,
         "fontWeight": 700,
-        "color": "#005c2b"
+        "color": "#8E3F57"
       },
       "encoding": {
         "longitude": {
@@ -249,7 +249,7 @@
         "type": "text",
         "fontSize": 11,
         "fontWeight": 600,
-        "color": "#8a826f"
+        "color": "#6f7180"
       },
       "encoding": {
         "longitude": {

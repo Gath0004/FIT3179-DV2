@@ -106,8 +106,8 @@
               "NRL"
             ],
             "range": [
-              "#FFCD00",
-              "#00843D"
+              "#1B998B",
+              "#8B5FBF"
             ]
           },
           "legend": {
@@ -121,11 +121,10 @@
         },
         "opacity": {
           "condition": {
-            "param": "city_hover",
-            "empty": true,
-            "value": 0.9
+            "test": "sel_city == '' || datum.city == sel_city",
+            "value": 0.92
           },
-          "value": 0.25
+          "value": 0.2
         },
         "tooltip": [
           {
@@ -149,21 +148,22 @@
             "field": "per100",
             "title": "Viewers per 100 residents"
           }
-        ]
-      },
-      "params": [
-        {
-          "name": "city_hover",
-          "select": {
-            "type": "point",
-            "fields": [
-              "city"
-            ],
-            "on": "mouseover",
-            "clear": "mouseout"
-          }
+        ],
+        "strokeWidth": {
+          "condition": {
+            "test": "datum.city == sel_city",
+            "value": 2.5
+          },
+          "value": 1.2
+        },
+        "stroke": {
+          "condition": {
+            "test": "datum.city == sel_city",
+            "value": "#23263f"
+          },
+          "value": "white"
         }
-      ]
+      }
     },
     {
       "data": {
@@ -251,11 +251,14 @@
           "field": "t"
         },
         "color": {
+          "value": "white"
+        },
+        "opacity": {
           "condition": {
-            "test": "datum.code == 'NRL'",
-            "value": "white"
+            "test": "sel_city == '' || datum.city == sel_city",
+            "value": 1
           },
-          "value": "#26313d"
+          "value": 0.25
         }
       }
     }
@@ -264,5 +267,11 @@
     "view": {
       "stroke": null
     }
-  }
+  },
+  "params": [
+    {
+      "name": "sel_city",
+      "value": ""
+    }
+  ]
 }

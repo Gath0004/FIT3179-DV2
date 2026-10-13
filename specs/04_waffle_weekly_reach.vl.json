@@ -119,10 +119,10 @@
                 "Didn't watch that week"
               ],
               "range": [
-                "#00843D",
-                "#9fd1b4",
-                "#FFCD00",
-                "#e9e4d6"
+                "#3A4E8C",
+                "#A98BB8",
+                "#E86A4F",
+                "#E7E3DB"
               ]
             },
             "legend": {
@@ -149,7 +149,14 @@
               "title": "% of group",
               "format": ".1f"
             }
-          ]
+          ],
+          "opacity": {
+            "condition": {
+              "test": "sel_group == '' || indexof(['All people','Ages 16–39','Ages 25–54','Ages 55+'], sel_group) < 0 || datum.group == sel_group",
+              "value": 1
+            },
+            "value": 0.25
+          }
         }
       },
       {
@@ -164,7 +171,7 @@
           "baseline": "middle",
           "fontSize": 12,
           "fontWeight": 600,
-          "color": "#8a6d00",
+          "color": "#B8432A",
           "dy": 4
         },
         "encoding": {
@@ -186,5 +193,11 @@
     "view": {
       "stroke": null
     }
-  }
+  },
+  "params": [
+    {
+      "name": "sel_group",
+      "value": ""
+    }
+  ]
 }

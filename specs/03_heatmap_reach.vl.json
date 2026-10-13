@@ -68,7 +68,13 @@
         "domain": false,
         "ticks": false,
         "labelFontSize": 12,
-        "labelPadding": 8
+        "labelPadding": 8,
+        "labelFontWeight": {
+          "expr": "datum.value == sel_group ? 700 : 400"
+        },
+        "labelColor": {
+          "expr": "datum.value == sel_group ? '#23263f' : '#4f5563'"
+        }
       }
     }
   },
@@ -77,11 +83,28 @@
       "mark": {
         "type": "rect",
         "cornerRadius": 3,
-        "stroke": "#faf7f0",
+        "stroke": "white",
         "strokeWidth": 3
       },
       "encoding": {
         "color": {
+          "field": "platform",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Any free-to-air TV",
+              "Broadcast (antenna)",
+              "Streaming apps (BVOD)"
+            ],
+            "range": [
+              "#23263f",
+              "#3A4E8C",
+              "#E86A4F"
+            ]
+          },
+          "legend": null
+        },
+        "opacity": {
           "field": "reach",
           "type": "quantitative",
           "scale": {
@@ -90,26 +113,18 @@
               100
             ],
             "range": [
-              "#eef6f0",
-              "#005c2b"
+              0.18,
+              1
             ]
           },
-          "legend": {
-            "title": "% of group reached in an average month",
-            "orient": "bottom",
-            "direction": "horizontal",
-            "gradientLength": 220,
-            "titleLimit": 300,
-            "format": "d"
-          }
+          "legend": null
         },
-        "strokeWidth": {
+        "stroke": {
           "condition": {
-            "param": "cell",
-            "empty": false,
-            "value": 0
+            "test": "datum.group == sel_group",
+            "value": "#23263f"
           },
-          "value": 3
+          "value": "white"
         },
         "tooltip": [
           {
@@ -126,17 +141,7 @@
             "format": ".1f"
           }
         ]
-      },
-      "params": [
-        {
-          "name": "cell",
-          "select": {
-            "type": "point",
-            "on": "mouseover",
-            "clear": "mouseout"
-          }
-        }
-      ]
+      }
     },
     {
       "mark": {
@@ -152,32 +157,23 @@
         },
         "color": {
           "condition": {
-            "test": "datum.reach > 72",
+            "test": "datum.reach > 70",
             "value": "white"
           },
-          "value": "#005c2b"
+          "value": "#23263f"
         }
       }
-    },
-    {
-      "transform": [
-        {
-          "filter": "datum.group == 'Ages 25–54' && datum.platform != 'Any free-to-air TV'"
-        }
-      ],
-      "mark": {
-        "type": "rect",
-        "fill": null,
-        "stroke": "#FFCD00",
-        "strokeWidth": 3,
-        "cornerRadius": 3
-      },
-      "encoding": {}
     }
   ],
   "config": {
     "view": {
       "stroke": null
     }
-  }
+  },
+  "params": [
+    {
+      "name": "sel_group",
+      "value": ""
+    }
+  ]
 }

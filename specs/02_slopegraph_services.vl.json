@@ -39,7 +39,7 @@
       "scale": {
         "type": "point",
         "range": [
-          40,
+          60,
           250
         ],
         "padding": 0
@@ -55,9 +55,9 @@
           "Online"
         ],
         "range": [
-          "#00843D",
-          "#c49a00",
-          "#d9ab00"
+          "#3A4E8C",
+          "#E86A4F",
+          "#E9B44C"
         ]
       },
       "legend": null
@@ -99,7 +99,27 @@
               100
             ]
           },
-          "axis": null
+          "axis": {
+            "labelColor": "#4f5563",
+            "titleColor": "#4f5563",
+            "titleFontWeight": 500,
+            "domainColor": "#b9bbc7",
+            "tickColor": "#b9bbc7",
+            "title": "% of adults who used it in the past 7 days",
+            "values": [
+              0,
+              25,
+              50,
+              75,
+              100
+            ],
+            "labelExpr": "datum.value + '%'",
+            "grid": true,
+            "gridColor": "#ECE9F1",
+            "domain": false,
+            "ticks": false,
+            "labelPadding": 4
+          }
         },
         "detail": {
           "field": "service"
@@ -194,11 +214,17 @@
           "value": 0.2
         },
         "color": {
-          "condition": {
-            "test": "datum.colour_key == 'Free-to-air live'",
-            "value": "#00843D"
-          },
-          "value": "#8a6d00"
+          "condition": [
+            {
+              "test": "datum.colour_key == 'Free-to-air live'",
+              "value": "#3A4E8C"
+            },
+            {
+              "test": "datum.colour_key == 'Free-to-air apps'",
+              "value": "#B8432A"
+            }
+          ],
+          "value": "#8C6418"
         }
       }
     },
@@ -237,11 +263,17 @@
           "value": 0.2
         },
         "color": {
-          "condition": {
-            "test": "datum.colour_key == 'Free-to-air live'",
-            "value": "#00843D"
-          },
-          "value": "#8a6d00"
+          "condition": [
+            {
+              "test": "datum.colour_key == 'Free-to-air live'",
+              "value": "#3A4E8C"
+            },
+            {
+              "test": "datum.colour_key == 'Free-to-air apps'",
+              "value": "#B8432A"
+            }
+          ],
+          "value": "#8C6418"
         }
       }
     }

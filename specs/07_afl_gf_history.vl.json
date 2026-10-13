@@ -33,11 +33,15 @@
       "field": "year",
       "type": "ordinal",
       "axis": {
-        "title": null,
+        "title": "Year of Grand Final",
         "labelAngle": 0,
-        "domain": false,
-        "ticks": false,
-        "labelFontSize": 12
+        "domain": true,
+        "ticks": true,
+        "labelFontSize": 12,
+        "domainColor": "#b9bbc7",
+        "tickColor": "#b9bbc7",
+        "titleColor": "#4f5563",
+        "titleFontWeight": 500
       }
     }
   },
@@ -45,7 +49,7 @@
     {
       "mark": {
         "type": "bar",
-        "color": "#FFCD00",
+        "color": "#E86A4F",
         "width": 26,
         "cornerRadiusTopLeft": 2,
         "cornerRadiusTopRight": 2
@@ -75,12 +79,12 @@
     {
       "mark": {
         "type": "line",
-        "color": "#00843D",
+        "color": "#1B998B",
         "strokeWidth": 3,
         "point": {
           "filled": true,
           "size": 70,
-          "color": "#00843D"
+          "color": "#1B998B"
         }
       },
       "encoding": {
@@ -96,12 +100,24 @@
           "axis": {
             "title": "Average national audience (millions)",
             "grid": true,
-            "gridColor": "#e8e3d7",
+            "gridColor": "#ECE9F1",
             "domain": false,
             "ticks": false,
             "tickCount": 5,
             "titleFontWeight": 500,
-            "titleColor": "#555"
+            "titleColor": "#4f5563",
+            "format": "d",
+            "values": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "labelColor": "#4f5563",
+            "domainColor": "#b9bbc7",
+            "tickColor": "#b9bbc7"
           }
         },
         "tooltip": [
@@ -127,7 +143,7 @@
         "dy": -14,
         "fontSize": 11,
         "fontWeight": 600,
-        "color": "#005c2b"
+        "color": "#11695F"
       },
       "encoding": {
         "y": {
@@ -152,7 +168,7 @@
         "dy": -8,
         "fontSize": 11,
         "fontWeight": 600,
-        "color": "#8a6d00"
+        "color": "#B8432A"
       },
       "encoding": {
         "y": {
@@ -175,7 +191,7 @@
           {
             "year": 2022,
             "y": 1.35,
-            "t": "% of audience streaming on 7plus →"
+            "t": "% of audience watching on the 7plus app →"
           },
           {
             "year": 2019,

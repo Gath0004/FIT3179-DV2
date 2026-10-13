@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Isotype (pictogram) chart: average monthly hours of free-to-air TV per person by group, Jan–Jun 2026 (OzTAM VOZ). Each TV icon = about 5 hours a month.",
-  "width": 440,
+  "width": 430,
   "height": 240,
   "data": {
     "url": "data/voz_monthly_h1_2026.csv",
@@ -37,7 +37,7 @@
       "as": "broadcast_icons"
     },
     {
-      "calculate": "round(datum.total_h) + ' hrs (' + (datum.total_h / 30.4 >= 1 ? format(datum.total_h / 30.4, '.1f') + ' a day)' : round(datum.total_h * 60 / 30.4) + ' min a day)')",
+      "calculate": "round(datum.total_h) + ' hrs'",
       "as": "label"
     },
     {
@@ -52,6 +52,10 @@
     {
       "calculate": "datum.i < datum.broadcast_icons ? 'Broadcast (antenna)' : 'Streaming apps (BVOD)'",
       "as": "platform"
+    },
+    {
+      "calculate": "datum.i * 5 + 2.5",
+      "as": "xh"
     }
   ],
   "encoding": {
@@ -82,15 +86,34 @@
       },
       "encoding": {
         "x": {
-          "field": "i",
+          "field": "xh",
           "type": "quantitative",
           "scale": {
             "domain": [
-              -0.6,
-              25.5
+              0,
+              130
             ]
           },
-          "axis": null
+          "axis": {
+            "labelColor": "#4f5563",
+            "titleColor": "#4f5563",
+            "titleFontWeight": 500,
+            "domainColor": "#b9bbc7",
+            "tickColor": "#b9bbc7",
+            "title": "Hours of free-to-air TV per person per month (1 icon = 5 hours)",
+            "values": [
+              0,
+              20,
+              40,
+              60,
+              80,
+              100
+            ],
+            "format": "d",
+            "grid": true,
+            "gridColor": "#ECE9F1",
+            "domain": true
+          }
         },
         "color": {
           "field": "platform",
@@ -101,8 +124,8 @@
               "Streaming apps (BVOD)"
             ],
             "range": [
-              "#00843D",
-              "#FFCD00"
+              "#3A4E8C",
+              "#E86A4F"
             ]
           },
           "legend": {
@@ -131,7 +154,14 @@
             "field": "bvod_time",
             "title": "…on streaming apps"
           }
-        ]
+        ],
+        "opacity": {
+          "condition": {
+            "test": "sel_group == '' || datum.group == sel_group",
+            "value": 1
+          },
+          "value": 0.25
+        }
       }
     },
     {
@@ -143,18 +173,25 @@
       "mark": {
         "type": "text",
         "align": "left",
-        "dx": 12,
+        "dx": 10,
         "fontSize": 12,
         "fontWeight": 500,
         "color": "#3b3b3b"
       },
       "encoding": {
         "x": {
-          "field": "i",
+          "field": "xh",
           "type": "quantitative"
         },
         "text": {
           "field": "label"
+        },
+        "opacity": {
+          "condition": {
+            "test": "sel_group == '' || datum.group == sel_group",
+            "value": 1
+          },
+          "value": 0.3
         }
       }
     }
@@ -163,5 +200,11 @@
     "view": {
       "stroke": null
     }
-  }
+  },
+  "params": [
+    {
+      "name": "sel_group",
+      "value": ""
+    }
+  ]
 }
