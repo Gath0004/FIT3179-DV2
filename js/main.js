@@ -32,7 +32,7 @@ const charts = [
   { id: "vis-map-spikes",     spec: "specs/12_map_drama_spikes.vl.json" }
 ];
 
-const VERSION = "20261013g";  // bump to force browsers to fetch fresh chart specs
+const VERSION = "20261013i";  // bump to force browsers to fetch fresh chart specs
 const views = {};
 const embedOptions = { renderer: "svg", actions: false, tooltip: { theme: "light" } };
 
@@ -115,3 +115,57 @@ Promise.all([ready, csv("data/grand_finals_by_city_2026.csv")]).then(([, gf]) =>
       "The " + winner + " won the city, with the AFL taking <b>" + share + "%</b> of grand-final viewers.";
   });
 });
+
+/* ---------- Side-by-side charts: cards share one height, so each chart grows into its
+   card's leftover space (e.g. when the other card has a longer subtitle). ---------- */
+function fitPairedCharts() {
+  const cards = [...document.querySelectorAll(".grid-2 > .card")]
+    .map(card => ({ card, box: card.querySelector(".chart") }))
+    .filter(c => c.box && views[c.box.id]);
+  // reset to the designed heights so the row settles at its natural size
+  cards.forEach(({ box }) => {
+    const v = views[box.id];
+    if (v._baseHeight === undefined) v._baseHeight = v.height();
+    v.height(v._baseHeight);
+  });
+  return Promise.all(cards.map(({ box }) => views[box.id].runAsync())).then(() => {
+    const grow = cards.map(({ box }) => {
+      const svg = box.querySelector("svg");
+      return svg ? Math.floor(box.getBoundingClientRect().height - svg.getBoundingClientRect().height) : 0;
+    });
+    return Promise.all(cards.map(({ box }, i) => {
+      const v = views[box.id];
+      return grow[i] > 4 ? v.height(v._baseHeight + grow[i]).runAsync() : null;
+    }));
+  });
+}
+let fitTimer;
+ready.then(() => document.fonts.ready).then(fitPairedCharts);
+window.addEventListener("resize", () => { clearTimeout(fitTimer); fitTimer = setTimeout(fitPairedCharts, 200); });
+
+/* ---------- text + chart rows: size each chart so its card is exactly as tall as the text beside it ---------- */
+const FIT_IDS = ["vis-slope", "vis-gf", "vis-scatter", "vis-treemap"];
+const FIT_MIN = 200, FIT_MAX = 560;
+const baseHeight = {};
+async function fitRows() {
+  const sideBySide = window.matchMedia("(min-width: 1101px)").matches;
+  for (const id of FIT_IDS) {
+    const v = views[id], chart = document.getElementById(id);
+    if (!v || !chart) continue;
+    if (!(id in baseHeight)) baseHeight[id] = v.height();
+    const card = chart.closest(".card"), row = card && card.closest(".story");
+    const text = row && row.querySelector(":scope > .prose");
+    if (!sideBySide || !text) { v.height(baseHeight[id]); await v.runAsync(); continue; }
+    for (let i = 0; i < 3; i++) {
+      const diff = text.getBoundingClientRect().height - card.getBoundingClientRect().height;
+      if (Math.abs(diff) < 2) break;
+      const next = Math.round(Math.max(FIT_MIN, Math.min(FIT_MAX, v.height() + diff)));
+      if (next === v.height()) break;
+      v.height(next);
+      await v.runAsync();
+    }
+  }
+}
+Promise.all([ready, document.fonts ? document.fonts.ready : null]).then(fitRows);
+let rowFitTimer;
+window.addEventListener("resize", () => { clearTimeout(rowFitTimer); rowFitTimer = setTimeout(fitRows, 250); });

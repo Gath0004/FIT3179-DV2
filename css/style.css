@@ -330,15 +330,14 @@ body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(
 
 @media (max-width: 1100px) { .ending-grid { grid-template-columns: minmax(0, 1fr); gap: 24px; } }
 
-/* ===== text containers sized to their text (no padding out with extras) ===== */
-/* rows that pair text with a chart: the chart gets more width, the text column runs taller */
-.story:has(> .card) { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 36px; }
-.story.flip:has(> .card:first-child) { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); }
-.story:has(> .card) > .prose p { max-width: none; }
+/* ===== text + chart rows: equal heights (js/main.js fitRows sizes each chart to the text beside it) ===== */
+.story:has(> .card:not(.facts)) { grid-template-columns: minmax(0, 9fr) minmax(0, 15fr); gap: 36px; align-items: start; }
+.story.flip:has(> .card:not(.facts):first-child) { grid-template-columns: minmax(0, 15fr) minmax(0, 9fr); }
+.story:has(> .card) > .prose p { max-width: none; font-size: 19.5px; }
+.story.flip > .card.facts { align-self: stretch; }
+.card.facts .fact { padding: 10px 0; }
 /* full-width intro text uses the full width, so it is fewer lines tall */
 .prose.wide p { max-width: none; }
-/* the text-only facts card: facts side by side instead of stacked */
-.card.facts .fact { padding: 10px 0; }
 @media (max-width: 1100px) { .story:has(> .card), .story.flip:has(> .card:first-child) { grid-template-columns: minmax(0, 1fr); } }
-.story:has(> .card) { align-items: center; }
-.story:has(> .card) > .prose p { font-size: 19.5px; }
+.card.facts .fact { padding: 8px 0; }
+.card.facts .fact b { font-size: 44px; }
