@@ -67,10 +67,10 @@
       }
     }
   },
-  "spacing": 36,
+  "spacing": 64,
   "spec": {
-    "width": 160,
-    "height": 178,
+    "width": 230,
+    "height": 256,
     "layer": [
       {
         "mark": {

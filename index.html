@@ -7,7 +7,7 @@
   <meta name="description" content="A data story about how Australians watch television in 2025–26: who still watches, how they tune in, what they watch, the footy divide and who pays for Australian drama.">
   <meta name="author" content="Gathika Athuruliya">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect x=%222%22 y=%225%22 width=%2228%22 height=%2219%22 rx=%223%22 fill=%22%233A4E8C%22/%3E%3Crect x=%2210%22 y=%2226%22 width=%2212%22 height=%223%22 fill=%22%23E86A4F%22/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="css/style.css?v=20261013d">
+  <link rel="stylesheet" href="css/style.css?v=20261013e">
   <script src="js/lib/vega.min.js"></script>
   <script src="js/lib/vega-lite.min.js"></script>
   <script src="js/lib/vega-embed.min.js"></script>
@@ -106,6 +106,7 @@
         <p>Each year ACMA asks Australian adults how they watched video in the previous seven days. In 2017, <span class="k-broad">71% watched live free-to-air TV</span>. By 2024 only 46% did.</p>
         <p>Over the same years, <span class="k-online">online video</span> went from a minority habit (37%) to almost universal (91%). Paid streaming services like Netflix and Stan more than doubled their reach, and YouTube jumped from 6% to 56% of adults.</p>
         <p>The networks did not stand still. Their own <span class="k-apps">free-to-air apps</span> were used by 44% of adults each week in 2025, up from 18% in 2017. Follow the coral line on the chart: it is the networks following their viewers online.</p>
+        <div class="pull online"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="3.5"/><path d="M10 9v6l5-3z"/></svg><div><b>6% → 56%</b><span>YouTube's weekly reach among adults, 2017 to 2025: the biggest rise of any service, more than nine times over</span></div></div>
       </div>
       <figure class="card">
         <h3>Live TV is the only way of watching that has shrunk since 2017</h3>
@@ -147,11 +148,18 @@
       <p class="standfirst">Almost everyone still watches free-to-air TV at some point in a month. What separates the generations is how they tune in, and how long they stay.</p>
     </header>
 
-    <div class="prose wide">
+    <div class="lede-row">
+      <div class="prose wide">
         <h3>THREE WAYS TO MEASURE A VIEWER</h3>
         <p>The official ratings, OzTAM's VOZ, count everyone who watches the free-to-air networks: through an antenna (<span class="k-broad">broadcast</span>) or through the networks' <span class="k-apps">apps</span>, also called BVOD. The three charts below look at the same people three ways: <b>reach</b> (did they watch at all this month?), <b>time</b> (how many hours?) and <b>habit</b> (how did they watch this week?).</p>
         <p>Use the selector to follow one group through all three charts.</p>
       </div>
+      <ul class="icon-tiles" aria-label="The three measures">
+        <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M1.5 12S5.5 5 12 5s10.5 7 10.5 7-4 7-10.5 7S1.5 12 1.5 12z"/><circle cx="12" cy="12" r="3.2"/></svg><div><b>Reach</b><span>Did they watch at all this month? <em>Heatmap</em></span></div></li>
+        <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M12 6.5V12l3.8 2.3"/></svg><div><b>Time</b><span>How many hours a month? <em>TV-icon chart</em></span></div></li>
+        <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16" rx="2"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4M7 13.5h2M11 13.5h2M15 13.5h2M7 17h2M11 17h2"/></svg><div><b>Habit</b><span>How did they tune in this week? <em>Waffles</em></span></div></li>
+      </ul>
+    </div>
 
     <div class="linked">
       <div class="picker" id="group-picker">
@@ -255,6 +263,7 @@
         <h3>A TEN-YEAR HIGH</h3>
         <p>In 2026 the <span class="k-afl">AFL Grand Final</span> between Brisbane and Fremantle drew an average of <b>4.52 million</b> viewers on Seven, the biggest audience in the decade shown, and well above the 2019 low of 2.94 million.</p>
         <p>Streaming is no longer a sideshow. <span class="k-apps">1.42 million people watched on the 7plus app</span>, 31% of the audience, nearly double the share of 2024. A week later the <span class="k-nrl">NRL Grand Final</span>, a one-point win for the Roosters over Newcastle, averaged 4.29 million on Nine and reached 6.05 million people.</p>
+        <div class="pull apps"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M10.5 9.5v5l4-2.5z"/><path d="M10 18.5h4"/></svg><div><b>1 in 3</b><span>AFL Grand Final viewers watched on the 7plus app in 2026, up from 1 in 6 in 2024</span></div></div>
       </div>
       <figure class="card">
         <h3>The AFL Grand Final hit a ten-year high, and almost a third streamed it</h3>
@@ -265,12 +274,19 @@
       </figure>
     </div>
 
-    <div style="margin-top:44px"><div class="prose wide">
+    <div class="lede-row" style="margin-top:44px">
+      <div class="prose wide">
         <h3>THE FOOTY DIVIDE</h3>
         <p>Australians joke about the <b>Barassi Line</b>, an imaginary border between rugby-league country in New South Wales and Queensland and Aussie-rules country everywhere else. Grand final audiences in the five capital-city TV markets show it is very real.</p>
         <p>The left map shows how many people watched each final. The right map turns that into a ratio, so cities of different sizes can be compared fairly.</p>
       </div>
-</div>
+      <div class="divide-card" aria-label="Share of each city's grand-final viewers who chose each code">
+        <div class="side afl"><svg class="ball" viewBox="0 0 40 26" aria-hidden="true"><ellipse cx="20" cy="13" rx="18" ry="11"/><path d="M20 4v18M15 9h10M15 13h10M15 17h10"/></svg><b>74%</b><span>of <strong>Melbourne</strong>'s viewers chose the AFL</span></div>
+        <div class="line" aria-hidden="true"><i></i><small>BARASSI LINE</small></div>
+        <div class="side nrl"><svg class="ball" viewBox="0 0 40 26" aria-hidden="true"><ellipse cx="20" cy="13" rx="18" ry="10"/><path d="M6 13h28M13 9.5v7M27 9.5v7"/></svg><b>71%</b><span>of <strong>Sydney</strong>'s viewers chose the NRL</span></div>
+        <p class="swing"><b>Brisbane</b> sits on the line: <span style="white-space:nowrap">44% AFL, 56% NRL.</span></p>
+      </div>
+    </div>
     <div class="linked">
       <div class="picker" id="city-picker">
         <span class="label">CHOOSE A CITY ▸</span>
@@ -329,6 +345,11 @@
         <h3>FEWER HOURS, BIGGER BUDGETS</h3>
         <p>Screen Australia counts every Australian drama made each year. In 2024/25, <span class="k-broad">free-to-air networks</span> made fewer hours of new drama (191, down from 276) and spent less ($162 million).</p>
         <p><span class="k-online">Subscription and streaming services</span> also made fewer hours (105) but spent <em>more</em>: $492 million, about <b>$4.7 million for every hour</b> of screen time, against about $0.85 million on free-to-air. The dashed lines on the chart mark cost per hour, so the steeper the line a point sits on, the more expensive each hour.</p>
+        <div class="pull cost" aria-label="Cost of one hour of drama: streaming 4.7 million dollars, free-to-air 0.85 million dollars">
+          <span class="cost-title"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M12 6.5V12l3.8 2.3"/></svg>WHAT ONE HOUR OF DRAMA COSTS</span>
+          <div class="cost-row"><small>Streaming</small><i style="width:100%;background:var(--online)"></i><b>$4.7m</b></div>
+          <div class="cost-row"><small>Free-to-air</small><i style="width:18%;background:var(--broadcast)"></i><b>$0.85m</b></div>
+        </div>
       </div>
       <figure class="card">
         <h3>Streaming makes fewer hours, at five times the cost per hour</h3>
@@ -351,6 +372,11 @@
         <h3>FOLLOWING THE MONEY</h3>
         <p>Of the $749 million invested in Australian TV and streaming dramas in 2024/25, <b>46%</b> came from the Australian screen industry itself: broadcasters, streamers and production companies.</p>
         <p><b>Government</b> provided 34%, mostly through the <b>Producer Offset</b>, a federal tax rebate ($180m), with state screen agencies adding $44m and Screen Australia $19m. A further 21% came from overseas investors.</p>
+        <ul class="money-list" aria-label="Where the money came from">
+          <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18M5 21V9l7-4 7 4v12M9 21v-6h6v6"/><path d="M9.5 11h5"/></svg><b>$342m</b><span>Australian industry · 46%</span></li>
+          <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18M4 9.5h16L12 4zM6 12v6M10 12v6M14 12v6M18 12v6"/></svg><b>$251m</b><span>Government · 34%</span></li>
+          <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M2.5 12h19M12 2.5c2.6 2.6 3.8 6 3.8 9.5s-1.2 6.9-3.8 9.5c-2.6-2.6-3.8-6-3.8-9.5S9.4 5.1 12 2.5z"/></svg><b>$155m</b><span>International · 21%</span></li>
+        </ul>
       </div>
     </div>
 
@@ -379,14 +405,32 @@
   <div class="wrap">
     <p class="osd">END OF TRANSMISSION</p>
     <h2>Not dead. <span class="outline">Re-wired.</span></h2>
-    <div class="prose">
-      <p>So, is television dead? The data says no. Free-to-air TV still reaches 87% of Australians in an average month, live viewing rose in 2025, and the biggest sporting nights are getting bigger. What has changed is the route in: the same programs now arrive through an antenna, an app or a streaming service, and younger Australians increasingly choose the app.</p>
-      <p>The money has moved with them. Streaming services now pay for most new Australian drama, and the stories we watch are increasingly made in Queensland. The next time you switch on, notice which way you came in.</p>
+    <div class="ending-grid">
+      <div class="prose">
+        <p>So, is television dead? The data says no. Free-to-air TV still reaches <b>87% of Australians</b> in an average month, live viewing rose in 2025, and the biggest sporting nights are getting bigger.</p>
+        <p>What has changed is the route in: the same programs now arrive through an antenna, an app or a streaming service, and younger Australians increasingly choose the app.</p>
+        <p>The money has moved with them. Streaming services now pay for most new Australian drama, and the stories we watch are increasingly made in Queensland. The next time you switch on, notice which way you came in.</p>
+      </div>
+      <div class="photo-wall">
+        <figure class="ph ph-wide">
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/MCG_2022_AFL_Grand_Final.jpg?width=900" alt="A packed Melbourne Cricket Ground during the 2022 AFL Grand Final" loading="lazy" onerror="this.parentNode.classList.add('noimg')">
+          <figcaption>Still watching together: the MCG on Grand Final day</figcaption>
+        </figure>
+        <figure class="ph">
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Terrestrial_UHF_VHF_television_antenna.jpg?width=600" alt="A rooftop UHF and VHF television antenna against the sky" loading="lazy" onerror="this.parentNode.classList.add('noimg')">
+          <figcaption>The old way in</figcaption>
+        </figure>
+        <figure class="ph">
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Philips_remote_control_with_a_Netflix_button,_Finsterwolde_(2019)_04.jpg?width=600" alt="A TV remote control with a dedicated Netflix button" loading="lazy" onerror="this.parentNode.classList.add('noimg')">
+          <figcaption>The new way in</figcaption>
+        </figure>
+        <p class="ph-credit">Photos: Wikimedia Commons (<a href="https://commons.wikimedia.org/wiki/File:MCG_2022_AFL_Grand_Final.jpg">MCG</a>, <a href="https://commons.wikimedia.org/wiki/File:Terrestrial_UHF_VHF_television_antenna.jpg">antenna</a>, <a href="https://commons.wikimedia.org/wiki/File:Philips_remote_control_with_a_Netflix_button,_Finsterwolde_(2019)_04.jpg">remote</a>); authors and licences on each file page.</p>
+      </div>
     </div>
     <div class="takeaways">
-      <div><b>We still watch together</b>87% of Australians watch free-to-air TV each month, and 4.52 million watched the AFL Grand Final.</div>
-      <div><b>The way in is changing</b>1 in 5 free-to-air minutes is streamed; for under-40s it is 2 in 5.</div>
-      <div><b>Streaming pays the bills</b>$492m on Australian drama in 2024/25, three times free-to-air.</div>
+      <div><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="8" cy="8" r="3"/><circle cx="16" cy="8" r="3"/><path d="M2 20c0-3.3 2.7-6 6-6s6 2.7 6 6M10 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/></svg><b>We still watch together</b>87% of Australians watch free-to-air TV each month, and 4.52 million watched the AFL Grand Final.</div>
+      <div><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M10.5 9.5v5l4-2.5z"/><path d="M10 18.5h4"/></svg><b>The way in is changing</b>1 in 5 free-to-air minutes is streamed; for under-40s it is 2 in 5.</div>
+      <div><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M15 8.5c-.6-1-1.7-1.5-3-1.5-1.7 0-3 .9-3 2.3 0 3.2 6 1.7 6 5 0 1.4-1.3 2.3-3 2.3-1.4 0-2.6-.6-3.1-1.6M12 5.5V7M12 17v1.5"/></svg><b>Streaming pays the bills</b>$492m on Australian drama in 2024/25, three times free-to-air.</div>
     </div>
   </div>
 </section>
@@ -413,6 +457,7 @@
         <li>Screen Australia (2026). <a href="https://www.screenaustralia.gov.au/fact-finders/reports-and-key-issues/reports-and-discussion-papers/drama-report-2024-25">Drama Report 2024/25</a>.</li>
         <li><a href="https://www.naturalearthdata.com/">Natural Earth</a> state boundaries (public domain).</li>
         <li>Header backdrop: <a href="https://commons.wikimedia.org/wiki/File:Television_static.gif">Television static.gif</a>, Wikimedia Commons (free licence; author and licence on the file page).</li>
+        <li>Ending photos: <a href="https://commons.wikimedia.org/wiki/File:MCG_2022_AFL_Grand_Final.jpg">MCG 2022 AFL Grand Final</a>, <a href="https://commons.wikimedia.org/wiki/File:Terrestrial_UHF_VHF_television_antenna.jpg">Terrestrial UHF VHF television antenna</a>, <a href="https://commons.wikimedia.org/wiki/File:Philips_remote_control_with_a_Netflix_button,_Finsterwolde_(2019)_04.jpg">Philips remote with a Netflix button</a>, Wikimedia Commons (free licences; authors on each file page).</li>
       </ol>
     </div>
     <div>
@@ -424,8 +469,8 @@
   </div>
 </footer>
 
-<script src="js/main.js?v=20261013d"></script>
-<script src="js/fx.js?v=20261013d"></script>
-<script src="js/a11y.js?v=20261013d"></script>
+<script src="js/main.js?v=20261013e"></script>
+<script src="js/fx.js?v=20261013e"></script>
+<script src="js/a11y.js?v=20261013e"></script>
 </body>
 </html>
