@@ -2,7 +2,7 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Spike map: each state's share of all screen drama production spending in Australia, 2023/24 vs 2024/25 (Screen Australia Drama Report). Spike height is proportional to share. ACT, NT and Tasmania are reported together and drawn at Hobart.",
   "width": "container",
-  "height": 580,
+  "height": 440,
   "projection": {
     "type": "conicEqualArea",
     "parallels": [

@@ -18,6 +18,8 @@
 @font-face { font-family: "Source Serif 4"; src: url("../fonts/source-serif-4-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-display: swap; }
 @font-face { font-family: "Source Serif 4"; src: url("../fonts/source-serif-4-latin-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; font-display: swap; }
 @font-face { font-family: "Source Serif 4"; src: url("../fonts/source-serif-4-latin-600-normal.woff2") format("woff2"); font-weight: 600; font-display: swap; }
+@font-face { font-family: "Fraunces"; src: url("../fonts/fraunces/fraunces-latin-600-normal.woff2") format("woff2"); font-weight: 600; font-display: swap; }
+@font-face { font-family: "Fraunces"; src: url("../fonts/fraunces/fraunces-latin-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; font-display: swap; }
 @font-face { font-family: "IBM Plex Sans Condensed"; src: url("../fonts/ibm-plex-sans-condensed-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-display: swap; }
 @font-face { font-family: "IBM Plex Sans Condensed"; src: url("../fonts/ibm-plex-sans-condensed-latin-500-normal.woff2") format("woff2"); font-weight: 500; font-display: swap; }
 @font-face { font-family: "IBM Plex Sans Condensed"; src: url("../fonts/ibm-plex-sans-condensed-latin-600-normal.woff2") format("woff2"); font-weight: 600; font-display: swap; }
@@ -38,6 +40,7 @@
   --drama: #B56576;    --drama-text: #8E3F57;
   --old: #B9BBC7;
   --serif: "Source Serif 4", Georgia, serif;
+  --title: "Fraunces", "Source Serif 4", Georgia, serif;
   --display: "Bebas Neue", Impact, "Arial Narrow", sans-serif;
   --osd: "VT323", "Courier New", monospace;
   --sans: "IBM Plex Sans Condensed", "Arial Narrow", Arial, sans-serif;
@@ -146,7 +149,7 @@ body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(
 .card .chart { flex: 1; min-width: 0; display: flex; justify-content: center; align-items: flex-start; }
 .card .chart > .vega-embed { width: auto; }
 #vis-mekko > .vega-embed, #vis-gf > .vega-embed { width: 100%; }
-.card figcaption { font-size: 12px; color: #5f6470; margin-top: 12px; padding-top: 10px; border-top: 1px solid #efedf3; }
+.card figcaption { font-size: 13px; color: #5f6470; margin-top: 12px; padding-top: 10px; border-top: 1px solid #efedf3; }
 .card figcaption a { color: inherit; }
 .how-to { font-size: 13px; color: var(--apps-text); margin: -6px 0 10px; }
 .how-to::before { content: "▶ "; font-size: 10px; }
@@ -331,8 +334,7 @@ body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(
 @media (max-width: 1100px) { .ending-grid { grid-template-columns: minmax(0, 1fr); gap: 24px; } }
 
 /* ===== text + chart rows: equal heights (js/main.js fitRows sizes each chart to the text beside it) ===== */
-.story:has(> .card:not(.facts)) { grid-template-columns: minmax(0, 9fr) minmax(0, 15fr); gap: 36px; align-items: start; }
-.story.flip:has(> .card:not(.facts):first-child) { grid-template-columns: minmax(0, 15fr) minmax(0, 9fr); }
+/* one sight line: every two-column row splits into equal halves with the same gutter */
 .story:has(> .card) > .prose p { max-width: none; font-size: 19.5px; }
 .story.flip > .card.facts { align-self: stretch; }
 .card.facts .fact { padding: 10px 0; }
@@ -341,3 +343,25 @@ body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(
 @media (max-width: 1100px) { .story:has(> .card), .story.flip:has(> .card:first-child) { grid-template-columns: minmax(0, 1fr); } }
 .card.facts .fact { padding: 8px 0; }
 .card.facts .fact b { font-size: 44px; }
+
+/* ===== consistent two-column grid (equal halves, one shared gutter) ===== */
+:root { --col-gap: 40px; }
+.story, .story.flip, .grid-2, .intro-cards, .ending-grid, .intro-grid {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: var(--col-gap);
+}
+.story > .prose .facts { margin-top: 18px; border-top: 1px solid var(--rule); }
+.story > .prose .fact span { font-family: var(--serif); font-size: 16px; }
+@media (max-width: 1100px) {
+  .story, .story.flip, .grid-2, .intro-cards, .ending-grid, .intro-grid { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* ===== typography mix: serif titles and reading text, condensed sans only inside charts and controls ===== */
+.card h3 { font-family: var(--title); font-weight: 600; font-size: 22px; line-height: 1.2; letter-spacing: -.005em; margin: 0 0 6px; }
+.card .sub { font-family: var(--serif); font-style: italic; font-size: 15.5px; color: #4f5563; }
+figcaption, .tv figcaption { font-family: var(--serif); }
+.toc a { font-family: var(--serif); font-size: 16px; }
+.stats span, .fact span { font-family: var(--serif); }
+.legend-card p, .legend-card dd { font-family: var(--serif); }
+.standfirst { font-family: var(--title) !important; font-style: italic; }
+.ending h3, .takeaways h3 { font-family: var(--title); font-weight: 600; }
+.prose h3 { font-family: var(--osd); font-weight: 400; font-size: 22px; letter-spacing: .05em; color: var(--apps-text); margin: 0 0 6px; }

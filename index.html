@@ -7,7 +7,7 @@
   <meta name="description" content="A data story about how Australians watch television in 2025–26: who still watches, how they tune in, what they watch, the footy divide and who pays for Australian drama.">
   <meta name="author" content="Gathika Athuruliya">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect x=%222%22 y=%225%22 width=%2228%22 height=%2219%22 rx=%223%22 fill=%22%233A4E8C%22/%3E%3Crect x=%2210%22 y=%2226%22 width=%2212%22 height=%223%22 fill=%22%23E86A4F%22/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="css/style.css?v=20261013i">
+  <link rel="stylesheet" href="css/style.css?v=20261021a">
   <script src="js/lib/vega.min.js"></script>
   <script src="js/lib/vega-lite.min.js"></script>
   <script src="js/lib/vega-embed.min.js"></script>
@@ -241,14 +241,14 @@
     <div class="story">
       <div class="prose">
         <h3>A TEN-YEAR HIGH</h3>
-        <p>In 2026 the <span class="k-afl">AFL Grand Final</span> between Brisbane and Fremantle drew an average of <b>4.52 million</b> viewers on Seven, the biggest audience in the decade shown, and well above the 2019 low of 2.94 million.</p>
+        <p>In 2026 the <span class="k-afl">AFL Grand Final</span> between Brisbane and Fremantle drew an average of <b>4.52 million</b> viewers on Seven, its biggest audience in a decade and well above the 2019 low of 2.94 million. The chart starts in 2024, the first year Seven published how many watched on its 7plus app, so both measures cover the same years.</p>
         <p>Streaming is no longer a sideshow. <span class="k-apps">1.42 million people watched on the 7plus app</span>, 31% of the audience, nearly double the share of 2024. A week later the <span class="k-nrl">NRL Grand Final</span>, a one-point win for the Roosters over Newcastle, averaged 4.29 million on Nine and reached 6.05 million people.</p>
       </div>
       <figure class="card">
-        <h3>The AFL Grand Final hit a ten-year high, and almost a third streamed it</h3>
-        <p class="sub">Average national audience (millions): <span class="k-afl">total</span> and <span class="k-apps">watched on the 7plus app</span></p>
-        <div id="vis-gf" class="chart" role="img" tabindex="0" aria-label="Line chart of AFL Grand Final audiences 2016 to 2026: lowest 2.94 million in 2019, highest 4.52 million in 2026. Streaming on 7plus rose from 16% of the audience in 2024 to 31% in 2026."></div>
-        <figcaption>Sources: Seven Network via TV Blackbox (2026); Mediaweek (2025). Measurement methods changed over the decade.</figcaption>
+        <h3>AFL Grand Final audiences rose each year, and almost a third now stream it</h3>
+        <p class="sub">Average national audience (millions), 2024–2026: <span class="k-afl">total</span> and <span class="k-apps">watched on the 7plus app</span>. Labels on the bars show the app's share.</p>
+        <div id="vis-gf" class="chart" role="img" tabindex="0" aria-label="Line and bar chart of AFL Grand Final audiences 2024 to 2026: total audience rose from 4.02 million to 4.08 million to 4.52 million, while viewers on the 7plus app rose from 0.66 million (16%) to 0.97 million (24%) to 1.42 million (31%)."></div>
+        <figcaption>Sources: Seven Network via TV Blackbox (2026); Mediaweek (2025). 7plus streaming audiences were not published before 2024.</figcaption>
       </figure>
     </div>
 
@@ -337,19 +337,22 @@
       </div>
     </div>
 
-    <figure class="card split" style="margin-top:36px">
-      <div>
+    <div class="story" style="margin-top:36px">
+      <div class="prose">
+        <h3>A NEW PRODUCTION CAPITAL</h3>
+        <p>Where the cameras roll has shifted too. In 2024/25 Australia saw a record <b>$2.7 billion</b> of drama production, boosted by big international shoots, and <b>Queensland</b> took the largest share for the first time.</p>
+        <div class="facts">
+          <div class="fact"><b style="color:#8E3F57">16% → 34%</b><span>Queensland's share of drama spending in one year</span></div>
+          <div class="fact"><b>51% → 31%</b><span>New South Wales' share over the same year</span></div>
+        </div>
+      </div>
+      <figure class="card">
         <h3>Queensland overtook New South Wales as the production capital</h3>
         <p class="sub">Each state's share of all screen-drama production spending (TV and film). Untick the box to show 2024/25 on its own.</p>
         <div id="vis-map-spikes" class="chart" role="img" tabindex="0" aria-label="Spike map of drama production spending share: Queensland rose from 16% to 34%, New South Wales fell from 51% to 31%, Victoria rose from 18% to 27%."></div>
         <figcaption>Source: Screen Australia, Drama Report 2024/25. ACT, NT and Tasmania are only reported together (drawn at Hobart).</figcaption>
-      </div>
-      <div class="facts">
-        <div class="fact"><b>$2.7b</b><span>record drama spend in Australia, 2024/25, boosted by big international shoots</span></div>
-        <div class="fact"><b style="color:#8E3F57">16% → 34%</b><span>Queensland's share in one year</span></div>
-        <div class="fact"><b>51% → 31%</b><span>New South Wales' share</span></div>
-      </div>
-    </figure>
+      </figure>
+    </div>
 
     <div class="takeaway"><span class="tag">TAKEAWAY</span><p>Streaming services now account for three-quarters of the money spent making Australian TV drama, and more of it is being made in Queensland.</p></div>
   </div>
@@ -425,8 +428,8 @@
   </div>
 </footer>
 
-<script src="js/main.js?v=20261013i"></script>
-<script src="js/fx.js?v=20261013i"></script>
-<script src="js/a11y.js?v=20261013i"></script>
+<script src="js/main.js?v=20261021a"></script>
+<script src="js/fx.js?v=20261021a"></script>
+<script src="js/a11y.js?v=20261021a"></script>
 </body>
 </html>

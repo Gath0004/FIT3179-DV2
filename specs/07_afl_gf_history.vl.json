@@ -1,8 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Line + bar chart: national TV audience of the AFL Grand Final 2016–2026, with the number watching via the 7plus streaming app (2024–2026).",
+  "description": "Line + bar chart: national TV audience of the AFL Grand Final 2024–2026 alongside the number who watched on the 7plus streaming app (years where 7plus figures are published).",
   "width": "container",
-  "height": 230,
+  "height": 260,
   "data": {
     "url": "data/afl_grand_final_audiences.csv",
     "format": {
@@ -15,6 +15,9 @@
     }
   },
   "transform": [
+    {
+      "filter": "datum.year >= 2024"
+    },
     {
       "calculate": "datum.national_audience / 1e6",
       "as": "aud_m"
@@ -50,9 +53,11 @@
       "mark": {
         "type": "bar",
         "color": "#E86A4F",
-        "width": 26,
         "cornerRadiusTopLeft": 2,
-        "cornerRadiusTopRight": 2
+        "cornerRadiusTopRight": 2,
+        "width": {
+          "band": 0.42
+        }
       },
       "encoding": {
         "y": {
@@ -177,46 +182,6 @@
         },
         "text": {
           "field": "stream_share"
-        }
-      }
-    },
-    {
-      "data": {
-        "values": [
-          {
-            "year": 2019,
-            "y": 2.55,
-            "t": "Lowest in a decade"
-          },
-          {
-            "year": 2022,
-            "y": 1.35,
-            "t": "% of audience watching on the 7plus app →"
-          },
-          {
-            "year": 2019,
-            "y": 0.35,
-            "t": "Streaming figures not published before 2024"
-          }
-        ]
-      },
-      "mark": {
-        "type": "text",
-        "fontSize": 11,
-        "fontStyle": "italic",
-        "color": "#555"
-      },
-      "encoding": {
-        "x": {
-          "field": "year",
-          "type": "ordinal"
-        },
-        "y": {
-          "field": "y",
-          "type": "quantitative"
-        },
-        "text": {
-          "field": "t"
         }
       }
     }

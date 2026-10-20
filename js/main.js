@@ -2,14 +2,15 @@
    Each specification lives in /specs as a human-readable JSON file. */
 
 const FONT = "IBM Plex Sans Condensed, Arial Narrow, Helvetica Neue, Arial, sans-serif";
+const SERIF = "Source Serif 4, Georgia, serif";
 
 const sharedConfig = {
   font: FONT,
   background: null,
   view: { stroke: null },
-  axis: { labelFont: FONT, titleFont: FONT, labelColor: "#4f5563", titleColor: "#4f5563", labelFontSize: 12, titleFontSize: 12, domainColor: "#b9bbc7", tickColor: "#b9bbc7" },
-  legend: { labelFont: FONT, titleFont: FONT, labelColor: "#23263f", titleColor: "#23263f", titleFontSize: 12, labelFontSize: 12 },
-  header: { labelFont: FONT, titleFont: FONT, labelColor: "#23263f" },
+  axis: { labelFont: FONT, titleFont: SERIF, titleFontStyle: "italic", titleFontWeight: 400, labelColor: "#4f5563", titleColor: "#4f5563", labelFontSize: 12, titleFontSize: 12, domainColor: "#b9bbc7", tickColor: "#b9bbc7" },
+  legend: { labelFont: FONT, titleFont: SERIF, titleFontStyle: "italic", labelColor: "#23263f", titleColor: "#23263f", titleFontSize: 12, labelFontSize: 12 },
+  header: { labelFont: FONT, titleFont: SERIF, labelColor: "#23263f" },
   text: { font: FONT },
   title: { font: FONT }
 };
@@ -32,7 +33,7 @@ const charts = [
   { id: "vis-map-spikes",     spec: "specs/12_map_drama_spikes.vl.json" }
 ];
 
-const VERSION = "20261013i";  // bump to force browsers to fetch fresh chart specs
+const VERSION = "20261021a";  // bump to force browsers to fetch fresh chart specs
 const views = {};
 const embedOptions = { renderer: "svg", actions: false, tooltip: { theme: "light" } };
 
