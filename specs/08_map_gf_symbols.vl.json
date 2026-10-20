@@ -25,8 +25,8 @@
       },
       "mark": {
         "type": "geoshape",
-        "fill": "#ece6d8",
-        "stroke": "#faf7f0",
+        "fill": "#e4e5ee",
+        "stroke": "#ffffff",
         "strokeWidth": 1.2
       }
     },
@@ -87,8 +87,8 @@
               250000,
               1000000
             ],
-            "symbolFillColor": "#cfc8b8",
-            "symbolStrokeColor": "#9a927f",
+            "symbolFillColor": "#d3d5e0",
+            "symbolStrokeColor": "#8d91a8",
             "orient": "bottom-left",
             "direction": "horizontal",
             "titleFontSize": 11,

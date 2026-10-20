@@ -49,7 +49,7 @@
               3,
               4
             ],
-            "color": "#c9c2b2"
+            "color": "#c3c6d4"
           },
           "encoding": {
             "x": {
@@ -75,7 +75,7 @@
             "dx": -3,
             "dy": -6,
             "fontSize": 10,
-            "color": "#9a927f",
+            "color": "#8d91a8",
             "fontStyle": "italic"
           },
           "encoding": {
@@ -160,7 +160,7 @@
           "axis": {
             "title": "Spent in Australia ($ million)",
             "grid": false,
-            "gridColor": "#eee8db",
+            "gridColor": "#e8e9f0",
             "tickCount": 6,
             "titleColor": "#4f5563",
             "titleFontWeight": 500,

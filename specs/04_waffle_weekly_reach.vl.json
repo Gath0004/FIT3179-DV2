@@ -76,7 +76,7 @@
         "mark": {
           "type": "rect",
           "cornerRadius": 1.5,
-          "stroke": "#faf7f0",
+          "stroke": "#ffffff",
           "strokeWidth": 1.6
         },
         "encoding": {
@@ -122,7 +122,7 @@
                 "#3A4E8C",
                 "#A98BB8",
                 "#E86A4F",
-                "#E7E3DB"
+                "#e3e4ec"
               ]
             },
             "legend": {

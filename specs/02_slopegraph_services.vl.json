@@ -69,7 +69,7 @@
     {
       "mark": {
         "type": "rule",
-        "color": "#d9d4c7",
+        "color": "#cfd1dc",
         "strokeDash": [
           2,
           3
@@ -81,7 +81,7 @@
           "type": "ordinal"
         },
         "color": {
-          "value": "#d9d4c7"
+          "value": "#cfd1dc"
         }
       }
     },

@@ -134,7 +134,7 @@
     {
       "mark": {
         "type": "rect",
-        "stroke": "#faf7f0",
+        "stroke": "#ffffff",
         "strokeWidth": 2
       },
       "encoding": {

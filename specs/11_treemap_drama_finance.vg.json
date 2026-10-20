@@ -107,7 +107,7 @@
         "#CBCDE0",
         "#23263f",
         "#C7A27C",
-        "#E6E2DA"
+        "#e3e4ec"
       ]
     }
   ],
@@ -124,7 +124,7 @@
             "field": "id"
           },
           "stroke": {
-            "value": "#faf7f0"
+            "value": "#ffffff"
           },
           "strokeWidth": {
             "value": 1.5
