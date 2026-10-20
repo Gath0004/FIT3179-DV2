@@ -7,7 +7,7 @@
   <meta name="description" content="A data story about how Australians watch television in 2025–26: who still watches, how they tune in, what they watch, the footy divide and who pays for Australian drama.">
   <meta name="author" content="Gathika Athuruliya">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect x=%222%22 y=%225%22 width=%2228%22 height=%2219%22 rx=%223%22 fill=%22%233A4E8C%22/%3E%3Crect x=%2210%22 y=%2226%22 width=%2212%22 height=%223%22 fill=%22%23E86A4F%22/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="css/style.css?v=20261021a">
+  <link rel="stylesheet" href="css/style.css?v=20261021b">
   <script src="js/lib/vega.min.js"></script>
   <script src="js/lib/vega-lite.min.js"></script>
   <script src="js/lib/vega-embed.min.js"></script>
@@ -217,11 +217,27 @@
     </div>
 
     <figure class="card tv-card" style="margin-top:28px">
-      <h3>News fills a third of broadcast time; drama leads on the apps</h3>
-      <p class="sub">Block area = share of all free-to-air viewing minutes, Jan–Jun 2026. Hover a block to compare the same genre on both platforms.</p>
-      <div class="mekko-head"><span style="flex:80.9">Broadcast · 80.9% of minutes</span><span style="flex:19.1">Apps · 19.1%</span></div>
-      <div id="vis-mekko" class="chart" role="img" tabindex="0" aria-label="Marimekko chart: broadcast is 80.9% of free-to-air viewing minutes and apps 19.1%. News is 31.3% of broadcast time; drama is the biggest app genre at 20.7%."></div>
-      <figcaption>Source: OzTAM, VOZ Total TV Viewing Report H1 2026 (genre share of broadcast and BVOD minutes)</figcaption>
+      <div class="tv-antenna" aria-hidden="true"><span class="ear l"></span><span class="ear r"></span><span class="dome"></span></div>
+      <div class="tv-cabinet">
+        <div class="tv-glass">
+          <h3>News fills a third of broadcast time; drama leads on the apps</h3>
+          <p class="sub">Block area = share of all free-to-air viewing minutes, Jan–Jun 2026. Hover a block to compare the same genre on both platforms.</p>
+          <div id="vis-mekko" class="chart" role="img" tabindex="0" aria-label="Marimekko chart: broadcast is 80.9% of free-to-air viewing minutes and apps 19.1%. News is 31.3% of broadcast time; drama is the biggest app genre at 20.7%."></div>
+        </div>
+        <div class="tv-panel" aria-hidden="true">
+          <div class="tv-badge">CH&nbsp;03</div>
+          <div class="tv-dial"><i></i></div>
+          <span class="tv-label">CHANNEL</span>
+          <div class="tv-dial small"><i></i></div>
+          <span class="tv-label">VOLUME</span>
+          <div class="tv-grille"></div>
+          <div class="tv-power"><b></b>POWER</div>
+        </div>
+      </div>
+      <div class="tv-chin">
+        <figcaption>Source: OzTAM, VOZ Total TV Viewing Report H1 2026 (genre share of broadcast and BVOD minutes)</figcaption>
+      </div>
+      <div class="tv-legs" aria-hidden="true"><span></span><span></span></div>
     </figure>
 
     <div class="takeaway"><span class="tag">TAKEAWAY</span><p>We tune in live for news and sport, and stream drama and reality when it suits us. Sport is the one genre that grew on both: from 9.6% to 13.0% of broadcast time, and from 9.1% to 16.1% of app time, reaching 18 million Australians a month.</p></div>
@@ -428,8 +444,8 @@
   </div>
 </footer>
 
-<script src="js/main.js?v=20261021a"></script>
-<script src="js/fx.js?v=20261021a"></script>
-<script src="js/a11y.js?v=20261021a"></script>
+<script src="js/main.js?v=20261021b"></script>
+<script src="js/fx.js?v=20261021b"></script>
+<script src="js/a11y.js?v=20261021b"></script>
 </body>
 </html>

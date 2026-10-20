@@ -365,3 +365,54 @@ figcaption, .tv figcaption { font-family: var(--serif); }
 .standfirst { font-family: var(--title) !important; font-style: italic; }
 .ending h3, .takeaways h3 { font-family: var(--title); font-weight: 600; }
 .prose h3 { font-family: var(--osd); font-weight: 400; font-size: 22px; letter-spacing: .05em; color: var(--apps-text); margin: 0 0 6px; }
+.tv-card .sub { color: #c9cbe0; }
+
+/* ===== retro TV cabinet around the Marimekko (chapter 3) ===== */
+.tv-card { position: relative; background: none; box-shadow: none; padding: 0; border-radius: 0; margin-top: 96px !important; margin-bottom: 40px; overflow: visible; }
+.tv-card::after { display: none; }
+.tv-antenna { position: absolute; left: 50%; top: -54px; width: 200px; height: 56px; transform: translateX(-50%); pointer-events: none; }
+.tv-antenna .dome { position: absolute; left: 50%; bottom: 0; width: 74px; height: 22px; transform: translateX(-50%); background: linear-gradient(#3b4170, #1d2142); border-radius: 40px 40px 0 0; box-shadow: inset 0 2px 0 rgba(255,255,255,.12); }
+.tv-antenna .ear { position: absolute; bottom: 14px; left: 50%; width: 3px; height: 70px; background: linear-gradient(#d9dbe6, #7e83a3); border-radius: 2px; transform-origin: bottom center; }
+.tv-antenna .ear::before { content: ""; position: absolute; top: -5px; left: -3px; width: 9px; height: 9px; border-radius: 50%; background: #d9dbe6; }
+.tv-antenna .ear.l { transform: translateX(-50%) rotate(-32deg); }
+.tv-antenna .ear.r { transform: translateX(-50%) rotate(26deg); }
+.tv-cabinet {
+  position: relative; display: grid; grid-template-columns: minmax(0, 1fr) 118px; gap: 18px; padding: 22px 18px 22px 22px;
+  border-radius: 26px 26px 14px 14px;
+  background: linear-gradient(180deg, #33386a 0%, #262a4a 14%, #22264a 86%, #1b1e3a 100%);
+  box-shadow: 0 22px 44px rgba(18,20,42,.32), inset 0 2px 0 rgba(255,255,255,.10), inset 0 -3px 0 rgba(0,0,0,.25), inset 0 0 0 1px #3b4170;
+}
+.tv-glass {
+  position: relative; min-width: 0; padding: 20px 22px 18px; border-radius: 22px / 18px; background: radial-gradient(ellipse at 50% 40%, #1d2142 0%, #12142a 75%);
+  box-shadow: inset 0 0 0 6px #0c0e1f, inset 0 0 30px rgba(0,0,0,.65), 0 0 0 2px #4a5084, 0 0 0 7px #1a1d38;
+}
+.tv-glass::before { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; z-index: 2;
+  background: repeating-linear-gradient(to bottom, rgba(255,255,255,.035) 0 1px, transparent 1px 3px), linear-gradient(125deg, rgba(255,255,255,.10) 0%, rgba(255,255,255,0) 32%); }
+.tv-card .tv-glass h3 { color: #fff; }
+.tv-card .tv-glass .sub { color: #e6e4f2; }
+.tv-card #vis-mekko { position: relative; z-index: 3; }
+.tv-panel { display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 14px 8px 12px; border-radius: 12px;
+  background: linear-gradient(180deg, #1d2142, #171a35); box-shadow: inset 0 0 0 1px #343a63, inset 0 2px 8px rgba(0,0,0,.4); }
+.tv-badge { font-family: var(--osd); font-size: 22px; letter-spacing: .06em; color: #9ef0c8; text-shadow: 0 0 8px rgba(158,240,200,.55); background: #0c0e1f; border-radius: 4px; padding: 2px 10px 0; margin-bottom: 8px; }
+.tv-dial { position: relative; width: 66px; height: 66px; border-radius: 50%; margin-top: 4px;
+  background: radial-gradient(circle at 38% 32%, #6a7099 0%, #3b4170 45%, #23284d 100%);
+  box-shadow: 0 0 0 4px #12142a, 0 0 0 5px #4a5084, 0 4px 10px rgba(0,0,0,.5); }
+.tv-dial::before { content: ""; position: absolute; inset: -11px; border-radius: 50%; background: repeating-conic-gradient(from -3deg, #8f94b8 0 3deg, transparent 3deg 30deg); -webkit-mask: radial-gradient(circle, transparent 41px, #000 42px); mask: radial-gradient(circle, transparent 41px, #000 42px); }
+.tv-dial i { position: absolute; left: 50%; top: 6px; width: 4px; height: 22px; margin-left: -2px; background: #E86A4F; border-radius: 2px; transform-origin: 50% 27px; transform: rotate(38deg); }
+.tv-dial.small { width: 44px; height: 44px; margin-top: 10px; }
+.tv-dial.small::before { inset: -9px; -webkit-mask: radial-gradient(circle, transparent 29px, #000 30px); mask: radial-gradient(circle, transparent 29px, #000 30px); }
+.tv-dial.small i { top: 4px; height: 14px; width: 3px; margin-left: -1.5px; background: #e9e7f2; transform-origin: 50% 18px; transform: rotate(-50deg); }
+.tv-label { font-family: var(--osd); font-size: 15px; letter-spacing: .08em; color: #8f94b8; margin-top: 4px; }
+.tv-grille { flex: 1; width: 78px; min-height: 60px; margin: 12px 0 8px; border-radius: 8px;
+  background: radial-gradient(circle, #0c0e1f 1.6px, transparent 2.2px) 0 0 / 8px 8px, #262a4a; box-shadow: inset 0 0 0 1px #343a63; }
+.tv-power { display: flex; align-items: center; gap: 6px; font-family: var(--osd); font-size: 15px; letter-spacing: .08em; color: #8f94b8; }
+.tv-power b { width: 9px; height: 9px; border-radius: 50%; background: #3ee08f; box-shadow: 0 0 8px 2px rgba(62,224,143,.7); animation: tvled 2.4s ease-in-out infinite; }
+@keyframes tvled { 50% { opacity: .55; } }
+@media (prefers-reduced-motion: reduce) { .tv-power b { animation: none; } }
+.tv-chin { margin: -8px 34px 0; padding: 16px 22px 12px; border-radius: 0 0 16px 16px; background: linear-gradient(#1b1e3a, #15182f); box-shadow: inset 0 0 0 1px #2c3157, 0 12px 24px rgba(18,20,42,.25); }
+.tv-chin figcaption { margin-top: 8px; }
+.tv-legs { position: relative; height: 34px; margin: 0 auto; width: 60%; }
+.tv-legs span { position: absolute; top: 0; width: 10px; height: 34px; background: linear-gradient(90deg, #3b4170, #1b1e3a); border-radius: 0 0 4px 4px; }
+.tv-legs span:first-child { left: 12%; transform: skewX(14deg); }
+.tv-legs span:last-child { right: 12%; transform: skewX(-14deg); }
+@media (max-width: 760px) { .tv-cabinet { grid-template-columns: minmax(0, 1fr); padding: 14px; } .tv-panel { display: none; } .tv-chin { margin: -8px 14px 0; } }
