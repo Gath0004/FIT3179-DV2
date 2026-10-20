@@ -11,6 +11,7 @@
     "vis-map-symbols": "data/grand_finals_by_city_2026.csv",
     "vis-scatter": "data/drama_fta_vs_streaming.csv",
     "vis-treemap": "data/drama_finance_2024_25.csv",
+    "vis-map-choropleth": "data/nrl_gf_city_2025_2026.csv",
     "vis-map-spikes": "data/drama_spend_by_state.csv"
   };
   const hide = ["lat", "lon", "order", "cells", "group_order", "segment_order", "id", "parent"];

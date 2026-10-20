@@ -7,7 +7,7 @@
   <meta name="description" content="A data story about how Australians watch television in 2025–26: who still watches, how they tune in, what they watch, the footy divide and who pays for Australian drama.">
   <meta name="author" content="Gathika Athuruliya">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect x=%222%22 y=%225%22 width=%2228%22 height=%2219%22 rx=%223%22 fill=%22%233A4E8C%22/%3E%3Crect x=%2210%22 y=%2226%22 width=%2212%22 height=%223%22 fill=%22%23E86A4F%22/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="css/style.css?v=20261021b">
+  <link rel="stylesheet" href="css/style.css?v=20261021c">
   <script src="js/lib/vega.min.js"></script>
   <script src="js/lib/vega-lite.min.js"></script>
   <script src="js/lib/vega-embed.min.js"></script>
@@ -271,7 +271,7 @@
     <div style="margin-top:44px"><div class="prose wide">
         <h3>THE FOOTY DIVIDE</h3>
         <p>Australians joke about the <b>Barassi Line</b>, an imaginary border between rugby-league country in New South Wales and Queensland and Aussie-rules country everywhere else. Grand final audiences in the five capital-city TV markets show it is very real.</p>
-        <p>The left map shows how many people watched each final. The right map turns that into a ratio, so cities of different sizes can be compared fairly.</p>
+        <p>The left map shows how many people in each city watched the two 2026 deciders. The right map asks a different question: does it matter who is playing? It compares the NRL Grand Final with the year before, when Brisbane and Melbourne both had a team in it.</p>
       </div>
 </div>
     <div class="linked">
@@ -294,24 +294,24 @@
         <figcaption>Sources: TV Blackbox (AFL); Nine Network (NRL), 2026</figcaption>
       </figure>
       <figure class="card">
-        <h3>Brisbane is the swing city</h3>
-        <p class="sub">Of capital-city viewers who watched either final, the share who watched the AFL. Each state is shaded by its capital.</p>
-        <div id="vis-map-choropleth" class="chart" role="img" tabindex="0" aria-label="Choropleth: share of capital-city Grand Final viewers who watched the AFL. Perth 79%, Melbourne 74%, Adelaide 73%, Brisbane 44%, Sydney 29%."></div>
-        <figcaption>Market populations: OzTAM universe estimates 2026. Projection: Albers equal-area conic. Boundaries: Natural Earth.</figcaption>
+        <h3>No hometown team, fewer viewers</h3>
+        <p class="sub">Change in each capital city's NRL Grand Final audience, 2025 (Broncos v Storm) to 2026 (Roosters v Knights). Each state is shaded by its capital.</p>
+        <div id="vis-map-choropleth" class="chart" role="img" tabindex="0" aria-label="Choropleth of the change in NRL Grand Final audiences from 2025 to 2026: Melbourne down 40%, Brisbane down 22%, Perth down 17%, Adelaide up 2%, Sydney up 5%."></div>
+        <figcaption>Sources: TV Blackbox and SportsIndustryAU (2025, Nine/VOZ); TV Blackbox (2026). NT, Tas and ACT have no capital-city figures. Projection: Albers equal-area conic.</figcaption>
       </figure>
     </div>
     </div>
 
     <div class="story" style="margin-top:36px">
       <div class="prose">
-        <p><span class="k-afl">Melbourne</span> (1.26 million) and <span class="k-nrl">Sydney</span> (1.16 million) each delivered the biggest audience for "their" code, and largely ignored the other. Perth and Adelaide preferred the AFL by three or four to one.</p>
+        <p><span class="k-afl">Melbourne</span> (1.26 million) and <span class="k-nrl">Sydney</span> (1.16 million) each delivered the biggest audience for "their" code, and largely ignored the other. Perth and Adelaide preferred the AFL by three or four to one. Even in Brisbane, home of the AFL premiers, more people watched the NRL (737,000 vs 581,000).</p>
       </div>
       <div class="prose">
-        <p>Brisbane is the exception. Even with the Brisbane Lions playing in the AFL decider, more Brisbane viewers watched the NRL (737,000 vs 581,000). Hometown teams matter: the Dockers lifted Perth to 26 viewers per 100 residents, the highest rate of any city, and the Knights drew 480,000 viewers in the Northern NSW market alone.</p>
+        <p>Hometown teams matter. When the Storm played the Broncos in 2025, Melbourne gave the NRL decider 734,000 viewers; with no Victorian team in 2026 that fell by 40%. Brisbane dropped 22% without the Broncos. Sydney, home of the 2026 premiers, rose 5%, and the Knights drew 480,000 viewers in the Northern NSW market alone. The Dockers did the same for the AFL in Perth: 26 viewers per 100 residents, the highest rate of any city.</p>
       </div>
     </div>
 
-    <div class="takeaway"><span class="tag">TAKEAWAY</span><p>Live sport is free-to-air TV's strongest card, and more of it is now streamed. But Australia doesn't share one grand final: it shares two, split along a line on the map.</p></div>
+    <div class="takeaway"><span class="tag">TAKEAWAY</span><p>Live sport is free-to-air TV's strongest card, and more of it is now streamed. But Australia doesn't share one grand final: it shares two, split along a line on the map, and each city tunes in hardest when its own team is playing.</p></div>
     <p class="transition">Sport is made live. Drama has to be paid for in advance. So who is paying?</p>
   </div>
 </section>
@@ -428,6 +428,7 @@
         <li>ACMA (2026). <a href="https://www.acma.gov.au/publications/2026-03/report/communications-and-media-australia-how-we-watch-and-listen-content">How we watch and listen to content</a>; <a href="https://www.acma.gov.au/sites/default/files/2026-03/Trends%20and%20developments%20in%20viewing%20and%20listening%202024-25.pdf">Trends and developments 2024–25</a>. CC BY 4.0.</li>
         <li>OzTAM (2026). <a href="https://virtualoz.com.au/insight/voz-total-tv-viewing-report-h1-2026/">VOZ Total TV Viewing Report H1 2026</a> and <a href="https://virtualoz.com.au/insight/voz-total-tv-viewing-report-h2-2025/">H2 2025</a>.</li>
         <li>TV Blackbox (2026). <a href="https://tvblackbox.com.au/page/2026/09/28/full-breakdown-of-the-2026-afl-grand-final-record-ratings-result/">2026 AFL Grand Final ratings</a>; <a href="https://tvblackbox.com.au/page/2026/10/06/2026-nrl-grand-final-delivers-4-28-million-viewers-for-nine/">2026 NRL Grand Final (Nine release)</a>.</li>
+        <li>TV Blackbox (2025). <a href="https://tvblackbox.com.au/page/2025/10/06/rugby-league-reigns-as-channel-9s-grand-final-sets-new-audience-record/">2025 NRL Grand Final ratings</a>; SportsIndustryAU (2025). <a href="https://footyindustry.com/index.php/2025/10/08/state-of-the-game-the-rise-of-the-nrl-2025/">State of the Game: the NRL 2025</a> (city audiences, Nine/VOZ).</li>
         <li>Mediaweek (2025). <a href="https://www.mediaweek.com.au/tv-ratings-26-28-september-2025-in-a-football-heavy-weekend-to-no-surprise-brisbane-and-afl-won-the-weekend/">TV Ratings 26–28 Sept 2025</a>.</li>
         <li>Screen Australia (2026). <a href="https://www.screenaustralia.gov.au/fact-finders/reports-and-key-issues/reports-and-discussion-papers/drama-report-2024-25">Drama Report 2024/25</a>.</li>
         <li><a href="https://www.naturalearthdata.com/">Natural Earth</a> state boundaries (public domain).</li>
@@ -444,8 +445,8 @@
   </div>
 </footer>
 
-<script src="js/main.js?v=20261021b"></script>
-<script src="js/fx.js?v=20261021b"></script>
-<script src="js/a11y.js?v=20261021b"></script>
+<script src="js/main.js?v=20261021c"></script>
+<script src="js/fx.js?v=20261021c"></script>
+<script src="js/a11y.js?v=20261021c"></script>
 </body>
 </html>

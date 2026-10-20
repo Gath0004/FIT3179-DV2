@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Diverging choropleth map: of all capital-city viewers who watched either 2026 Grand Final, the share who watched the AFL rather than the NRL decider. Each state is shaded by its capital-city TV market.",
+  "description": "Diverging choropleth map: change in the NRL Grand Final TV audience in each capital-city market between 2025 (Brisbane Broncos v Melbourne Storm) and 2026 (Sydney Roosters v Newcastle Knights). Each state is shaded by its capital-city TV market.",
   "width": "container",
   "height": 470,
   "projection": {
@@ -40,12 +40,12 @@
     },
     {
       "data": {
-        "url": "data/grand_finals_by_city_2026.csv",
+        "url": "data/nrl_gf_city_2025_2026.csv",
         "format": {
           "type": "csv",
           "parse": {
-            "audience": "number",
-            "market_population_2026": "number",
+            "audience_2025": "number",
+            "audience_2026": "number",
             "lat": "number",
             "lon": "number"
           }
@@ -53,25 +53,12 @@
       },
       "transform": [
         {
-          "pivot": "code",
-          "value": "audience",
-          "groupby": [
-            "city",
-            "state",
-            "market_population_2026"
-          ]
+          "calculate": "(datum.audience_2026 - datum.audience_2025) / datum.audience_2025",
+          "as": "change"
         },
         {
-          "calculate": "datum.AFL / (datum.AFL + datum.NRL)",
-          "as": "afl_share"
-        },
-        {
-          "calculate": "round(datum.AFL / datum.market_population_2026 * 100)",
-          "as": "afl_per100"
-        },
-        {
-          "calculate": "round(datum.NRL / datum.market_population_2026 * 100)",
-          "as": "nrl_per100"
+          "calculate": "datum.audience_2026 - datum.audience_2025",
+          "as": "diff"
         },
         {
           "lookup": "state",
@@ -97,34 +84,34 @@
           "type": "geojson"
         },
         "color": {
-          "field": "afl_share",
+          "field": "change",
           "type": "quantitative",
           "scale": {
             "domain": [
-              0.2,
-              0.5,
-              0.8
+              -0.4,
+              0,
+              0.4
             ],
             "range": [
-              "#8B5FBF",
+              "#4B5068",
               "#F1EFF5",
-              "#1B998B"
+              "#8B5FBF"
             ],
             "clamp": true
           },
           "legend": {
-            "title": "AFL share of viewers",
-            "format": ".0%",
+            "title": "Change in NRL Grand Final audience, 2025 to 2026",
+            "format": "+.0%",
             "orient": "bottom-left",
             "direction": "horizontal",
-            "gradientLength": 180,
-            "titleLimit": 260,
+            "gradientLength": 200,
+            "titleLimit": 320,
             "values": [
+              -0.4,
+              -0.2,
+              0,
               0.2,
-              0.35,
-              0.5,
-              0.65,
-              0.8
+              0.4
             ]
           }
         },
@@ -134,27 +121,19 @@
             "title": "Capital-city TV market"
           },
           {
-            "field": "afl_share",
-            "title": "AFL share of GF viewers",
-            "format": ".0%"
-          },
-          {
-            "field": "AFL",
-            "title": "AFL Grand Final audience",
+            "field": "audience_2025",
+            "title": "2025 GF (Broncos v Storm)",
             "format": ","
           },
           {
-            "field": "NRL",
-            "title": "NRL Grand Final audience",
+            "field": "audience_2026",
+            "title": "2026 GF (Roosters v Knights)",
             "format": ","
           },
           {
-            "field": "afl_per100",
-            "title": "AFL viewers per 100 residents"
-          },
-          {
-            "field": "nrl_per100",
-            "title": "NRL viewers per 100 residents"
+            "field": "change",
+            "title": "Change",
+            "format": "+.0%"
           }
         ],
         "stroke": {
@@ -175,12 +154,12 @@
     },
     {
       "data": {
-        "url": "data/grand_finals_by_city_2026.csv",
+        "url": "data/nrl_gf_city_2025_2026.csv",
         "format": {
           "type": "csv",
           "parse": {
-            "audience": "number",
-            "market_population_2026": "number",
+            "audience_2025": "number",
+            "audience_2026": "number",
             "lat": "number",
             "lon": "number"
           }
@@ -188,17 +167,11 @@
       },
       "transform": [
         {
-          "pivot": "code",
-          "value": "audience",
-          "groupby": [
-            "city",
-            "state",
-            "lat",
-            "lon"
-          ]
+          "calculate": "(datum.audience_2026 - datum.audience_2025) / datum.audience_2025",
+          "as": "change"
         },
         {
-          "calculate": "format(datum.AFL / (datum.AFL + datum.NRL), '.0%') + ' AFL'",
+          "calculate": "(datum.change < 0 ? '−' : '+') + format(abs(datum.change), '.0%')",
           "as": "label"
         },
         {
@@ -216,7 +189,7 @@
       ],
       "mark": {
         "type": "text",
-        "fontSize": 13,
+        "fontSize": 14,
         "fontWeight": 700
       },
       "encoding": {
@@ -233,7 +206,7 @@
         },
         "color": {
           "condition": {
-            "test": "datum.state != 'QLD'",
+            "test": "datum.change < -0.15",
             "value": "white"
           },
           "value": "#23263f"
@@ -277,6 +250,59 @@
         },
         "text": {
           "field": "t"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "lat": -39.9,
+            "lon": 146.4,
+            "t": "Storm played 2025",
+            "c": "ink",
+            "dy": 0
+          },
+          {
+            "lat": -24.6,
+            "lon": 145.0,
+            "t": "Broncos played 2025",
+            "c": "white",
+            "dy": 17
+          },
+          {
+            "lat": -33.800000000000004,
+            "lon": 146.8,
+            "t": "Roosters, Knights 2026",
+            "c": "#23263f",
+            "dy": 17
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "fontSize": 10.5,
+        "fontStyle": "italic",
+        "dy": 0
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "t"
+        },
+        "color": {
+          "condition": {
+            "test": "datum.c == 'white'",
+            "value": "white"
+          },
+          "value": "#23263f"
         }
       }
     }

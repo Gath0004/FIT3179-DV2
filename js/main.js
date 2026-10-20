@@ -33,7 +33,7 @@ const charts = [
   { id: "vis-map-spikes",     spec: "specs/12_map_drama_spikes.vl.json" }
 ];
 
-const VERSION = "20261021b";  // bump to force browsers to fetch fresh chart specs
+const VERSION = "20261021c";  // bump to force browsers to fetch fresh chart specs
 const views = {};
 const embedOptions = { renderer: "svg", actions: false, tooltip: { theme: "light" } };
 
@@ -100,7 +100,7 @@ Promise.all([ready, csv("data/voz_monthly_h1_2026.csv"), csv("data/voz_weekly_re
 });
 
 /* ---------- Chapter 4: choose a city -> both maps + sentence ---------- */
-Promise.all([ready, csv("data/grand_finals_by_city_2026.csv")]).then(([, gf]) => {
+Promise.all([ready, csv("data/grand_finals_by_city_2026.csv"), csv("data/nrl_gf_city_2025_2026.csv")]).then(([, gf, nrl]) => {
   const out = document.getElementById("city-readout");
   const intro = out.innerHTML;
   const fmt = n => n >= 1e6 ? (n / 1e6).toFixed(2) + " million" : Math.round(n / 1000) + ",000";
@@ -114,6 +114,9 @@ Promise.all([ready, csv("data/grand_finals_by_city_2026.csv")]).then(([, gf]) =>
     out.innerHTML = "<b>" + c + "</b>: " + fmt(A) + " watched the <span class='k-afl'>AFL</span> final (" + Math.round(A / pop * 100) + " per 100 residents) and " +
       fmt(N) + " watched the <span class='k-nrl'>NRL</span> final (" + Math.round(N / pop * 100) + " per 100). " +
       "The " + winner + " won the city, with the AFL taking <b>" + share + "%</b> of grand-final viewers.";
+    const r = nrl.find(x => x.city === c);
+    if (r) { const ch = Math.round((+r.audience_2026 - +r.audience_2025) / +r.audience_2025 * 100);
+      out.innerHTML += " Its <span class='k-nrl'>NRL</span> final audience " + (ch < 0 ? "fell <b>" + (-ch) : "rose <b>" + ch) + "%</b> on 2025 (" + fmt(+r.audience_2025) + " to " + fmt(+r.audience_2026) + ")."; }
   });
 });
 
