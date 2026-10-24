@@ -50,7 +50,7 @@
       ]
     },
     {
-      "calculate": "datum.i < datum.broadcast_icons ? 'Broadcast (antenna)' : 'Streaming apps (BVOD)'",
+      "calculate": "datum.i < datum.broadcast_icons ? 'Broadcast (antenna)' : 'Free-to-air apps'",
       "as": "platform"
     },
     {
@@ -123,7 +123,7 @@
           "scale": {
             "domain": [
               "Broadcast (antenna)",
-              "Streaming apps (BVOD)"
+              "Free-to-air apps"
             ],
             "range": [
               "#3A4E8C",

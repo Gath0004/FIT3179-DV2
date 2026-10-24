@@ -26,7 +26,7 @@
       ]
     },
     {
-      "calculate": "datum.measure == 'total_reach_pct' ? 'Any free-to-air TV' : datum.measure == 'broadcast_reach_pct' ? 'Broadcast (antenna)' : 'Streaming apps (BVOD)'",
+      "calculate": "datum.measure == 'total_reach_pct' ? 'Any free-to-air TV' : datum.measure == 'broadcast_reach_pct' ? 'Broadcast (antenna)' : 'Free-to-air apps'",
       "as": "platform"
     },
     {
@@ -43,7 +43,7 @@
       "sort": [
         "Any free-to-air TV",
         "Broadcast (antenna)",
-        "Streaming apps (BVOD)"
+        "Free-to-air apps"
       ],
       "axis": {
         "title": null,
@@ -94,7 +94,7 @@
             "domain": [
               "Any free-to-air TV",
               "Broadcast (antenna)",
-              "Streaming apps (BVOD)"
+              "Free-to-air apps"
             ],
             "range": [
               "#23263f",

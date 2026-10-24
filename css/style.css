@@ -65,7 +65,6 @@ body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(
 .hero { position: relative; overflow: hidden; color: #f2f0f7; padding: 64px 0 44px;
   background:
     linear-gradient(100deg, rgba(18,20,42,.95) 0%, rgba(18,20,42,.86) 50%, rgba(18,20,42,.74) 100%),
-    url("https://commons.wikimedia.org/wiki/Special:FilePath/Television_static.gif?width=800") center / cover,
     url("../img/static-fallback.svg") 0 0 / 300px 300px,
     var(--screen); }
 .hero::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 6px;
@@ -416,3 +415,5 @@ figcaption, .tv figcaption { font-family: var(--serif); }
 .tv-legs span:first-child { left: 12%; transform: skewX(14deg); }
 .tv-legs span:last-child { right: 12%; transform: skewX(-14deg); }
 @media (max-width: 760px) { .tv-cabinet { grid-template-columns: minmax(0, 1fr); padding: 14px; } .tv-panel { display: none; } .tv-chin { margin: -8px 14px 0; } }
+/* ending: takeaways stacked beside the closing text */
+.takeaways.ending-takeaways { grid-template-columns: minmax(0, 1fr); margin-top: 0; gap: 14px; }
